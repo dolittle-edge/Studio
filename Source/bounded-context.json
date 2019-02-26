@@ -1,0 +1,19 @@
+{
+  "application": "9a35ea08-072b-06bd-3fe1-dd82e2fd8522",
+  "boundedContext": "68892ab4-f895-0282-efb5-def4ffe422dc",
+  "boundedContextName": "edge",
+  "resources": {
+    "readModels": {
+      "production": "MongoDB",
+      "development": "MongoDB"
+    },
+    "eventStore": {
+      "production": "MongoDB",
+      "development": "MongoDB"
+    }
+  },
+  "core": {
+    "language": "csharp"
+  },
+  "interaction": []
+}
