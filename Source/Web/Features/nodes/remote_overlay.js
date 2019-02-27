@@ -7,7 +7,4 @@ export class remote_overlay {
   close() {
     this.visible = false;
   }
-  visibleChanged(nv) {
-    console.log(nv);
-  }
 }
