@@ -51,7 +51,7 @@ export class terminal {
       scrollback: 1000,
       tabStopWidth: 8
     });
-    this.#terminal.open(this.terminalWindow, true);
+    this.#terminal.open(this.terminal, true);
     this.#terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
     this.#terminal.focus();
     //this.#terminal.prompt();
