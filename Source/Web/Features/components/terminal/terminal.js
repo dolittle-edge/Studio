@@ -49,7 +49,7 @@ export class terminal {
             scrollback: 1000,
             tabStopWidth: 8
         })
-        terminal.open(this.terminalWindow, true);
+        terminal.open(this.terminal, true);
         terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
         terminal.focus();
 

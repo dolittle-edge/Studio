@@ -5,12 +5,4 @@
 import { PLATFORM } from 'aurelia-framework';
 export class index {
   constructor() {}
-  configureRouter(config, router) {
-    this.router = router;
-    config.title = 'Node';
-    config.map([
-      { route: ['', 'list'], name: 'List', moduleId: PLATFORM.moduleName('nodes/list') },
-      { route: 'remote', name: 'Remote', moduleId: PLATFORM.moduleName('nodes/remote') }
-    ]);
-  }
 }

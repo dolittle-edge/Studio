@@ -1,26 +1,35 @@
 <template>
-  <section class="node_page">
-    <header>
-      <div class="row">
-        <h1>Nodes</h1>
-        <nav>
-          <a href="#">Add</a>
-          <a href="#"></a>
-        </nav>
-      </div>
-      <div class="row">
-        <small>Selected node:</small>
-        <strong>Nodename</strong>
-        <nav>
-          <a route-href="Remote">Remote</a>
-          <a href="#">Settings</a>
-          <a href="#">Health</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="content">
-        <router-view containerless></router-view>
+  <require from="./nodes_list"></require>
+  <require from="./index.scss"></require>
+  <require from="./remote_overlay"></require>
+  <section class="nodes_page">
+    <side-bar expanded="true" hide_trigger.one-time="true" is_subnavigation="true">
+      <h1>Edge nodes</h1>
+      <nodes-list></nodes-list>
+      <inline-toolbar>
+        <a href="">
+          <figure><img src="" alt="" /></figure>
+          <span>Add new node</span></a
+        >
+      </inline-toolbar>
+    </side-bar>
+    <main class="grid-content">
+      <section class="node-details">
+        connection state Node name Node unique ID
+        <button>Remote access</button>
+      <section class="hardware-details">
+          Hw info:
+          Manufacturer, Model, Processor, Memory, Video Controller
+  
+      </section>
+      <section class="health-monitor">
+        Health Monitor: 
+        State: Connected/Offline/Out of reach 
+        Availability last 24 hours 
+        KChief version: 600 
+        Temperature CPU Memory Network i/o 
+      </section>
     </main>
+   <remote-overlay></remote-overlay>
   </section>
 </template>
