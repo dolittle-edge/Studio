@@ -19,7 +19,7 @@ export class terminal {
     this._url = `${scheme}://${document.location.hostname}${port}/tty`;
     */
     this._url = 'wss://edge.dolittle.studio/remote-access/';
-    
+
     //this.#start();
   }
 
@@ -48,11 +48,15 @@ export class terminal {
 
 
   #messageReceived(event) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      this.#terminal.write(reader.result);
+    if (event.data instanceof Blob) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        this.#terminal.write(reader.result);
+      }
+      reader.readAsText(event.data);
+    } else {
+      this.#terminal.write(event.data);
     }
-    reader.readAsText(event.data);
   }
 
   attached() {
