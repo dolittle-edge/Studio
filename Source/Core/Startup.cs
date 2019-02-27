@@ -1,3 +1,4 @@
+using System;
 using Autofac;
 using Dolittle.AspNetCore.Bootstrap;
 using Dolittle.Booting;
@@ -58,6 +59,12 @@ namespace Core
 
             app.UseMvc();
 
+
+            app.UseWebSockets(new WebSocketOptions 
+            {
+                KeepAliveInterval = TimeSpan.FromSeconds(120),
+                ReceiveBufferSize = 4*1024
+            });
             app.Use(async(context, next) =>
             {
                 if (context.Request.Path == "/tty")

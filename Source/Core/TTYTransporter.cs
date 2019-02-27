@@ -9,13 +9,11 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Autofac;
 using Dolittle.Collections;
 using Dolittle.Lifecycle;
 using Dolittle.Logging;
 using Dolittle.Serialization.Json;
 using Microsoft.AspNetCore.Http;
-
 
 namespace Core
 {
@@ -64,27 +62,8 @@ namespace Core
                     var receivedString = System.Text.Encoding.UTF8.GetString(payload, 0, payload.Length);
                     try
                     {
-                        /*
-                        var methodCall = _serializer.FromJson<MethodCall>(receivedString);
-                        var methodName = methodCall.Method.ToPascalCase();
-                        var method = GetType().GetMethod(methodName);
-                        if (method != null)
-                        {
-                            try
-                            {
-                                method.Invoke(this, methodCall.Arguments);
-                            }
-                            catch (Exception ex)
-                            {
-                                _logger.Error(ex, $"Mismatched method signature - '{receivedString}'");
-                            }
-                        }
-                        else
-                        {
-                            _logger.Information("Unknown method");
-
-                        }
-                        */
+                        var message = _serializer.FromJson<TTYMessage>(receivedString);
+                        Send(message.Data,"data sent");                       
                     }
                     catch (Exception ex)
                     {
@@ -109,12 +88,9 @@ namespace Core
                     {
                         _logger.Information(logMessage);
                     });
-
                 });
             }
-
         }
-
  
         void CleanupConnections()
         {
