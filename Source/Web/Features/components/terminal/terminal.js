@@ -13,11 +13,14 @@ export class terminal {
   #terminal;
 
   constructor() {
+    /*
     let scheme = document.location.protocol == "https:" ? "wss" : "ws";
     let port = document.location.port ? (":" + document.location.port) : "";
     this._url = `${scheme}://${document.location.hostname}${port}/tty`;
-
-    this.#start();
+    */
+    this._url = 'wss://edge.dolittle.studio/remote-access/';
+    
+    //this.#start();
   }
 
   #start() {
@@ -30,6 +33,11 @@ export class terminal {
   }
 
   #opened(event) {
+    this.socket.send(JSON.stringify({
+      host: '',
+      username: '',
+      password: ''
+    }));
   }
 
   #closed(event) {
@@ -40,9 +48,11 @@ export class terminal {
 
 
   #messageReceived(event) {
-    //JSON.parse(event.data.toString());
-    let data = event.data.toString();
-    this.#terminal.write(data);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.#terminal.write(reader.result);
+    }
+    reader.readAsText(event.data);
   }
 
   attached() {
@@ -52,24 +62,12 @@ export class terminal {
       tabStopWidth: 8
     });
     this.#terminal.open(this.terminalWindow, true);
-    this.#terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ');
     this.#terminal.focus();
-    //this.#terminal.prompt();
 
-    this.#terminal.on('key', (data, keyData) => {
-      if( keyData.keyCode === 13 ) {
-        this.#terminal.write('\n\r');
-      }
-    });
-
+    this.#start();
 
     this.#terminal.on('data', (data) => {
-      //terminal.write(data);
-      let message = JSON.stringify({
-        data,
-        type: 1
-      });
-      this.socket.send(message);
+      this.socket.send(data);
     });
   }
 }
