@@ -9,7 +9,7 @@ import { Terminal } from 'xterm';
  * Based on: https://github.com/lovefishs/xterm-example/blob/master/src/main.js
  */
 @containerless()
- export class terminal {
+export class terminal {
   #terminal;
 
   constructor() {

@@ -1,0 +1,9 @@
+@import '../../styles/Settings/all';
+
+.nodes_page {
+  padding-left: $side_bar-expanded-width;
+
+  .grid-content {
+    display: grid;
+  }
+}

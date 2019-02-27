@@ -2,15 +2,16 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { PLATFORM } from 'aurelia-framework';
+import { observable } from 'aurelia-framework';
 export class index {
+  @observable show_terminal = false;
   constructor() {}
-  configureRouter(config, router) {
-    this.router = router;
-    config.title = 'Node';
-    config.map([
-      { route: ['', 'list'], name: 'List', moduleId: PLATFORM.moduleName('nodes/list') },
-      { route: 'remote', name: 'Remote', moduleId: PLATFORM.moduleName('nodes/remote') }
-    ]);
+  open_terminal() {
+    this.show_terminal = true;
+    console.log(this.show_terminal);
+  }
+  close_terminal() {
+    this.show_terminal = false;
+    console.log(this.show_terminal);
   }
 }

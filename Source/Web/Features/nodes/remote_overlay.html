@@ -1,0 +1,9 @@
+<template>
+  <require from="./remote_overlay.scss"></require>
+  <div class="remote_overlay ${visible ? 'visible' : ''}">
+    <a click.delegate="close()">X</a>
+    <div class="terminal_wrapper">
+      <terminal></terminal>
+    </div>
+  </div>
+</template>

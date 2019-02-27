@@ -1,0 +1,23 @@
+.remote_overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(50, 50, 50, 0.7);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.visible {
+    z-index: 10000;
+    opacity: 1;
+  }
+  .terminal_wrapper {
+    width: 70%;
+    border: 1rem solid #000;
+    border-radius: 0.5rem;
+  }
+}
