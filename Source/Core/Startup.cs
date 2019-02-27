@@ -36,7 +36,6 @@ namespace Core
             _bootResult = services.AddDolittle(_loggerFactory);
         }
 
-
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
             containerBuilder.AddDolittle(_bootResult.Assemblies, _bootResult.Bindings);
@@ -59,6 +58,22 @@ namespace Core
 
             app.UseMvc();
 
+            app.Use(async(context, next) =>
+            {
+                if (context.Request.Path == "/tty")
+                {
+                    if( context.WebSockets.IsWebSocketRequest )
+                    {
+                        var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                        var transporter = app.ApplicationServices.GetService(typeof(TTYTransporter)) as TTYTransporter;
+                        await transporter.Run(context, webSocket);
+                    }
+                }
+                else
+                {
+                    await next();
+                }
+            });
 
             app.UseDolittle();
             app.RunAsSinglePageApplication();
