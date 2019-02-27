@@ -8,10 +8,8 @@ export class index {
   constructor() {}
   open_terminal() {
     this.show_terminal = true;
-    console.log(this.show_terminal);
   }
   close_terminal() {
     this.show_terminal = false;
-    console.log(this.show_terminal);
   }
 }

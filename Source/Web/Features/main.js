@@ -12,9 +12,7 @@ QueryCoordinator.apiBaseUrl = 'http://localhost:5000';
 Bluebird.config({ warnings: { wForgottenReturn: false } });
 
 export function configure(aurelia) {
-  aurelia.use
-    .standardConfiguration()
-    .feature(PLATFORM.moduleName('components/index'));
+  aurelia.use.standardConfiguration().feature(PLATFORM.moduleName('components/index'));
 
   if (environment.debug) {
     aurelia.use.developmentLogging();
