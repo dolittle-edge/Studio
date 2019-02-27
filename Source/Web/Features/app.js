@@ -1,8 +1,7 @@
 import { PLATFORM } from 'aurelia-pal';
 
 export class app {
-    constructor() {
-    }
+  constructor() {}
 
     configureRouter(config, router) {
         config.options.pushState = true;
@@ -10,6 +9,6 @@ export class app {
             { route: '', name: 'Home', moduleId: PLATFORM.moduleName('terminal') }
         ]);
 
-        this.router = router;
-    }
+    this.router = router;
+  }
 }
