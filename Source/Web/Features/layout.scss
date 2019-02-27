@@ -5,7 +5,7 @@ body {
   .default_layout {
     @extend %flex-container;
     flex-direction: column;
-    padding: 0;
+    padding: 0 0 0 $side_bar-expanded-width;
     height: 100vh;
   }
 }
