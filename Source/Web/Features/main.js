@@ -6,8 +6,7 @@ import * as Bluebird from 'bluebird';
 Bluebird.config({ warnings: { wForgottenReturn: false } });
 
 export function configure(aurelia) {
-  aurelia.use
-    .standardConfiguration();
+  aurelia.use.standardConfiguration().feature(PLATFORM.moduleName('components/index'));
 
   if (environment.debug) {
     aurelia.use.developmentLogging();
