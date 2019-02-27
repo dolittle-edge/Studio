@@ -8,5 +8,10 @@ process.env.DOLITTLE_COMPONENT_DIR = path.resolve('./Components');
 
 const config = require('@dolittle/build.aurelia/webpack.config.js');
 
-
-module.exports = config;
+module.exports = () => {
+  const obj = config.apply(null, arguments);
+  obj.devServer = {
+    historyApiFallback: true
+  };
+  return obj;
+};

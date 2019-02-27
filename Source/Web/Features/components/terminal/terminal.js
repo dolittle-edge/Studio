@@ -2,13 +2,14 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import { containerless } from 'aurelia-framework';
 import { Terminal } from 'xterm';
-
 
 /**
  * Based on: https://github.com/lovefishs/xterm-example/blob/master/src/main.js
  */
-export class terminal {
+@containerless()
+ export class terminal {
   #terminal;
 
   constructor() {
@@ -71,5 +72,4 @@ export class terminal {
       this.socket.send(message);
     });
   }
-
 }

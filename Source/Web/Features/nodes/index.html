@@ -1,0 +1,26 @@
+<template>
+  <section class="node_page">
+    <header>
+      <div class="row">
+        <h1>Nodes</h1>
+        <nav>
+          <a href="#">Add</a>
+          <a href="#"></a>
+        </nav>
+      </div>
+      <div class="row">
+        <small>Selected node:</small>
+        <strong>Nodename</strong>
+        <nav>
+          <a route-href="Remote">Remote</a>
+          <a href="#">Settings</a>
+          <a href="#">Health</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="content">
+        <router-view containerless></router-view>
+    </main>
+  </section>
+</template>

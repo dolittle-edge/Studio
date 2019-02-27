@@ -1,6 +1,13 @@
 <template>
     <require from="./layout.scss"></require>
-    <main class="${router.currentInstruction.config.settings.cssClass ? router.currentInstruction.config.settings.cssClass : 'narrow-column'} default_layout">
-        <slot></slot>
-    </main>
+    <div class="${router.currentInstruction.config.settings.cssClass ? router.currentInstruction.config.settings.cssClass : 'narrow-column'} default_layout">
+      <side-bar expanded="true" hide_trigger.one-time="true" is_subnavigation="true">
+        <header>Edge Studio</header>
+        <ul>
+          <li><a route-href="route: Nodes">Nodes</a></li>
+          <li><a><strike>Applications</strike></a></li>
+        </ul>
+      </side-bar>
+      <slot></slot>
+    </div>
 </template>
