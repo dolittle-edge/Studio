@@ -16,8 +16,24 @@
     opacity: 1;
   }
   .terminal_wrapper {
-    width: 70%;
+    position: relative;
     border: 1rem solid #000;
     border-radius: 0.5rem;
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      background-color: #ccc;
+      color: #222;
+      border-radius: 50%;
+      z-index: 100;
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      font-size: 1rem;
+      text-align: center;
+      cursor: pointer;
+    }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <require from="./remote_overlay.scss"></require>
   <div class="remote_overlay ${visible ? 'visible' : ''}">
-    <a click.delegate="close()">X</a>
     <div class="terminal_wrapper">
+      <a class="close" click.delegate="close()">X</a>
       <terminal></terminal>
     </div>
   </div>
