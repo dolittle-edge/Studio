@@ -7,7 +7,7 @@ export class app {
     configureRouter(config, router) {
         config.options.pushState = true;
         config.map([
-            { route: '', name: 'Home', moduleId: PLATFORM.moduleName('home') }
+            { route: '', name: 'Home', moduleId: PLATFORM.moduleName('terminal') }
         ]);
 
         this.router = router;
