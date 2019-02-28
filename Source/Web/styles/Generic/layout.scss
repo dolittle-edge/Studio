@@ -2,3 +2,14 @@ html,
 body {
     min-height: 100vh;
 }
+body{
+  background: #333 url($app-background-image) fixed center;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+  .acrylic {
+      &::before {
+          background: #333 url($app-background-image) fixed center;
+          background-size: cover;
+      }
+  }}
