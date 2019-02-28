@@ -1,8 +1,23 @@
 {
   "1e13e299-0e9a-4f30-98fd-9d900839f455": {
-    "commands": {},
-    "events": {},
-    "eventSources": {},
+    "commands": {
+      "28f51787-66d8-4b5e-857f-645c44656dc0": {
+        "generation": 1,
+        "type": "Domain.Nodes.AddNode, Domain"
+      }
+    },
+    "events": {
+      "9f965da3-cf8e-4fc5-b517-8616724860d7": {
+        "generation": 1,
+        "type": "Events.Nodes.NodeAdded, Events"
+      }
+    },
+    "eventSources": {
+      "21656201-e8bf-4565-b815-1d2e41a71efc": {
+        "generation": 1,
+        "type": "Domain.Nodes.Node, Domain"
+      }
+    },
     "readModels": {
       "caf63cd5-2ef5-4b47-8a73-750d996b4a72": {
         "generation": 1,

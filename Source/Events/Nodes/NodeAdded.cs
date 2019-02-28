@@ -2,18 +2,17 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System.Linq;
-using Dolittle.Queries;
+using Dolittle.Events;
 
-namespace Read.Nodes
+namespace Events.Nodes
 {
-    public class AllNodes : IQueryFor<Node>
+    public class NodeAdded : IEvent
     {
-        public AllNodes(INodeManager nodes)
+        public NodeAdded(string name)
         {
-            Query = nodes.GetAllNodes().AsQueryable();
+            Name = name;
         }
-
-        public IQueryable<Node> Query { get; }
+        
+        public string Name { get; }
     }
 }

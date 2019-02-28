@@ -2,18 +2,20 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System.Linq;
-using Dolittle.Queries;
+using Concepts.Nodes;
+using Dolittle.Domain;
+using Dolittle.Runtime.Events;
+using Events.Nodes;
 
-namespace Read.Nodes
+namespace Domain.Nodes
 {
-    public class AllNodes : IQueryFor<Node>
+    public class Node : AggregateRoot
     {
-        public AllNodes(INodeManager nodes)
-        {
-            Query = nodes.GetAllNodes().AsQueryable();
-        }
+        public Node(EventSourceId eventSourceId) : base(eventSourceId) {}
 
-        public IQueryable<Node> Query { get; }
+        public void Add(NodeName name)
+        {
+            Apply(new NodeAdded(name));
+        }
     }
 }

@@ -2,18 +2,15 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System.Linq;
-using Dolittle.Queries;
+using Dolittle.Commands;
+using Dolittle.Domain;
+using Concepts.Nodes;
 
-namespace Read.Nodes
+namespace Domain.Nodes
 {
-    public class AllNodes : IQueryFor<Node>
+    public class AddNode : ICommand
     {
-        public AllNodes(INodeManager nodes)
-        {
-            Query = nodes.GetAllNodes().AsQueryable();
-        }
-
-        public IQueryable<Node> Query { get; }
+        public NodeId Id { get; set; }
+        public NodeName Name { get; set; }       
     }
 }
