@@ -76,6 +76,10 @@ export class terminal {
           };
           this.#terminal.clear();
           this.#start();
+
+          this.#terminal.on('data', (data) => {
+            this.socket.send(data);
+          })
         });
       });
     });
