@@ -11,6 +11,7 @@ import { Terminal } from 'xterm';
 @containerless()
 export class terminal {
   #terminal;
+  #credentials;
 
   constructor() {
     /*
@@ -19,11 +20,12 @@ export class terminal {
     this._url = `${scheme}://${document.location.hostname}${port}/tty`;
     */
     this._url = 'wss://edge.dolittle.studio/remote-access/';
+    this.#credentials = {};
 
     //this.#start();
   }
 
-  #start() {
+  #start(credentials) {
     let self = this;
     this.socket = new WebSocket(this._url);
     this.socket.onopen = (event) => self.#opened(event);
@@ -33,11 +35,7 @@ export class terminal {
   }
 
   #opened(event) {
-    this.socket.send(JSON.stringify({
-      host: '',
-      username: '',
-      password: ''
-    }));
+    this.socket.send(JSON.stringify(this.#credentials));
   }
 
   #closed(event) {
@@ -68,10 +66,41 @@ export class terminal {
     this.#terminal.open(this.terminalWindow, true);
     this.#terminal.focus();
 
-    this.#start();
-
-    this.#terminal.on('data', (data) => {
-      this.socket.send(data);
+    this.#prompt('Host: ', true, (host) => {
+      this.#prompt('Username: ', true, (username) => {
+        this.#prompt('Password: ', false, (password) => {
+          this.#credentials = {
+            host: host,
+            username: username,
+            password: password
+          };
+          this.#terminal.clear();
+          this.#start();
+        });
+      });
     });
+  }
+
+  #prompt(text, echo, callback) {
+    this.#terminal.write(text);
+    let result = '';
+    const reader = (data) => {
+      result += data;
+      if (echo) {
+        this.#terminal.write(data);
+      }
+    };
+    const completer = (data, keyData) => {
+      if (keyData.keyCode == 13) {
+        this.#terminal.off('data', reader);
+        this.#terminal.off('key', completer);
+        this.#terminal.write('\r\n');
+        setImmediate(() => {
+          callback(result);
+        });
+      }
+    };
+    this.#terminal.on('data', reader);
+    this.#terminal.on('key', completer);
   }
 }
