@@ -1,48 +1,14 @@
 <template>
   <require from="./nodes_list.scss"></require>
   <ul class="nodes_list">
-    <li>
+    <li repeat.for="node of nodes">
       <a href="/nodes">
         <figure>
           <img src="../../assets/icons/edgeOnline.png" alt="" />
         </figure>
         <span>
-          Node name
+          ${node.name}
         </span>
       </a>
     </li>
-
-    <li>
-      <a href="/nodes">
-        <figure>
-          <img src="../../assets/icons/edgeOnline.png" alt="" />
-        </figure>
-        <span>
-          Node name
-        </span>
-      </a>
-    </li>
-
-    <li>
-      <a href="/nodes">
-        <figure>
-          <img src="../../assets/icons/edgeOffline.png" alt="" />
-        </figure>
-        <span>
-          Node name
-        </span>
-      </a>
-    </li>
-
-    <li>
-      <a href="/nodes">
-        <figure>
-          <img src="../../assets/icons/edgeOnline.png" alt="" />
-        </figure>
-        <span>
-          Node name
-        </span>
-      </a>
-    </li>
-  </ul>
 </template>
