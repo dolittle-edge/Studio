@@ -7,65 +7,12 @@
       <h1>Edge nodes</h1>
       <nodes-list></nodes-list>
       <inline-toolbar>
-        <button class="add_new">
+        <a class="add_new" route-href="AddNode">
           <span>Add new node</span>
-        </button>
+        </a>
       </inline-toolbar>
     </side-bar>
-    <main class="grid-content">
-      <section class="box acrylic node">
-        <h1>Node information</h1>
-        <dl>
-          <dt>Name:</dt>
-          <dd>Thalatta</dd>
-          <dt>ID:</dt>
-          <dd>SN 1244229-503</dd>
-          <dt>KChief version</dt>
-          <dd>v. 5.23.1</dd>
-          <dt>Connection:</dt>
-          <dd class="connection">
-            <figure>
-              <img src="../../assets/icons/edgeOnline.png" alt="online" />
-              <small>Online</small>
-            </figure>
-            <a class="button" click.delegate="open_terminal()">
-              >_ Remote access</a>
-          </dd>
-        </dl>
-      </section>
-      <section class="box acrylic hardware">
-        <h1>Hardware</h1>
-        <dl>
-          <dt>Manufacturer:</dt>
-          <dd>DELL</dd>
-          <dt>Model:</dt>
-          <dd>Embedded box acrylic PC 5000</dd>
-          <dt>Processor</dt>
-          <dd>Intel® Core™ i7</dd>
-          <dt>Memory</dt>
-          <dd>32GB (2x16G) 2400MHz DDR4</dd>
-          <dt>Video Controller</dt>
-          <dd>Integrated Graphics (v2 CPU Board and v2 Carrier Board)</dd>
-        </dl>
-      </section>
-      <section class="box acrylic network"><h1>Network</h1>
-      
-      graph</section>
-      <section class="box acrylic availability">
-        <h1>Availability</h1>
-        <h2>last 24 hours</h2>
-        <strong class="value">99.99 %</strong>
-      </section>
-
-     
-      <section class="box acrylic temperature"><h1>Temperature</h1>
-        <strong class="value">59 ℃</strong>
-      </section>
-      <section class="box acrylic cpu"><h1>CPU</h1>
-graph      </section>
-      <section class="box acrylic memory"><h1>Memory</h1>
-graph      </section>
-    </main>
+    <router-view containerless></router-view>
     <remote-overlay visible.two-way="show_terminal"></remote-overlay>
   </section>
 </template>
