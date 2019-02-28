@@ -1,9 +1,10 @@
 <template>
   <require from="./remote_overlay"></require>
-  <require from="./NodesDetails.scss"></require>
+  <require from="./NodeDetails.scss"></require>
 
   <main class="grid-content">
     <section class="box acrylic node">
+      <div class="content"></div>
       <h1>Node information</h1>
       <dl>
         <dt>Name:</dt>
@@ -12,14 +13,6 @@
         <dd>SN 1244229-503</dd>
         <dt>KChief version</dt>
         <dd>v. 5.23.1</dd>
-        <dt>Connection:</dt>
-        <dd class="connection">
-          <figure>
-            <img src="../../assets/icons/edgeOnline.png" alt="online" />
-            <small>Online</small>
-          </figure>
-          <a class="button" click.delegate="open_terminal()"> >_ Remote access</a>
-        </dd>
       </dl>
     </section>
     <section class="box acrylic hardware">
@@ -37,7 +30,21 @@
         <dd>Integrated Graphics (v2 CPU Board and v2 Carrier Board)</dd>
       </dl>
     </section>
+    <section class="box acrylic remote">
+      <h1>Remote</h1>
+      <dl>
+        <dt>Connection:</dt>
+        <dd class="connection">
+          <figure>
+            <img src="../../assets/icons/edgeOnline.png" alt="online" />
+            <small>Online</small>
+          </figure>
+          <a class="button" click.delegate="open_terminal()"> >_ Remote access</a>
+        </dd>
+      </dl>
+    </section>
     <section class="box acrylic network">
+      <div class="content"></div>
       <h1>Network</h1>
 
       graph

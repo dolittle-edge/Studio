@@ -15,9 +15,17 @@
       grid-column: 1;
       grid-row: 1;
     }
+    &.remote {
+      grid-column: 1;
+      grid-row: 3;
+    }
     &.hardware {
       grid-column: 1;
       grid-row: 2;
+      dt,
+      dd {
+        font-size: 0.75rem;
+      }
     }
     &.network {
       grid-column: 2/5;
@@ -52,15 +60,7 @@
     h2 {
       font-size: 1rem;
     }
-    .value-unit {
-      bottom: $grid-gutter;
-      color: $color-gray-light;
-      font-size: 15vh;
-      line-height: 15vh;
-      opacity: 0.2;
-      position: absolute;
-      right: $grid-gutter;
-    }
+
     .value {
       font-weight: 100;
       font-size: 3.5rem;

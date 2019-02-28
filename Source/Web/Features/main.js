@@ -5,8 +5,10 @@ import * as Bluebird from 'bluebird';
 import { CommandCoordinator } from '@dolittle/commands';
 import { QueryCoordinator } from '@dolittle/queries';
 
-CommandCoordinator.apiBaseUrl = '/';
-QueryCoordinator.apiBaseUrl = '/';
+// CommandCoordinator.apiBaseUrl = 'http://localhost:5000';
+// QueryCoordinator.apiBaseUrl = 'http://localhost:5000';
+CommandCoordinator.apiBaseUrl = '';
+QueryCoordinator.apiBaseUrl = '';
 
 // remove out if you don't want a Promise polyfill (remove also from webpack.config.js)
 Bluebird.config({ warnings: { wForgottenReturn: false } });
