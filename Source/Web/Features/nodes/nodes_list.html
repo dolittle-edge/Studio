@@ -1,40 +1,14 @@
 <template>
+  <require from="./nodes_list.scss"></require>
   <ul class="nodes_list">
-    <li>
-      <img src="#box" alt="">
-      <span>
-        Node name
-      </span>
+    <li repeat.for="node of nodes">
+      <a href="/nodes">
+        <figure>
+          <img src="../../assets/icons/edgeOnline.png" alt="" />
+        </figure>
+        <span>
+          ${node.name}
+        </span>
+      </a>
     </li>
-    <li>
-      <img src="#box" alt="">
-      <span>
-        Node name
-      </span>
-    </li>
-    <li>
-      <img src="#box" alt="">
-      <span>
-        Node name
-      </span>
-    </li>
-    <li>
-      <img src="#box" alt="">
-      <span>
-        Node name
-      </span>
-    </li>
-    <li>
-      <img src="#box" alt="">
-      <span>
-        Node name
-      </span>
-    </li>
-    <li>
-      <img src="#box" alt="">
-      <span>
-        Node name
-      </span>
-    </li>
-  </ul>
 </template>
