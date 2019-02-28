@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dolittle-edge-core:
+    image: dolittle.azurecr.io/edge/core:latest
+    build:
+      context: "."
+      dockerfile: "Core/Dockerfile"
+
+  spark-fuel-model-core:
+    image: dolittle.azurecr.io/edge/web:latest
+    build:
+      context: "."
+      dockerfile: "Web/Dockerfile"
