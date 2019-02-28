@@ -31,6 +31,8 @@ namespace Core
                 {
                     c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
                 });
+
+                services.AddCors();
             }
             services.AddMvc();
 
@@ -51,6 +53,13 @@ namespace Core
                 app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                });
+
+                app.UseCors(_ => {
+                    _.AllowCredentials();
+                    _.AllowAnyMethod();
+                    _.AllowAnyOrigin();
+                    _.AllowAnyHeader();
                 });
             }
 
