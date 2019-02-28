@@ -23,12 +23,15 @@
           <dt>KChief version</dt>
           <dd>v. 5.23.1</dd>
           <dt>Connection:</dt>
-          <dd>
-            <img src="../../assets/icons/edgeOnline.png" alt="online" />
-            <span>Online</span>
+          <dd class="connection">
+            <figure>
+              <img src="../../assets/icons/edgeOnline.png" alt="online" />
+              <small>Online</small>
+            </figure>
+            <a class="button" click.delegate="open_terminal()">
+              >_ Remote access</a>
           </dd>
         </dl>
-        <button click.delegate="open_terminal()">Remote access</button>
       </section>
       <section class="box acrylic hardware">
         <h1>Hardware</h1>
@@ -45,23 +48,23 @@
           <dd>Integrated Graphics (v2 CPU Board and v2 Carrier Board)</dd>
         </dl>
       </section>
-      <section class="box acrylic network"><h1>Network</h1></section>
+      <section class="box acrylic network"><h1>Network</h1>
+      
+      graph</section>
       <section class="box acrylic availability">
         <h1>Availability</h1>
         <h2>last 24 hours</h2>
-        <strong class="value">99.99%</strong>
+        <strong class="value">99.99 %</strong>
       </section>
 
      
       <section class="box acrylic temperature"><h1>Temperature</h1>
-        <strong class="value">59<sup>℃</sup></strong>
+        <strong class="value">59 ℃</strong>
       </section>
       <section class="box acrylic cpu"><h1>CPU</h1>
-        <strong class="value">99.99%</strong>
-      </section>
+graph      </section>
       <section class="box acrylic memory"><h1>Memory</h1>
-      strong.value
-      </section>
+graph      </section>
     </main>
     <remote-overlay visible.two-way="show_terminal"></remote-overlay>
   </section>
