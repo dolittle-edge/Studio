@@ -10,7 +10,7 @@ import { AllNodes } from './AllNodes';
 @customElement('nodes-list')
 @containerless()
 @inject(QueryCoordinator)
-export class nodes_list {
+export class NodesList {
   #queryCoordinator;
   nodes = [];
 

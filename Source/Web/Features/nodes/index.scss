@@ -3,14 +3,14 @@
 .nodes_page {
   padding-left: $side_bar-expanded-width;
   height: 100%;
-  .side_bar {
+  .side-bar {
     padding: $grid-gutter;
     h1 {
       text-transform: uppercase;
       font-size: 2rem;
       font-weight: 200;
     }
-    .add_new {
+    .add-new {
       background-color: rgba($color-gray-darkest, 0.4);
       color: $color-gray-light;
       border: 0.0626rem dashed rgba($body-text-color, 0.4);
