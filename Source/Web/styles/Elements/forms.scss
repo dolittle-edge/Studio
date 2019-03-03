@@ -1,0 +1,21 @@
+input {
+  &[type='text'],
+  &[type='date'],
+  &[type='datetime'],
+  &[type='datetime-local'],
+  &[type='email'],
+  &[type='month'],
+  &[type='number'],
+  &[type='password'],
+  &[type='search'],
+  &[type='tel'],
+  &[type='time'],
+  &[type='week'],
+  &[type='url'] {
+    background-color: $color-gray-darkest;
+    color: $color-gray-lightest;
+  }
+}
+button {
+  color: $color-gray-lightest;
+}
