@@ -2,7 +2,7 @@
 @import '../../../styles/Tools/all';
 $app_header-height: 0;
 $side_bar-width: 0;
-.side_bar {
+.side-bar {
     position: fixed;
     background-color: lighten($color-gray-darkest, 7%);
     flex: 0 0 15rem;
