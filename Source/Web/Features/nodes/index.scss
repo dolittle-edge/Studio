@@ -114,15 +114,8 @@
         align-items: flex-end;
         justify-content: space-between;
         margin-left: 0;
-        a.button {
-          background: $color-brand-dark-blue;
-          border: 0.0625rem solid $color-gray-light;
-          line-height: 2.2rem;
-          height: 3rem;
-          border-radius: 0.25rem;
-          padding: $grid-gutter/5 $grid-gutter/2;
-          cursor: pointer;
-        }
+        flex-wrap: wrap;
+
         img,
         small {
           display: block;
