@@ -1,0 +1,14 @@
+@import '../../styles/Settings/all';
+
+.add-node {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    padding: $grid-gutter*3;
+    
+    text-align: right;
+  }
+}

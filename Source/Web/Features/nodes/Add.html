@@ -1,8 +1,11 @@
 <template>
+  <require from="./Add.scss"></require>
   <main class="add-node">
     <div class="box acrylic">
-      <input type="text" name="NodeName" value.bind="name">
-      <input type="button" value="Add Node" click.delegate="perform()">
+      <form submit.call="perform()">
+        <input type="text" name="NodeName" placeholder="Node name" value.bind="name" />
+        <button click.delegate="perform()">Add node</button>
+      </form>
     </div>
-    </main
-></template>
+  </main>
+</template>
