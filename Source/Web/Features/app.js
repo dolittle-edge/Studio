@@ -1,6 +1,6 @@
 import { PLATFORM } from 'aurelia-pal';
 
-export class app {
+export class App {
   constructor() {}
 
   configureRouter(config, router) {

@@ -2,7 +2,7 @@
 @import '../styles/Tools/all.scss';
 
 body {
-  .default_layout {
+  .default-layout {
     @extend %flex-container;
     flex-direction: column;
     padding: 0;
