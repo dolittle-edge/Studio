@@ -5,7 +5,7 @@
 import { customElement, containerless } from 'aurelia-framework';
 import { inject } from 'aurelia-dependency-injection';
 import { QueryCoordinator } from '@dolittle/queries';
-import { AllNodes } from './AllNodes';
+import { AllNodesForLocation } from './AllNodesForLocation';
 
 @customElement('nodes-list')
 @containerless()
@@ -21,10 +21,9 @@ export class NodesList {
 
 
   async populate() {
-    var query = new AllNodes();
+    var query = new AllNodesForLocation();
+    query.location = '1c8aa985-5350-4b69-aa43-e6c761b97d01';
     let result = await this.#queryCoordinator.execute(query);
     this.nodes = result.items;
   }
-
-
 }

@@ -27,7 +27,7 @@
     "queries": {
       "c1a54cbc-22ac-40ea-8b14-f81f1f34b9a7": {
         "generation": 1,
-        "type": "Read.Nodes.AllNodes, Read"
+        "type": "Read.Nodes.AllNodesForLocation, Read"
       }
     }
   }

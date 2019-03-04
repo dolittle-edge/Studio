@@ -4,17 +4,22 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Linq;
+using Concepts.Locations;
 using Dolittle.Queries;
 
 namespace Read.Nodes
 {
-    public class AllNodes : IQueryFor<Node>
+    public class AllNodesForLocation : IQueryFor<Node>
     {
-        public AllNodes(INodes nodes)
+        readonly INodes _nodes;
+
+        public AllNodesForLocation(INodes nodes)
         {
-            Query = nodes.GetAllNodesFor(Guid.Parse("1c8aa985-5350-4b69-aa43-e6c761b97d01")).AsQueryable();
+            _nodes = nodes;
         }
 
-        public IQueryable<Node> Query { get; }
+        public LocationId Location { get; set; }
+
+        public IQueryable<Node> Query => _nodes.GetAllNodesFor(Location).AsQueryable();
     }
 }

@@ -24,7 +24,7 @@ export class add {
 
     let command = new AddNodeToLocation();
     command.id = Guid.create();
-    command.locationId = "1c8aa985-5350-4b69-aa43-e6c761b97d01";
+    command.locationId = '1c8aa985-5350-4b69-aa43-e6c761b97d01';
     command.name = this.name;
 
     let result = await this.#commandCoordinator.handle(command);
