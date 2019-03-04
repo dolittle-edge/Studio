@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using Concepts.Locations;
 
 namespace Read.Nodes
 {
     public interface INodeManager
     {
-        IEnumerable<Node> GetAllNodes();
-        void Add(Node node);
+        IEnumerable<Node> GetAllNodesFor(LocationId locationId);
+        void Add(LocationId locationId, Node node);
     }
 }

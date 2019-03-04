@@ -3,18 +3,15 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
-using System.Linq;
-using Dolittle.Queries;
+using Dolittle.Concepts;
 
-namespace Read.Nodes
+namespace Concepts.Locations
 {
-    public class AllNodes : IQueryFor<Node>
+    public class LocationId : ConceptAs<Guid>
     {
-        public AllNodes(INodeManager nodes)
+        public static implicit operator LocationId(Guid value)
         {
-            Query = nodes.GetAllNodesFor(Guid.Parse("1c8aa985-5350-4b69-aa43-e6c761b97d01")).AsQueryable();
+            return new LocationId { Value = value };
         }
-
-        public IQueryable<Node> Query { get; }
     }
 }

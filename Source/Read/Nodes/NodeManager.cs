@@ -3,7 +3,9 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Concepts.Locations;
 using Dolittle.IO.Tenants;
 using Dolittle.Serialization.Json;
 
@@ -21,19 +23,20 @@ namespace Read.Nodes
             _serializer = serializer;
         }
 
-        public void Add(Node node)
+        public void Add(LocationId locationId, Node node)
         {
-            var nodes = new List<Node>(GetAllNodes());
+            var nodes = new List<Node>(GetAllNodesFor(locationId));
             nodes.Add(node);
             var json = _serializer.ToJson(nodes);
             _fileSystem.WriteAllText(_nodesFile, json);
         }
 
-        public IEnumerable<Node> GetAllNodes()
-        {            
-            if (_fileSystem.Exists(_nodesFile))
+        public IEnumerable<Node> GetAllNodesFor(LocationId locationId)
+        {       
+            var path = Path.Combine(locationId.ToString(),_nodesFile);     
+            if (_fileSystem.Exists(path))
             {
-                var json = _fileSystem.ReadAllText(_nodesFile);
+                var json = _fileSystem.ReadAllText(path);
                 return _serializer.FromJson<IEnumerable<Node>>(json).AsQueryable();
             }
             return new Node[0].AsQueryable();
