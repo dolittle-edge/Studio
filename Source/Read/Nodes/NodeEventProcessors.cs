@@ -9,22 +9,27 @@ using Dolittle.ReadModels;
 using Dolittle.Runtime.Events;
 using Events.Nodes;
 
-namespace Read.Nodes {
-    public class NodeEventProcessors : ICanProcessEvents {
-        readonly INodeManager _nodeManager;
+namespace Read.Nodes
+{
+    public class NodeEventProcessors : ICanProcessEvents
+    {
+        readonly INodes nodes;
 
-        public NodeEventProcessors (INodeManager nodeManager) {
-            _nodeManager = nodeManager;
+        public NodeEventProcessors(INodes nodes)
+        {
+            this.nodes = nodes;
         }
 
-        [EventProcessor ("191e2a46-3769-ec50-a2b7-e4bd027ab15f")]
-        public void Process (NodeAdded @event, EventSourceId id) {
+        [EventProcessor("191e2a46-3769-ec50-a2b7-e4bd027ab15f")]
+        public void Process(NodeAdded @event, EventSourceId id)
+        {
 
-            _nodeManager.Add(
+            nodes.Add(
                 Guid.Parse("1c8aa985-5350-4b69-aa43-e6c761b97d01"),
-                new Node {
+                new Node
+                {
                     Id = id.Value,
-                    Name = @event.Name
+                        Name = @event.Name
                 }
             );
         }

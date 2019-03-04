@@ -11,13 +11,13 @@ using Dolittle.Serialization.Json;
 
 namespace Read.Nodes
 {
-    public class NodeManager : INodeManager
+    public class Nodes : INodes
     {
         const string _nodesFile = "nodes.json";
         readonly ITenantAwareFileSystem _fileSystem;
         readonly ISerializer _serializer;
 
-        public NodeManager(ITenantAwareFileSystem fileSystem, ISerializer serializer)
+        public Nodes(ITenantAwareFileSystem fileSystem, ISerializer serializer)
         {
             _fileSystem = fileSystem;
             _serializer = serializer;

@@ -7,7 +7,7 @@ using Concepts.Locations;
 
 namespace Read.Nodes
 {
-    public interface INodeManager
+    public interface INodes
     {
         IEnumerable<Node> GetAllNodesFor(LocationId locationId);
         void Add(LocationId locationId, Node node);
