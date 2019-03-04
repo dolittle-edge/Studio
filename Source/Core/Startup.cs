@@ -74,23 +74,6 @@ namespace Core
                 KeepAliveInterval = TimeSpan.FromSeconds(120),
                 ReceiveBufferSize = 4*1024
             });
-            app.Use(async(context, next) =>
-            {
-                if (context.Request.Path == "/tty")
-                {
-                    if( context.WebSockets.IsWebSocketRequest )
-                    {
-                        var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                        var transporter = app.ApplicationServices.GetService(typeof(TTYTransporter)) as TTYTransporter;
-                        await transporter.Run(context, webSocket);
-                    }
-                }
-                else
-                {
-                    await next();
-                }
-            });
-
             app.UseDolittle();
             app.RunAsSinglePageApplication();
         }
