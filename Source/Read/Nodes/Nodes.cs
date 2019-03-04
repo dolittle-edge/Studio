@@ -25,21 +25,28 @@ namespace Read.Nodes
 
         public void Add(LocationId locationId, Node node)
         {
+            var path = GetNodesPathFor(locationId);
             var nodes = new List<Node>(GetAllNodesFor(locationId));
             nodes.Add(node);
             var json = _serializer.ToJson(nodes);
-            _fileSystem.WriteAllText(_nodesFile, json);
+            _fileSystem.WriteAllText(path, json);
         }
 
         public IEnumerable<Node> GetAllNodesFor(LocationId locationId)
         {       
-            var path = Path.Combine(locationId.ToString(),_nodesFile);     
+            var path = GetNodesPathFor(locationId);
             if (_fileSystem.Exists(path))
             {
                 var json = _fileSystem.ReadAllText(path);
                 return _serializer.FromJson<IEnumerable<Node>>(json).AsQueryable();
             }
             return new Node[0].AsQueryable();
+        }
+
+
+        string GetNodesPathFor(LocationId locationId)
+        {
+            return Path.Combine(locationId.ToString(),_nodesFile);
         }
     }
 }

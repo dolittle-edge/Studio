@@ -5,7 +5,7 @@
 import { CommandCoordinator } from '@dolittle/commands';
 import { Guid } from '@dolittle/core';
 import { inject } from 'aurelia-dependency-injection';
-import { AddNode } from './AddNode';
+import { AddNodeToLocation } from './AddNodeToLocation';
 import { Router } from 'aurelia-router';
 
 @inject(CommandCoordinator, Router)
@@ -22,8 +22,9 @@ export class add {
 
   async perform() {
 
-    let command = new AddNode();
+    let command = new AddNodeToLocation();
     command.id = Guid.create();
+    command.locationId = "1c8aa985-5350-4b69-aa43-e6c761b97d01";
     command.name = this.name;
 
     let result = await this.#commandCoordinator.handle(command);

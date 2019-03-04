@@ -9,14 +9,14 @@ namespace Domain.Nodes
 {
     public class NodeCommandHandlers : ICanHandleCommands
     {
-        readonly IAggregateRootRepositoryFor<Node> _aggregateRootRepoForNode;
+        readonly IAggregateRootRepositoryFor<LocatedNode> _aggregateRootRepoForNode;
 
-        public NodeCommandHandlers(IAggregateRootRepositoryFor<Node> aggregateRootRepoForNode)
+        public NodeCommandHandlers(IAggregateRootRepositoryFor<LocatedNode> aggregateRootRepoForNode)
         {
             _aggregateRootRepoForNode = aggregateRootRepoForNode;
         }
 
-        public void Handle(AddNode command)
+        public void Handle(AddNodeToLocation command)
         {
             _aggregateRootRepoForNode.Get(command.Id).Add(command.Name);
         }

@@ -3,7 +3,7 @@
     "commands": {
       "28f51787-66d8-4b5e-857f-645c44656dc0": {
         "generation": 1,
-        "type": "Domain.Nodes.AddNode, Domain"
+        "type": "Domain.Nodes.AddNodeToLocation, Domain"
       }
     },
     "events": {
@@ -15,7 +15,7 @@
     "eventSources": {
       "21656201-e8bf-4565-b815-1d2e41a71efc": {
         "generation": 1,
-        "type": "Domain.Nodes.Node, Domain"
+        "type": "Domain.Nodes.LocatedNode, Domain"
       }
     },
     "readModels": {
