@@ -16,5 +16,8 @@ module.exports = () => {
       '/api': 'http://localhost:5000'
     }
   };
+  obj.resolve.alias = {
+    DolittleStyles: path.resolve(__dirname, './styles')
+  };
   return obj;
 };

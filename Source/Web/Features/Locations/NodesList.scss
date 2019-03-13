@@ -1,22 +1,10 @@
 @import '../../styles/Settings/all';
-.nodes_list {
+.nodes-list {
   li {
-    margin-bottom: $grid-gutter;
-  }
-  a {
-    background-color: $color-gray-darkest;
-    padding: $grid-gutter/2;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    figure {
-      flex: 0 0 3rem;
-      margin-right: $grid-gutter;
-    }
-    span {
-      flex: 1 1 auto;
+    a {
       display: block;
+      padding: $grid-gutter/4 $grid-gutter/2;
+      padding-left: $grid-gutter * 2;
     }
   }
 }

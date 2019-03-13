@@ -1,16 +1,11 @@
 <template>
   <require from="./layout.scss"></require>
+
   <side-bar expanded="true" hide_trigger.one-time="true" is_subnavigation="true">
     <header>
       <h3><a route-href="Home">Edge</a></h3>
     </header>
-    <ul class="menu-list">
-        <li><a class="menu-item" href="#">Locations</a>
-        </li>
-        <li><a class="menu-item" route-href="Applications">Applications</a></li>
-        <li><a class="menu-item" route-href="Setup">Setup</a></li>
-        <li><a class="menu-item" route-href="Installation">Installation</a></li>
-    </ul>
+    <navigation-list></navigation-list>
   </side-bar>
   <main class="default-layout">
     <slot></slot>

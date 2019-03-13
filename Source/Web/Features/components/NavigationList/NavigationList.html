@@ -1,0 +1,20 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./NavigationList.scss"></require>
+  <require from="../../Locations/NodesList"></require>
+  <ul class="navigation-list">
+    <li class="navigation-item expanded">
+      <a class="active" href="#" click.delegate="toggleExpand(this)">Locations</a>
+      <nodes-list></nodes-list>
+      <a href="#" class="close">X</a>
+    </li>
+    <li class="navigation-item"><a route-href="Applications">Applications</a></li>
+    <li class="navigation-item"><a route-href="Setup">Setup</a></li>
+    <li class="navigation-item"><a route-href="Installation">Installation</a></li>
+  </ul>
+</template>

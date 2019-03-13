@@ -1,5 +1,6 @@
-@import '../../../styles/Settings/all';
-@import '../../../styles/Tools/all';
+@import '~DolittleStyles/Settings/all';
+@import '~DolittleStyles/Tools/all';
+
 $app_header-height: 0;
 $side-bar-width: 0;
 .side-bar {
@@ -34,13 +35,5 @@ $side-bar-width: 0;
     z-index: 970;
     background-color: lighten($color-gray-darkest, 15%);
     left: $side-bar-width;
-  }
-  .menu-item {
-    color: #f2f2f2;
-    display: block;
-    font-size: 1rem;
-    line-height: $grid-gutter;
-    padding: $grid-gutter/2 $grid-gutter;
-    transition: color 0.2s ease-in-out;
   }
 }
