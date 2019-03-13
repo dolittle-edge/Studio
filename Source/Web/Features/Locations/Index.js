@@ -9,17 +9,17 @@ export class index {
       {
         route: '',
         name: 'Node',
-        moduleId: PLATFORM.moduleName('nodes/Unselected')
+        moduleId: PLATFORM.moduleName('Locations/Unselected')
       },
       {
         route: ['node/:id'],
         name: 'Node',
-        moduleId: PLATFORM.moduleName('nodes/NodeDetails')
+        moduleId: PLATFORM.moduleName('Locations/NodeDetails')
       },
       {
         route: ['add'],
         name: 'AddNode',
-        moduleId: PLATFORM.moduleName('nodes/Add')
+        moduleId: PLATFORM.moduleName('Locations/Add')
       }
     ]);
   }

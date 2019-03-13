@@ -2,10 +2,16 @@
 @import '../styles/Tools/all.scss';
 
 body {
+  .side-bar {
+    header {
+      padding: $grid-gutter;
+    }
+  }
   .default-layout {
     @extend %flex-container;
     flex-direction: column;
     padding: 0;
+    padding-left: $side-bar-expanded-width;
     height: 100vh;
   }
 }

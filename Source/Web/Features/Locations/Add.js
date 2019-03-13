@@ -28,7 +28,7 @@ export class add {
     command.name = this.name;
 
     let result = await this.#commandCoordinator.handle(command);
-    this.#router.navigateToRoute('Nodes');
+    this.#router.navigateToRoute('Locations');
     
   }
 }

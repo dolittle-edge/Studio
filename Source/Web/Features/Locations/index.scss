@@ -1,31 +1,8 @@
 @import '../../styles/Settings/all';
 
 .nodes_page {
-  padding-left: $side_bar-expanded-width;
   height: 100%;
-  .side-bar {
-    padding: $grid-gutter;
-    h1 {
-      text-transform: uppercase;
-      font-size: 2rem;
-      font-weight: 200;
-    }
-    .add-new {
-      background-color: rgba($color-gray-darkest, 0.4);
-      color: $color-gray-light;
-      border: 0.0626rem dashed rgba($body-text-color, 0.4);
-      border-radius: 0;
-      height: 4.75rem;
-      width: 100%;
-      box-shadow: none;
-      cursor: pointer;
-      display: block;
-      text-align: center;
-      line-height: 4.75rem;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-    }
-  }
+
   .grid-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

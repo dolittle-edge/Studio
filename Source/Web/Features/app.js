@@ -7,7 +7,10 @@ export class App {
     config.options.pushState = true;
     config.map([
       { route: '', name: 'Home', moduleId: PLATFORM.moduleName('home') },
-      { route: 'nodes', name: 'Nodes', moduleId: PLATFORM.moduleName('nodes/index') }
+      { route: 'applications', name: 'Applications', moduleId: PLATFORM.moduleName('Applications/index') },
+      { route: 'installation', name: 'Installation', moduleId: PLATFORM.moduleName('Installation/index') },
+      { route: 'locations', name: 'Locations', moduleId: PLATFORM.moduleName('Locations/index') },
+      { route: 'setup', name: 'Setup', moduleId: PLATFORM.moduleName('Setup/index') }
     ]);
 
     this.router = router;

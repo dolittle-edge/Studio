@@ -8,7 +8,7 @@ export class SideBar {
   @bindable is_subnavigation;
   constructor() {}
 
-  toggle_side_bar() {
+  toggleSideBar() {
     this.expanded = !this.expanded;
   }
 }
