@@ -3,10 +3,21 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 @import '~DolittleStyles/settings/all';
+
+$navigation-item-transition-time: .1s;
+$plus-icon-size: 1.125rem;
 .navigation-list {
   .navigation-item {
     position: relative;
-    > a {
+    max-height: 2.5rem;
+    transform: translateZ(0);
+    transition: all $navigation-item-transition-time;
+    > ul {
+      max-height: 0;
+      transition: all $navigation-item-transition-time;
+      opacity: 0;
+    }
+    a.route-link {
       color: #f2f2f2;
       display: block;
       font-size: 1rem;
@@ -14,7 +25,7 @@
       padding: $grid-gutter/2 $grid-gutter;
       transition: color 0.2s ease-in-out;
     }
-    a {
+    a.route-link {
       &:hover {
         background-color: rgba(255, 255, 255, 0.02);
       }
@@ -27,19 +38,47 @@
         background-color: rgba(255, 255, 255, 0.05);
       }
     }
-    a.close {
+    a.toggle-expand {
       color: $color-white-40;
       position: absolute;
       right: 0;
       top: 0;
       height: 2.5rem;
       width: 2.5rem;
-      background-color: $color-black-80;
+      transform: rotate(0);
+      transition: transform $navigation-item-transition-time;
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: #f2f2f2;
+        left: 50%;
+        top: 50%;
+      }
+      &::before {
+        height: $plus-icon-size;
+        width: 0.0625rem;
+        margin-top: -$plus-icon-size/2;
+      }
+      &::after {
+        height: 0.0625rem;
+        width: $plus-icon-size;
+        margin-left: -$plus-icon-size/2;
+      }
     }
 
     &.expanded {
       background-color: $color-black-40;
       padding-bottom: $grid-gutter;
+      max-height: 100rem;
+      > ul {
+        max-height: 100rem;
+        opacity: 1;
+      }
+      a.toggle-expand {
+        transform: rotate(45deg);
+      }
     }
   }
 }
