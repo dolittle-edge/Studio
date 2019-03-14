@@ -2,8 +2,22 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
- @import '../../styles/Settings/all';
+@import '~DolittleStyles/settings/all';
 
-.nodes_page {
-  height: 100%;
+ .information {
+  .content {
+    .flex {
+      display: flex;
+      .column {
+        flex: 1 1 auto;
+        figure {
+          text-align: center;
+          img {
+            margin: 0 auto;
+            display: block;
+          }
+        }
+      }
+    }
+  }
 }

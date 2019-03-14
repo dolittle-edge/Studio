@@ -1,0 +1,90 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Dolittle. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ @import '~DolittleStyles/settings/all';
+.node-details{
+  .grid-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: $grid-gutter;
+    padding: $grid-gutter;
+    min-height: 100%;
+    .box {
+      position: relative;
+      font-weight: 300;
+
+      .content {
+        padding: $grid-gutter;
+        max-height: 100%;
+        overflow: auto;
+      }
+
+      &.node-information {
+        grid-column: 1;
+        grid-row: 1/3;
+        .acrylic+.acrylic{
+          margin-top: $grid-gutter;
+        }
+      }
+     
+      &.network {
+        grid-column: 2/4;
+        grid-row: 1;
+      }
+      &.availability {
+        grid-column: 4;
+        grid-row: 1;
+      }
+      &.temperature {
+        grid-column: 4;
+        grid-row: 2;
+      }
+      &.cpu {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      &.memory {
+        grid-column: 3;
+        grid-row: 2;
+      }
+
+      h1,
+      h2 {
+        font-weight: 200;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: 1.4rem;
+        padding-top: $grid-gutter;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      p {
+        margin-bottom: $grid-gutter/4;
+        &.label {
+          margin-bottom: 0;
+          + p {
+            margin-bottom: $grid-gutter/2;
+          }
+        }
+      }
+      .label {
+        font-size: 0.875rem;
+        letter-spacing: 0.0625rem;
+        color: $color-gray-medium;
+        margin-right: 1rem;
+      }
+      .value {
+        font-weight: 100;
+        font-size: 3.5rem;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+}

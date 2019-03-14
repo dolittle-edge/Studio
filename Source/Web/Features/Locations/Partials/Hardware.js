@@ -2,8 +2,10 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
- @import '../../styles/Settings/all';
+import {customElement, bindable, containerless} from 'aurelia-framework';
 
-.nodes_page {
-  height: 100%;
+@customElement('hardware')
+@containerless()
+export class Hardware {
+
 }

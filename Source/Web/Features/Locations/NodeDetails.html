@@ -1,69 +1,65 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
 <template>
+  <require from="./NodeDetails.scss"></require>
   <require from="./RemoteOverlay"></require>
-
-  <div class="grid-content">
-    <section class="box acrylic node">
-      <h1>Node information</h1>
-      <div class="content">
-        <p><span class="label">Name:</span> Thalatta</p>
-        <p><span class="label">Id:</span> SN 1244229-503</p>
-        <p><span class="label">Kchief version:</span> v. 5.23.1</p>
-        <span class="label">Connection:</span>
-        <div class="connection">
-          <figure>
-            <img src="../../assets/icons/edgeOnline.png" alt="online" />
-            <small>Online</small>
-          </figure>
-          <button click.delegate="open_terminal()"> Remote access</button>
+  <require from="./Partials/NodeInformation"></require>
+  <require from="./Partials/Hardware"></require>
+  <div class="node-details">
+    <header>
+      <div class="left">
+        <h3>Thalatta</h3>
+        <select name="node-selector" id="node-selector">
+          <option value="Node name 1">Node name 1</option>
+        </select>
+      </div>
+      <div class="right">
+        <inline-toolbar>
+          <button click.delegate="open_terminal()">Remote access</button>
+        </inline-toolbar>
+      </div>
+    </header>
+    <div class="grid-content">
+      <div class="box node-information">
+        <node-information></node-information>
+        <hardware></hardware>
+      </div>
+      <section class="box acrylic network">
+        <h1>Network</h1>
+        <div class="content">
+          graph
         </div>
-      </div>
-    </section>
-    <section class="box acrylic hardware">
-      <h1>Hardware</h1>
-      <div class="content">
-        <p class="label">Manufacturer:</p>
-        <p>DELL</p>
-        <p class="label">Model:</p>
-        <p>Embedded box PC 5000</p>
-        <p class="label">Processor:</p>
-        <p>Intel® Core™ i7</p>
-        <p class="label">Memory:</p>
-        <p>32GB (2x16G) 2400MHz DDR4</p>
-        <p class="label">Video Controller:</p>
-        <p>Integrated Graphics (v2 CPU Board and v2 Carrier Board)</p>
-      </div>
-    </section>
-    <section class="box acrylic network">
-      <h1>Network</h1>
-      <div class="content">
-        graph
-      </div>
-    </section>
-    <section class="box acrylic availability">
-      <h1>Availability</h1>
-      <h2>last 24 hours</h2>
-      <div class="content">
-        <strong class="value">99.99 %</strong>
-      </div>
-    </section>
-    <section class="box acrylic temperature">
-      <h1>Temperature</h1>
-      <div class="content">
-        <strong class="value">59 ℃</strong>
-      </div>
-    </section>
-    <section class="box acrylic cpu">
-      <h1>CPU</h1>
-      <div class="content">
-        graph
-      </div>
-    </section>
-    <section class="box acrylic memory">
-      <h1>Memory</h1>
-      <div class="content">
-        graph
-      </div>
-    </section>
+      </section>
+      <section class="box acrylic availability">
+        <h1>Availability</h1>
+        <h2>last 24 hours</h2>
+        <div class="content">
+          <strong class="value">99.99 %</strong>
+        </div>
+      </section>
+      <section class="box acrylic temperature">
+        <h1>Temperature</h1>
+        <div class="content">
+          <strong class="value">59 ℃</strong>
+        </div>
+      </section>
+      <section class="box acrylic cpu">
+        <h1>CPU</h1>
+        <div class="content">
+          graph
+        </div>
+      </section>
+      <section class="box acrylic memory">
+        <h1>Memory</h1>
+        <div class="content">
+          graph
+        </div>
+      </section>
+    </div>
   </div>
   <remote-overlay visible.two-way="show_terminal"></remote-overlay>
 </template>
