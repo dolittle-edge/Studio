@@ -2,8 +2,8 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
- @import '~DolittleStyles/settings/all';
-.node-details{
+@import '~DolittleStyles/settings/all';
+.node-details {
   .grid-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -24,11 +24,10 @@
       &.node-information {
         grid-column: 1;
         grid-row: 1/3;
-        .acrylic+.acrylic{
+        .acrylic + .acrylic {
           margin-top: $grid-gutter;
         }
       }
-     
       &.network {
         grid-column: 2/4;
         grid-row: 1;

@@ -5,7 +5,7 @@
 import { CommandCoordinator } from '@dolittle/commands';
 import { Guid } from '@dolittle/core';
 import { inject } from 'aurelia-dependency-injection';
-import { AddNodeToLocation } from './AddNodeToLocation';
+import { AddNodeToLocation } from '../nodes/AddNodeToLocation';
 import { Router } from 'aurelia-router';
 
 @inject(CommandCoordinator, Router)
@@ -28,7 +28,7 @@ export class add {
     command.name = this.name;
 
     let result = await this.#commandCoordinator.handle(command);
-    this.#router.navigateToRoute('Locations');
+    this.#router.navigateToRoute('Nodes');
     
   }
 }

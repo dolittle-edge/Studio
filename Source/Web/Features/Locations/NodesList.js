@@ -5,7 +5,7 @@
 import { customElement, containerless } from 'aurelia-framework';
 import { inject } from 'aurelia-dependency-injection';
 import { QueryCoordinator } from '@dolittle/queries';
-import { AllNodesForLocation } from './AllNodesForLocation';
+import { AllNodesForLocation } from '../nodes/AllNodesForLocation';
 
 @customElement('nodes-list')
 @containerless()
