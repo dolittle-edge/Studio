@@ -16,17 +16,13 @@
   <require from="./Partials/Temperature"></require>
   <div class="node-details">
     <header>
-      <div class="left">
-        <h3>Thalatta</h3>
-        <select name="node-selector" id="node-selector">
-          <option value="Node name 1">Node name 1</option>
-        </select>
-      </div>
-      <div class="right">
-        <inline-toolbar>
-          <button click.delegate="open_terminal()">Remote access</button>
-        </inline-toolbar>
-      </div>
+      <h3>Thalatta</h3>
+      <select name="node-selector" id="node-selector">
+        <option value="Node name 1">Node name 1</option>
+      </select>
+      <inline-toolbar>
+        <a click.delegate="open_terminal()"><img src="../../assets/icons/cmd_line.svg" alt=""> Remote console</a>
+      </inline-toolbar>
     </header>
     <div class="grid-content">
       <div class="box node-information">
