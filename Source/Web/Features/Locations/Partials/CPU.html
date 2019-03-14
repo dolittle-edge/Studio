@@ -7,9 +7,9 @@
 <template>
   <require from="./CPU.scss"></require>
   <section class="box acrylic cpu">
-      <h1>CPU</h1>
-      <div class="content">
-        graph
-      </div>
-    </section>
+    <h1>CPU</h1>
+    <div class="content">
+      <chart dataset.bind="dataset"></chart>
+    </div>
+  </section>
 </template>
