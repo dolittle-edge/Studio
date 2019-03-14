@@ -3,18 +3,21 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 @import '~DolittleStyles/settings/all';
-
- .information {
-  .content {
-    .flex {
-      display: flex;
-      .column {
-        flex: 1 1 auto;
-        figure {
-          text-align: center;
-          img {
-            margin: 0 auto;
-            display: block;
+.node-details {
+  .grid-content {
+    .information {
+      .content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        .column {
+          flex: 0 1 auto;
+          figure {
+            text-align: center;
+            img {
+              margin: 0 auto;
+              display: block;
+            }
           }
         }
       }

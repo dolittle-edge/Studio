@@ -3,7 +3,19 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 @import '~DolittleStyles/settings/all';
-
-.hardware{
-
+.node-details {
+  .grid-content {
+    .hardware {
+      p {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $grid-gutter;
+        .label {
+          + span {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
 }
