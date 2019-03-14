@@ -5,13 +5,15 @@
 @import '~DolittleStyles/settings/all';
 .node-details {
   .grid-content {
+    .node-information {
+      .acrylic + .acrylic {
+        margin-top: $grid-gutter;
+      }
+    }
     .information {
       .content {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap;
         .column {
-          flex: 0 1 auto;
+          flex: 1 1 auto;
           figure {
             text-align: center;
             img {

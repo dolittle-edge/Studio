@@ -7,8 +7,13 @@
 <template>
   <require from="./NodeDetails.scss"></require>
   <require from="./RemoteOverlay"></require>
-  <require from="./Partials/NodeInformation"></require>
+  <require from="./Partials/Availability"></require>
+  <require from="./Partials/CPU"></require>
   <require from="./Partials/Hardware"></require>
+  <require from="./Partials/Memory"></require>
+  <require from="./Partials/Network"></require>
+  <require from="./Partials/NodeInformation"></require>
+  <require from="./Partials/Temperature"></require>
   <div class="node-details">
     <header>
       <div class="left">
@@ -28,37 +33,11 @@
         <node-information></node-information>
         <hardware></hardware>
       </div>
-      <section class="box acrylic network">
-        <h1>Network</h1>
-        <div class="content">
-          graph
-        </div>
-      </section>
-      <section class="box acrylic availability">
-        <h1>Availability</h1>
-        <h2>last 24 hours</h2>
-        <div class="content">
-          <strong class="value">99.99 %</strong>
-        </div>
-      </section>
-      <section class="box acrylic temperature">
-        <h1>Temperature</h1>
-        <div class="content">
-          <strong class="value">59 ℃</strong>
-        </div>
-      </section>
-      <section class="box acrylic cpu">
-        <h1>CPU</h1>
-        <div class="content">
-          graph
-        </div>
-      </section>
-      <section class="box acrylic memory">
-        <h1>Memory</h1>
-        <div class="content">
-          graph
-        </div>
-      </section>
+      <network></network>
+      <availability></availability>
+      <cpu></cpu>
+      <memory></memory>
+      <temperature></temperature>
     </div>
   </div>
   <remote-overlay visible.two-way="show_terminal"></remote-overlay>

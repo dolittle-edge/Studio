@@ -11,22 +11,28 @@
     grid-gap: $grid-gutter;
     padding: $grid-gutter;
     min-height: 100%;
+    .acrylic {
+      padding: 0;
+    }
+    .flex {
+      display: flex;
+      justify-content: space-between;
+      &.vertical {
+        flex-direction: column;
+      }
+      &.horizontal {
+        .column {
+          flex: 1 1 auto;
+        }
+      }
+    }
     .box {
       position: relative;
       font-weight: 300;
 
-      .content {
-        padding: $grid-gutter;
-        max-height: 100%;
-        overflow: auto;
-      }
-
       &.node-information {
         grid-column: 1;
         grid-row: 1/3;
-        .acrylic + .acrylic {
-          margin-top: $grid-gutter;
-        }
       }
       &.network {
         grid-column: 2/4;
@@ -54,11 +60,11 @@
         font-weight: 200;
         margin: 0;
         text-align: center;
-        text-transform: uppercase;
       }
       h1 {
         font-size: 1.4rem;
         padding-top: $grid-gutter;
+        text-transform: uppercase;
       }
       h2 {
         font-size: 1.2rem;
@@ -70,6 +76,20 @@
           + p {
             margin-bottom: $grid-gutter/2;
           }
+        }
+      }
+      .content {
+        padding: $grid-gutter;
+        max-height: 100%;
+        overflow: auto;
+        &.flex {
+          height: 100%;
+          &.vertical {
+            text-align: center;
+          }
+        }
+        h1 {
+          padding-top: 0;
         }
       }
       .label {
