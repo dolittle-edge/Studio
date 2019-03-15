@@ -4,35 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 @import '~DolittleStyles/settings/all';
 .node-details {
-  header {
-    align-items: center;
-    background-color: lighten($color-gray-darkest, 15%);
-    border-left: 0.0625rem solid $color-gray-darkest;
-    display: flex;
-    height: 3.25rem;
-    justify-content: flex-start;
-    padding: $grid-gutter/2 $grid-gutter;
-    width: 100%;
-    h3 {
-      border-right: 0.0625rem solid $color-gray-dark;
-      padding-right: $grid-gutter;
-      margin: 0 $grid-gutter 0 0;
-    }
-    select {
-      margin: 0;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 
-    .inline-toolbar {
-      margin-left: auto;
-    }
-  }
   .grid-content {
+    flex: 1 1 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-gap: $grid-gutter;
     padding: $grid-gutter;
-    min-height: 100%;
     .acrylic {
       padding: 0;
     }
@@ -85,7 +68,7 @@
         text-align: center;
         text-transform: uppercase;
       }
-      
+
       p {
         margin-bottom: $grid-gutter/4;
         &.label {

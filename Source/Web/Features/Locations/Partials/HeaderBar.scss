@@ -1,0 +1,27 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Dolittle. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ @import '~DolittleStyles/settings/all';
+ .header-bar {
+  align-items: center;
+  background-color: lighten($color-gray-darkest, 15%);
+  border-left: 0.0625rem solid $color-gray-darkest;
+  display: flex;
+  height: 3.25rem;
+  justify-content: flex-start;
+  padding: $grid-gutter/2 $grid-gutter;
+  width: 100%;
+  h3 {
+    border-right: 0.0625rem solid $color-gray-dark;
+    padding-right: $grid-gutter;
+    margin: 0 $grid-gutter 0 0;
+  }
+  select {
+    margin: 0;
+  }
+
+  .inline-toolbar {
+    margin-left: auto;
+  }
+}
