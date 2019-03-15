@@ -6,12 +6,13 @@
 -->
 <template>
   <require from="./NavigationList.scss"></require>
+  <require from="./NavigationGroup"></require>
   <require from="./NavigationItem"></require>
   <require from="../../Locations/NodesList"></require>
   <ul class="navigation-list">
-    <navigation-item routename="Locations">
+    <navigation-group name="Locations">
         <nodes-list></nodes-list>
-    </navigation-item>
+    </navigation-group>
     <navigation-item routename="Applications"></navigation-item>
     <navigation-item routename="Setup"></navigation-item>
     <navigation-item routename="Installation"></navigation-item>

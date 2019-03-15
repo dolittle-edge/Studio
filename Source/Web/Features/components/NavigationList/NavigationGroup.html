@@ -5,7 +5,8 @@
 *----------------------------------------------------------------------------------------------
 -->
 <template>
-  <li class="navigation-item">
-    <a class="route-link" route-href.bind="routename">${routename}</a>
+  <li class="navigation-item parent ${isExpanded ? 'expanded' : ''}">
+    <a class="route-link" href="" click.delegate="toggleExpand()">${name}<i class="toggle-expand"></i></a>
+    <slot></slot>
   </li>
 </template>

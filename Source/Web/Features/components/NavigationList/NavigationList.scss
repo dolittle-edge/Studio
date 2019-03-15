@@ -8,7 +8,7 @@ $navigation-item-transition-time: .1s;
 $plus-icon-size: 1.125rem;
 .navigation-list {
   .navigation-item {
-    position: relative;
+
     max-height: 2.5rem;
     transform: translateZ(0);
     transition: all $navigation-item-transition-time;
@@ -23,6 +23,7 @@ $plus-icon-size: 1.125rem;
       font-size: 1rem;
       line-height: $grid-gutter;
       padding: $grid-gutter/2 $grid-gutter;
+      position: relative;
       transition: color 0.2s ease-in-out;
     }
     a.route-link {
@@ -38,7 +39,7 @@ $plus-icon-size: 1.125rem;
         background-color: rgba(255, 255, 255, 0.05);
       }
     }
-    a.toggle-expand {
+    .toggle-expand {
       color: $color-white-40;
       position: absolute;
       right: 0;
@@ -76,7 +77,7 @@ $plus-icon-size: 1.125rem;
         max-height: 100rem;
         opacity: 1;
       }
-      a.toggle-expand {
+      .toggle-expand {
         transform: rotate(45deg);
       }
     }
