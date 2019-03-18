@@ -6,7 +6,7 @@ services:
       context: "."
       dockerfile: "Core/Dockerfile"
 
-  spark-fuel-model-core:
+  dolittle-edge-web:
     image: dolittle.azurecr.io/edge/web:latest
     build:
       context: "."
