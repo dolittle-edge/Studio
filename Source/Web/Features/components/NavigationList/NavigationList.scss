@@ -83,11 +83,7 @@ $plus-icon-size: 1.125rem;
         opacity: 0;
       }
     }
-    &:hover {
-      .context-menu .ellipsis {
-        opacity: 1;
-      }
-    }
+
     &.expanded {
       background-color: $color-black-40;
       max-height: 100rem;
@@ -98,6 +94,11 @@ $plus-icon-size: 1.125rem;
       }
       .toggle-expand {
         transform: rotate(45deg);
+      }
+      &:hover {
+        .context-menu .ellipsis {
+          opacity: 1;
+        }
       }
     }
   }
