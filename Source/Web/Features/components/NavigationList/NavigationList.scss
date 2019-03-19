@@ -4,18 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 @import '~DolittleStyles/Settings/all';
 
-$navigation-item-transition-time: .1s;
+$navigation-item-transition-time: 0.15s;
 $plus-icon-size: 1.125rem;
 .navigation-list {
   .navigation-item {
-
     max-height: 2.5rem;
+    position: relative;
     transform: translateZ(0);
     transition: all $navigation-item-transition-time;
+    z-index: 1;
+    &.parent {
+      z-index: 2;
+    }
     > ul {
-      max-height: 0;
-      transition: all $navigation-item-transition-time;
+      transition: transform $navigation-item-transition-time;
       opacity: 0;
+      transform: scaleX(1) scaleY(0);
+      transform-origin: center top;
     }
     a.route-link {
       color: #f2f2f2;
@@ -68,14 +73,28 @@ $plus-icon-size: 1.125rem;
         margin-left: -$plus-icon-size/2;
       }
     }
-
+    .context-menu {
+      position: absolute;
+      top: 0;
+      right: 2.5rem;
+      height: auto;
+      width: auto;
+      .ellipsis {
+        opacity: 0;
+      }
+    }
+    &:hover {
+      .context-menu .ellipsis {
+        opacity: 1;
+      }
+    }
     &.expanded {
       background-color: $color-black-40;
-      padding-bottom: $grid-gutter;
       max-height: 100rem;
+      padding-bottom: $grid-gutter;
       > ul {
-        max-height: 100rem;
         opacity: 1;
+        transform: scaleX(1) scaleY(1);
       }
       .toggle-expand {
         transform: rotate(45deg);
