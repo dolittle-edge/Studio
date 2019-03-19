@@ -5,9 +5,5 @@
 import { observable } from 'aurelia-framework';
 
 export class NodeDetails {
-  @observable show_terminal = false;
   constructor() {}
-  open_terminal() {
-    this.show_terminal = true;
-  }
 }
