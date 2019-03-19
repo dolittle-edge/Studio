@@ -5,14 +5,21 @@
 *----------------------------------------------------------------------------------------------
 -->
 <template>
+  <require from="./RemoteOverlay"></require>
   <require from="./HeaderBar.scss"></require>
-    <header class="header-bar">
-        <h3>Thalatta</h3>
-        <select name="node-selector" id="node-selector">
-          <option value="Node name 1">Node name 1</option>
-        </select>
-        <inline-toolbar>
-          <a click.delegate="open_terminal()"><img src="../../../assets/icons/cmd_line.svg" alt=""> Remote console</a>
-        </inline-toolbar>
-      </header>
+  <header class="header-bar">
+    <h3>Thalatta</h3>
+    <select name="node-selector" id="node-selector">
+      <option value="Node name 1">Node name 1</option>
+    </select>
+    <inline-toolbar>
+      <a href="" click.delegate="open_terminal()">
+        <figure class="icon">
+          <img src="../../../assets/icons/cmd_line.svg" alt="" />
+        </figure>
+        <span>Remote console</span>
+      </a>
+      <remote-overlay visible.two-way="show_terminal"></remote-overlay>
+    </inline-toolbar>
+  </header>
 </template>
