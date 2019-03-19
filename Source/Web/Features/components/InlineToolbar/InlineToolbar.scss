@@ -1,3 +1,16 @@
-.inline-toolbar{
-  
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Dolittle. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+ @import '~DolittleStyles/Settings/all';
+ .inline-toolbar {
+  a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    .icon{
+      margin-right: $grid-gutter/2;
+    }
+  }
 }

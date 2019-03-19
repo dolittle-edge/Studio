@@ -12,14 +12,9 @@ export class index {
         moduleId: PLATFORM.moduleName('Locations/Unselected')
       },
       {
-        route: ['node/:id'],
+        route: 'node/:id',
         name: 'Node',
         moduleId: PLATFORM.moduleName('Locations/NodeDetails')
-      },
-      {
-        route: ['add'],
-        name: 'AddNode',
-        moduleId: PLATFORM.moduleName('Locations/Add')
       }
     ]);
   }

@@ -1,0 +1,40 @@
+.box {
+  position: relative;
+  font-weight: 300;
+  &.acrylic {
+    padding: 0;
+  }
+  h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.0625rem;
+    margin: 0;
+    padding-top: $grid-gutter;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .content {
+    padding: $grid-gutter;
+    max-height: 100%;
+    overflow: auto;
+    &.flex {
+      height: 100%;
+      &.vertical {
+        text-align: center;
+      }
+    }
+    h1 {
+      padding-top: 0;
+    }
+  }
+
+  label + label {
+    margin-top: $grid-gutter;
+  }
+  .button-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+}
