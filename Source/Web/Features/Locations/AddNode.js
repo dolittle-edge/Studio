@@ -9,7 +9,7 @@ import { AddNodeToLocation } from '../nodes/AddNodeToLocation';
 import { Router } from 'aurelia-router';
 
 @inject(CommandCoordinator, Router)
-export class add {
+export class AddNode {
   #commandCoordinator;
   #router;
 

@@ -35,5 +35,6 @@ $side-bar-width: 0;
     z-index: 970;
     background-color: lighten($color-gray-darkest, 15%);
     left: $side-bar-width;
+    overflow: visible;
   }
 }

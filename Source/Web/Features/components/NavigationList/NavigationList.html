@@ -9,9 +9,13 @@
   <require from="./NavigationGroup"></require>
   <require from="./NavigationItem"></require>
   <require from="../../Locations/NodesList"></require>
+  <require from="../../Locations/Partials/AddNew"></require>
   <ul class="navigation-list">
     <navigation-group name="Locations">
         <nodes-list></nodes-list>
+        <div class="context-menu">
+          <add-new></add-new>
+        </div>
     </navigation-group>
     <navigation-item routename="Applications"></navigation-item>
     <navigation-item routename="Setup"></navigation-item>

@@ -1,0 +1,43 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Dolittle. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+@import '~DolittleStyles/Settings/all';
+$navigation-item-transition-time: 0.15s;
+
+.add-new {
+  position: relative;
+  .ellipsis {
+    background: url('../../../assets/icons/ellipsis.svg') no-repeat center center;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .menu-list {
+    background-color: $color-gray-darkest;
+    border: 0.0625rem solid $color-gray-medium;
+    opacity: 0;
+    position: absolute;
+    padding: $grid-gutter/1.5 0;
+    top: 0;
+    left: 2.5rem;
+    transform: scale(0);
+    transform-origin: top left;
+    transition: all $navigation-item-transition-time;
+    a {
+      white-space: nowrap;
+      line-height: 2rem;
+      display: block;
+      padding: 0 $grid-gutter/1.5;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+  &.expanded {
+    .menu-list {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
