@@ -12,6 +12,7 @@ $navigation-item-transition-time: 0.15s;
     display: block;
     width: 2.5rem;
     height: 2.5rem;
+    transform: translateZ(0);
   }
   .menu-list {
     background-color: $color-gray-darkest;

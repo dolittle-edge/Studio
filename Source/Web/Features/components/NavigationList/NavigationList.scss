@@ -81,6 +81,10 @@ $plus-icon-size: 1.125rem;
       width: auto;
       .ellipsis {
         opacity: 0;
+        transition: opacity .2s;
+        &:hover{
+          opacity: 1;          
+        }
       }
     }
 
