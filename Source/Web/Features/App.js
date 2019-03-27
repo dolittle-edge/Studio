@@ -16,7 +16,8 @@ export class App {
       { route: 'locations', name: 'Locations', moduleId: PLATFORM.moduleName('Locations/Index') },
       { route: 'locations/add-location', name: 'AddLocation', moduleId: PLATFORM.moduleName('Locations/AddLocation') },
       { route: 'locations/add-node', name: 'AddNode', moduleId: PLATFORM.moduleName('Locations/AddNode') },
-      { route: 'setup', name: 'Setup', moduleId: PLATFORM.moduleName('Setup/Index') }
+      { route: 'setup', name: 'Setup', moduleId: PLATFORM.moduleName('Setup/Index') },
+      { route: 'timeseries', name: 'Timeseries', moduleId: PLATFORM.moduleName('Timeseries/Index') }
     ]);
 
     this.router = router;
