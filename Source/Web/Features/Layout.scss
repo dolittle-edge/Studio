@@ -7,9 +7,6 @@
 
 body {
   .side-bar {
-    header {
-      padding: $grid-gutter;
-    }
   }
   .default-layout {
     @extend %flex-container;
