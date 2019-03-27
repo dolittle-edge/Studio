@@ -2,10 +2,65 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-@import '../../styles/Settings/all';
+@import '~DolittleStyles/Settings/all';
 
 .applications-page {
-  .grid-content {
+  header {
+    align-items: center;
+    background-color: lighten($color-gray-darkest, 15%);
+    border-left: 0.0625rem solid $color-gray-darkest;
+    display: flex;
+    height: 3.25rem;
+    justify-content: flex-start;
+    padding: $grid-gutter/2 $grid-gutter;
+    width: 100%;
 
+    h1 {
+      font-size: $font-size-h3;
+      margin: 0;
+    }
+  }
+  .applications-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    padding: $grid-gutter/2;
+    transition: transform 0.2s ease;
+    li {
+      flex: 0 1 20rem;
+      margin: $grid-gutter/2;
+      &:hover {
+        transform: scale(0.99);
+      }
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        h1 {
+          padding-top: 0;
+        }
+        padding: $grid-gutter * 2;
+        height: 100%;
+      }
+      figure {
+        display: block;
+        width: 10rem;
+        svg {
+          max-width: 100%;
+        }
+      }
+
+      &.acrylic.add-new {
+        opacity: 0.7;
+
+        &::after {
+          background-color: rgba(50, 50, 50, 1);
+          border: 0.125rem dotted $color-white-solid;
+        }
+      }
+    }
   }
 }
