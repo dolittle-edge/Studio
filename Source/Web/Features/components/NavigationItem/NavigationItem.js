@@ -4,14 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 import { customElement, bindable, containerless, observable } from 'aurelia-framework';
 
-@customElement('navigation-group')
+@customElement('navigation-item')
 @containerless()
-export class NavigationGroup {
-  @bindable name;
-  @observable isExpanded = false;
-
+export class NavigationItem {
+  @bindable routename;
+  @bindable iconurl;
   constructor() {}
-  toggleExpand() {
-    this.isExpanded = !this.isExpanded;
-  }
 }

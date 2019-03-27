@@ -5,8 +5,17 @@
 *----------------------------------------------------------------------------------------------
 -->
 <template>
-  <li class="navigation-item parent ${isExpanded ? 'expanded' : ''}">
-    <a class="route-link" href="" click.delegate="toggleExpand()">${name}<i class="toggle-expand"></i></a>
+  <require from="./NavigationGroup.scss"></require>
+  <li class="navigation-item navigation-group ${isExpanded ? 'expanded' : ''}">
+    <a class="route-link" href="" click.delegate="toggleExpand()">
+      <figure if.bind="iconurl">
+        <img src.bind="iconurl" alt="" />
+      </figure>
+      <span>
+        ${name}
+      </span>
+      <i class="toggle-expand"></i
+    ></a>
     <slot></slot>
   </li>
 </template>

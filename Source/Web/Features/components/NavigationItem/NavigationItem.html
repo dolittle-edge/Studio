@@ -5,7 +5,15 @@
 *----------------------------------------------------------------------------------------------
 -->
 <template>
+  <require from="./NavigstionItem.scss"></require>
   <li class="navigation-item">
-    <a class="route-link" route-href.bind="routename">${routename}</a>
+    <a class="route-link" route-href.bind="routename">
+      <figure if.bind="iconurl">
+        <img src.bind="iconurl" alt="" />
+      </figure>
+      <span>
+        ${routename}
+      </span>
+    </a>
   </li>
 </template>
