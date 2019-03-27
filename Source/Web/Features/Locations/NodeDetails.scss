@@ -32,26 +32,34 @@
     .box {
       &.node-information {
         grid-column: 1;
-        grid-row: 1/3;
+        grid-row: 1;
       }
       &.network {
-        grid-column: 2/4;
+        grid-column: 1/3;
         grid-row: 1;
-      }
-      &.availability {
-        grid-column: 4;
-        grid-row: 1;
-      }
-      &.temperature {
-        grid-column: 4;
-        grid-row: 2;
-      }
-      &.cpu {
-        grid-column: 2;
-        grid-row: 2;
       }
       &.memory {
         grid-column: 3;
+        grid-row: 1;
+      }
+      &.cpu {
+        grid-column: 4;
+        grid-row: 1;
+      }
+      &.applications {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      &.hardware {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      &.availability {
+        grid-column: 3;
+        grid-row: 2;
+      }
+      &.temperature {
+        grid-column: 4;
         grid-row: 2;
       }
 

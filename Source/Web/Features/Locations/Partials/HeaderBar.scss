@@ -19,6 +19,9 @@ $select-hover-bg-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaW
     padding-right: $grid-gutter;
     margin: 0 $grid-gutter 0 0;
   }
+  p {
+    margin: 0 $grid-gutter/2;
+  }
 
   .node-selector {
     background-color: transparent;
@@ -28,6 +31,7 @@ $select-hover-bg-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaW
     font-size: $font-size-h3;
     font-weight: $font-weight-h3;
     padding-right: 2rem;
+    margin-right: 2rem;
     width: auto;
   }
   .inline-toolbar {

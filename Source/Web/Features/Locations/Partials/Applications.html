@@ -5,12 +5,12 @@
 *----------------------------------------------------------------------------------------------
 -->
 <template>
-  <require from="./Index.scss"></require>
-  <section class="applications-page">
-    <header>
-      <h1>Available applications</h1>
-    </header>
-    
-    <applications-list list_item_classname="box acrylic" show_new_box="true"></applications-list>
-  </section>
+  <require from="./Applications.scss"></require>
+<section class="box acrylic applications">
+  <h1>Installed applications</h1>
+  <div class="content">
+    <applications-list list_item_classname="list-item"></applications-list>
+  </div>
+</section>
 </template>
+

@@ -1,0 +1,62 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Dolittle. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+@import '~DolittleStyles/Settings/all';
+
+.applications-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+  padding: $grid-gutter/2;
+  transition: transform 0.2s ease;
+  li {
+    &.box {
+      flex: 0 1 20rem;
+      margin: $grid-gutter/2;
+      &:hover {
+        transform: scale(0.99);
+      }
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: $grid-gutter * 2;
+        height: 100%;
+      }
+      figure {
+        display: block;
+        width: 10rem;
+        svg {
+          max-width: 100%;
+        }
+      }
+
+      &.acrylic.add-new {
+        opacity: 0.7;
+
+        &::after {
+          background-color: rgba(50, 50, 50, 1);
+          border: 0.125rem dotted $color-white-solid;
+        }
+      }
+    }
+    &.list-item {
+      margin: 0 0 $grid-gutter/2 0;
+      width: 100%;
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        figure {
+          margin-right: $grid-gutter;
+          width: 2rem;
+        }
+      }
+    }
+  }
+}

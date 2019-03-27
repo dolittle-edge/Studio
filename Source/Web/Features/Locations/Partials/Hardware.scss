@@ -5,20 +5,18 @@
 @import '~DolittleStyles/Settings/all';
 .node-details {
   .grid-content {
-    .box {
-      .hardware {
-        p {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: $grid-gutter;
-          line-height: 1.125rem;
-          .label {
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            + span {
-              text-align: right;
-              font-size: 0.875rem;
-            }
+    .hardware {
+      p {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $grid-gutter;
+        line-height: 1.125rem;
+        .label {
+          text-transform: uppercase;
+          font-size: 0.75rem;
+          + span {
+            text-align: right;
+            font-size: 0.875rem;
           }
         }
       }
