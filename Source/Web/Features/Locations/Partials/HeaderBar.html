@@ -1,0 +1,40 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./RemoteOverlay"></require>
+  <require from="./HeaderBar.scss"></require>
+  <header class="header-bar">
+    <h3>Thalatta</h3>
+    <select name="node-selector" class="node-selector" id="node-selector">
+      <option value="Node name 1">Node name 1</option>
+      <option value="Node name 2">Node name 2</option>
+      <option value="Node name 3">Node name 3</option>
+    </select>
+
+    <img src="../../../assets/icons/edgeOnline.png" alt="online" />
+
+    <p class="caption-alt">Online</p>
+    -
+    <p class="caption-alt">SN 1244229-503</p>
+    -
+    <p class="caption-alt">
+      KChief version:
+      <span>
+        v. 5.23.1
+      </span>
+    </p>
+    <inline-toolbar>
+      <a href="" click.delegate="open_terminal()">
+        <figure class="icon">
+          <img src="../../../assets/icons/cmd_line.svg" alt="" />
+        </figure>
+        <span>Remote console</span>
+      </a>
+      <remote-overlay visible.two-way="show_terminal"></remote-overlay>
+    </inline-toolbar>
+  </header>
+</template>

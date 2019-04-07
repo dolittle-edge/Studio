@@ -1,0 +1,17 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./AddNew.scss"></require>
+<div class="add-new ${menuIsVisible ? 'expanded' : ''}">
+  <a href="#" class="ellipsis" click.delegate="toggleMenu()">
+  </a>
+  <nav class="menu-list">
+    <a route-href="AddLocation">Add new location</a>
+    <a route-href="AddNode">Add new node</a>
+  </nav>
+</div>
+</template>

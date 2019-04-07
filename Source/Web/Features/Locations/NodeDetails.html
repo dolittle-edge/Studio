@@ -1,0 +1,30 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./NodeDetails.scss"></require>
+  <require from="./Partials/Applications"></require>
+  <require from="./Partials/Availability"></require>
+  <require from="./Partials/CPU"></require>
+  <require from="./Partials/Hardware"></require>
+  <require from="./Partials/HeaderBar"></require>
+  <require from="./Partials/Memory"></require>
+  <require from="./Partials/Network"></require>
+  <require from="./Partials/NodeInformation"></require>
+  <require from="./Partials/Temperature"></require>
+  <div class="node-details">
+    <header-bar></header-bar>
+    <div class="grid-content">
+      <applications></applications>
+      <hardware></hardware>
+      <network></network>
+      <availability></availability>
+      <cpu></cpu>
+      <memory></memory>
+      <temperature></temperature>
+    </div>
+  </div>
+</template>

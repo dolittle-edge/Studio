@@ -1,3 +1,7 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Dolittle. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 import { customElement, containerless, bindable } from 'aurelia-framework';
 
 @customElement('side-bar')
@@ -8,7 +12,7 @@ export class SideBar {
   @bindable is_subnavigation;
   constructor() {}
 
-  toggle_side_bar() {
+  toggleSideBar() {
     this.expanded = !this.expanded;
   }
 }

@@ -1,0 +1,21 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./NavigationGroup.scss"></require>
+  <li class="navigation-item navigation-group ${isExpanded ? 'expanded' : ''}">
+    <a class="route-link" href="" click.delegate="toggleExpand()">
+      <figure if.bind="iconurl">
+        <img src.bind="iconurl" alt="" />
+      </figure>
+      <span>
+        ${name}
+      </span>
+      <i class="toggle-expand"></i
+    ></a>
+    <slot></slot>
+  </li>
+</template>

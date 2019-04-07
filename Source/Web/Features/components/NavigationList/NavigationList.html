@@ -1,0 +1,22 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./NavigationList.scss"></require>
+  <require from="../../Locations/NodesList"></require>
+  <require from="../../Locations/Partials/AddNew"></require>
+  <ul class="navigation-list">
+    <navigation-group name="Locations">
+        <nodes-list></nodes-list>
+        <div class="context-menu">
+          <add-new></add-new>
+        </div>
+    </navigation-group>
+    <navigation-item routename="Applications"></navigation-item>
+    <navigation-item routename="Setup"></navigation-item>
+    <navigation-item routename="Installation"></navigation-item>
+  </ul>
+</template>

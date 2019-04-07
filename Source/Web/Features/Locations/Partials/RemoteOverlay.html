@@ -1,0 +1,15 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./RemoteOverlay.scss"></require>
+  <div class="remote_overlay ${visible ? 'visible' : ''}">
+    <div class="terminal_wrapper">
+      <a class="close" click.delegate="close()">X</a>
+      <terminal></terminal>
+    </div>
+  </div>
+</template>

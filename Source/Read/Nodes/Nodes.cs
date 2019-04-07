@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Concepts.Locations;
+using Dolittle.IO;
 using Dolittle.IO.Tenants;
 using Dolittle.Serialization.Json;
 
@@ -14,10 +15,10 @@ namespace Read.Nodes
     public class Nodes : INodes
     {
         const string _nodesFile = "nodes.json";
-        readonly ITenantAwareFileSystem _fileSystem;
+        readonly IFileSystem _fileSystem;
         readonly ISerializer _serializer;
 
-        public Nodes(ITenantAwareFileSystem fileSystem, ISerializer serializer)
+        public Nodes(IFileSystem fileSystem, ISerializer serializer)
         {
             _fileSystem = fileSystem;
             _serializer = serializer;

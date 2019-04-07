@@ -1,0 +1,22 @@
+<!--
+*----------------------------------------------------------------------------------------------
+*  Copyright (c) Dolittle. All rights reserved.
+*  Licensed under the MIT License. See LICENSE in the project root for license information.
+*----------------------------------------------------------------------------------------------
+-->
+<template>
+  <require from="./Layout.scss"></require>
+
+  <side-bar expanded="true" hide_trigger.one-time="true" is_subnavigation="true">
+    <header>
+      <h3><a route-href="Home">Edge</a></h3>
+    </header>
+    <navigation-list></navigation-list>
+    <footer>
+      <admin-list></admin-list>
+    </footer>
+  </side-bar>
+  <main class="default-layout">
+    <slot></slot>
+  </main>
+</template>
