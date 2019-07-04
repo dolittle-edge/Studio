@@ -2,16 +2,17 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.Concepts;
+using Dolittle.Validation;
+using FluentValidation;
 
-namespace Concepts.Nodes
+namespace Concepts.Locations
 {
-    public class NodeName : ConceptAs<string>
+    public class LocationIdValidator : InputValidator<LocationId>
     {
-        public static readonly NodeName NotSet = "";
-        public static implicit operator NodeName(string value)
+        public LocationIdValidator() 
         {
-            return new NodeName {Value = value};
+            RuleFor(_ => _)
+                .NotEqual(LocationId.NotSet).WithMessage($"Location Id must not be '{LocationId.NotSet.Value.ToString()}'");
         }
     }
 }

@@ -4,13 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 using Dolittle.ReadModels;
 using Concepts.Nodes;
-using Dolittle.Queries;
+using Concepts.Locations;
 
 namespace Read.Nodes
 {
     public class Node : IReadModel
     {
         public NodeId Id { get; set; }
+        
         public NodeName Name { get; set; }
+
+        public LocationId LocationId {get; set;}
     }
 }

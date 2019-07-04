@@ -2,14 +2,19 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System.Collections.Generic;
-using Concepts.Locations;
+
+using System.Linq;
+using Dolittle.Queries;
+using Dolittle.ReadModels;
 
 namespace Read.Nodes
 {
-    public interface INodes
+    public class AllNodes : IQueryFor<Node>
     {
-        IEnumerable<Node> GetAllNodesFor(LocationId locationId);
-        void Add(LocationId locationId, Node node);
+        readonly IReadModelRepositoryFor<Node> _nodes;
+
+        public AllNodes(IReadModelRepositoryFor<Node> nodes) => _nodes = nodes;
+
+        public IQueryable<Node> Query => _nodes.Query;
     }
 }

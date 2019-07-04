@@ -18,7 +18,8 @@ namespace Domain.Nodes
 
         public void Handle(AddNodeToLocation command)
         {
-            _aggregateRootRepoForNode.Get(command.Id).Add(command.Name);
+            var root = _aggregateRootRepoForNode.Get(command.Id);
+            root.Add(command.Name, command.LocationId);
         }
     }
 }

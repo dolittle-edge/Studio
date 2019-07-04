@@ -4,14 +4,21 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 using Dolittle.Concepts;
+using Dolittle.Runtime.Events;
 
 namespace Concepts.Locations
 {
     public class LocationId : ConceptAs<Guid>
     {
+        public static readonly LocationId NotSet = Guid.Empty;
         public static implicit operator LocationId(Guid value)
         {
             return new LocationId { Value = value };
+        }
+
+        public static implicit operator EventSourceId(LocationId id)
+        {
+            return new EventSourceId { Value = id.Value };
         }
     }
 }

@@ -2,16 +2,20 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.Concepts;
+using System;
+using Dolittle.Events;
 
-namespace Concepts.Nodes
+namespace Events.Nodes
 {
-    public class NodeName : ConceptAs<string>
+    public class NodeAddedToLocation : IEvent
     {
-        public static readonly NodeName NotSet = "";
-        public static implicit operator NodeName(string value)
+        public NodeAddedToLocation(string name, Guid locationId)
         {
-            return new NodeName {Value = value};
+            Name = name;
+            LocationId = locationId;
         }
+        
+        public string Name { get; }
+        public Guid LocationId {get; }
     }
 }

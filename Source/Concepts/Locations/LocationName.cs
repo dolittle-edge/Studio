@@ -4,14 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 using Dolittle.Concepts;
 
-namespace Concepts.Nodes
+namespace Concepts.Locations
 {
-    public class NodeName : ConceptAs<string>
+    public class LocationName : ConceptAs<string>
     {
-        public static readonly NodeName NotSet = "";
-        public static implicit operator NodeName(string value)
+        public static readonly LocationName NotSet = "";
+        public static implicit operator LocationName(string value)
         {
-            return new NodeName {Value = value};
+            return new LocationName {Value = value};
         }
     }
 }
