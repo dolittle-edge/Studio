@@ -3,23 +3,20 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System.Linq;
-using Concepts.Locations;
 using Dolittle.Queries;
 using Dolittle.ReadModels;
 
-namespace Read.Nodes
+namespace Read.Locations
 {
-    public class AllNodesForLocation : IQueryFor<Node>
+    public class AllLocations : IQueryFor<Location>
     {
-        readonly IReadModelRepositoryFor<Node> _nodes;
+        readonly IReadModelRepositoryFor<Location> _repositoryForLocation;
 
-        public AllNodesForLocation(IReadModelRepositoryFor<Node> nodes)
+        public AllLocations(IReadModelRepositoryFor<Location> repositoryForLocation)
         {
-            _nodes = nodes;
+            _repositoryForLocation = repositoryForLocation;
         }
 
-        public LocationId Location { get; set; }
-
-        public IQueryable<Node> Query => _nodes.Query.Where(_ => _.LocationId == Location);
+        public IQueryable<Location> Query => _repositoryForLocation.Query;
     }
 }
