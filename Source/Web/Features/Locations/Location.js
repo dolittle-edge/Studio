@@ -1,17 +1,18 @@
 ﻿/*---------------------------------------------------------------------------------------------
- *  This file is an automatically generated Command Proxy
+ *  This file is an automatically generated ReadModel Proxy
  *  
  *--------------------------------------------------------------------------------------------*/
-import { Command } from  '@dolittle/commands';
+import { ReadModel } from  '@dolittle/readmodels';
 
-export class AddNodeToLocation extends Command
+export class Location extends ReadModel
 {
     constructor() {
         super();
-        this.type = 'd998cb34-5170-4fe4-9f15-f3fcf98642a9';
-
+        this.artifact = {
+           id: 'a21778d5-2f7a-46ef-8691-85f3544d854c',
+           generation: '1'
+        };
         this.id = '00000000-0000-0000-0000-000000000000';
-        this.locationId = '00000000-0000-0000-0000-000000000000';
         this.name = '';
     }
 }

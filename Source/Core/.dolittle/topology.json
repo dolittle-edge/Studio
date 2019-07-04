@@ -4,6 +4,10 @@
     "1e13e299-0e9a-4f30-98fd-9d900839f455": {
       "name": "Nodes",
       "subFeatures": {}
+    },
+    "62e60c1b-2231-4bc3-8b33-323a8e29abc0": {
+      "name": "Locations",
+      "subFeatures": {}
     }
   }
 }

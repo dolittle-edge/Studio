@@ -1,17 +1,16 @@
 ﻿/*---------------------------------------------------------------------------------------------
- *  This file is an automatically generated Command Proxy
+ *  This file is an automatically generated Query Proxy
  *  
  *--------------------------------------------------------------------------------------------*/
-import { Command } from  '@dolittle/commands';
+import { Query } from  '@dolittle/queries';
 
-export class AddNodeToLocation extends Command
+export class NodeById extends Query
 {
     constructor() {
         super();
-        this.type = 'd998cb34-5170-4fe4-9f15-f3fcf98642a9';
+        this.nameOfQuery = 'NodeById';
+        this.generatedFrom = 'Read.Nodes.NodeById';
 
         this.id = '00000000-0000-0000-0000-000000000000';
-        this.locationId = '00000000-0000-0000-0000-000000000000';
-        this.name = '';
     }
 }

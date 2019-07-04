@@ -1,0 +1,78 @@
+{
+  "1e13e299-0e9a-4f30-98fd-9d900839f455": {
+    "commands": {
+      "d998cb34-5170-4fe4-9f15-f3fcf98642a9": {
+        "generation": 1,
+        "type": "Domain.Nodes.AddNodeToLocation, Domain"
+      }
+    },
+    "events": {
+      "f60f612c-a159-489c-9762-8edfb135d049": {
+        "generation": 1,
+        "type": "Events.Nodes.NodeAddedToLocation, Events"
+      }
+    },
+    "eventSources": {
+      "26cf1591-523d-46eb-b299-5ce12d8c3adf": {
+        "generation": 1,
+        "type": "Domain.Nodes.LocatedNode, Domain"
+      }
+    },
+    "readModels": {
+      "a49208bf-7e70-4c7a-811a-1aefae62f4e8": {
+        "generation": 1,
+        "type": "Read.Nodes.Node, Read"
+      }
+    },
+    "queries": {
+      "96d17266-c878-435c-8a5f-c4acf94b56cb": {
+        "generation": 1,
+        "type": "Read.Nodes.AllNodes, Read"
+      },
+      "ec0fd941-34fa-4b21-968d-90e217d99e2f": {
+        "generation": 1,
+        "type": "Read.Nodes.AllNodesForLocation, Read"
+      },
+      "343ea457-d413-4432-a7ad-ce6d43e71ecc": {
+        "generation": 1,
+        "type": "Read.Nodes.NodeById, Read"
+      }
+    }
+  },
+  "62e60c1b-2231-4bc3-8b33-323a8e29abc0": {
+    "commands": {
+      "1ad1ebea-7586-41e6-9c15-2394a68f0470": {
+        "generation": 1,
+        "type": "Domain.Locations.AddLocation, Domain"
+      }
+    },
+    "events": {
+      "48eb75c9-021a-41b2-b3af-f87cc3cdf415": {
+        "generation": 1,
+        "type": "Events.Locations.LocationAdded, Events"
+      }
+    },
+    "eventSources": {
+      "580b0cfd-6646-4f99-a911-5986690a3fba": {
+        "generation": 1,
+        "type": "Domain.Locations.Location, Domain"
+      }
+    },
+    "readModels": {
+      "a21778d5-2f7a-46ef-8691-85f3544d854c": {
+        "generation": 1,
+        "type": "Read.Locations.Location, Read"
+      }
+    },
+    "queries": {
+      "3b39e279-3a27-4a1d-a9fb-dca0e75a642f": {
+        "generation": 1,
+        "type": "Read.Locations.AllLocations, Read"
+      },
+      "1154c73d-94ef-4648-9b3c-8f352f035f00": {
+        "generation": 1,
+        "type": "Read.Locations.LocationById, Read"
+      }
+    }
+  }
+}
