@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using Concepts.Locations;
 using Dolittle.IO;
-using Dolittle.IO.Tenants;
 using Dolittle.Serialization.Json;
 
 namespace Read.Nodes
