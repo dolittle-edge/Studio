@@ -9,19 +9,10 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <!-- The relative path from this .csproj file to the bounded-context.json configuration file -->
     <DolittleBoundedContextConfigPath>../bounded-context.json</DolittleBoundedContextConfigPath>
-    
-    <!-- Whether or not to use modules or not when genreating bounded context topology structure -->
     <DolittleUseModules>False</DolittleUseModules>
-    
-    <!--  A | separated Key/Value pair map of namespace segments to strip -->
     <DolittleNamespaceSegmentsToStrip></DolittleNamespaceSegmentsToStrip>
-    
-    <!-- Whether or not the build tool should generate proxies -->
     <DolittleGenerateProxies>True</DolittleGenerateProxies>
-    
-    <!-- The relative path to put proxies if generated-->
     <DolittleProxiesBasePath>../Web/Features</DolittleProxiesBasePath>
   </PropertyGroup>
   
