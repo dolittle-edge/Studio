@@ -8,6 +8,9 @@ using Dolittle.Runtime.Events;
 
 namespace Concepts.Locations
 {
+    /// <summary>
+    /// Represents the unique identifier of a location
+    /// </summary>
     public class LocationId : ConceptAs<Guid>
     {
         public static readonly LocationId NotSet = Guid.Empty;
