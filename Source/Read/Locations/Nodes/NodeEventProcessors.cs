@@ -5,7 +5,7 @@
 using Dolittle.Events.Processing;
 using Dolittle.ReadModels;
 using Dolittle.Runtime.Events;
-using Events.Nodes;
+using Events.Locations.Nodes;
 
 namespace Read.Locations.Nodes
 {

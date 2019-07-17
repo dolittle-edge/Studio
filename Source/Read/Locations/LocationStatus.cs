@@ -5,47 +5,24 @@
 using System.Collections.Generic;
 using Concepts.Locations;
 using Dolittle.ReadModels;
+using Read.Locations.Nodes;
 
 namespace Read.Locations
 {
-    /// <summary>
-    /// Represents the values for connectivity
-    /// </summary>
-    public enum Connectivity 
-    {
-        /// <summary>
-        /// When something is connected
-        /// </summary>
-        Connected,
-
-        /// <summary>
-        /// When something is disconnected
-        /// </summary>
-        Disconnected
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class ModuleStatus : IReadModel
-    {
-
-    }
-
-
     /// <summary>
     /// Represents the status of a location
     /// </summary>
     public class LocationStatus : IReadModel
     {
+        public LocationId Id {get; set; }
         /// <summary>
         /// Gets or sets the name of the location
         /// </summary>
         public LocationName Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="NodeStatus">status for nodes</see>
+        /// Gets or sets the <see cref="NodeWithStatus">status for nodes</see>
         /// </summary>
-        public IEnumerable<NodeStatus> Nodes { get; set; }
+        public IEnumerable<NodeWithStatus> Nodes { get; set; }
     }
 }

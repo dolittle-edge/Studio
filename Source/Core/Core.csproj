@@ -59,6 +59,8 @@
     
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Dolittle.AspNetCore.Debugging.Swagger" Version="1.*" />
+    <PackageReference Include="Dolittle.AspNetCore.Debugging" Version="1.*" />
 
   </ItemGroup>
 

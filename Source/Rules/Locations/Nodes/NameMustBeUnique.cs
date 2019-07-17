@@ -10,10 +10,10 @@ using System.Linq;
 
 namespace Rules.Locations.Nodes
 {
-    public class NameMustBeUnique : IRuleImplementationFor<Domain.Nodes.NameMustBeUnique>
+    public class NameMustBeUnique : IRuleImplementationFor<Domain.Locations.Nodes.NameMustBeUnique>
     {
         readonly IReadModelRepositoryFor<Node> _nodes;
         public NameMustBeUnique(IReadModelRepositoryFor<Node> nodes) => _nodes = nodes;
-        public Domain.Nodes.NameMustBeUnique Rule => (name) => !_nodes.Query.Any(_ => _.Name == name);
+        public Domain.Locations.Nodes.NameMustBeUnique Rule => (name) => !_nodes.Query.Any(_ => _.Name == name);
     }
 }

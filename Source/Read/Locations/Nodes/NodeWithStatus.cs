@@ -8,12 +8,12 @@ using Concepts.Locations.Nodes;
 using Concepts.Telemetry;
 using Dolittle.ReadModels;
 
-namespace Read.Locations
+namespace Read.Locations.Nodes
 {
     /// <summary>
     /// Represents the status of a node
     /// </summary>
-    public class NodeStatus : IReadModel
+    public class NodeWithStatus : IReadModel
     {
         /// <summary>
         /// Gets or sets the unique identifier of the node

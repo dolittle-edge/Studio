@@ -6,7 +6,6 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Autofac.Extensions.DependencyInjection;
 using System.IO;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Core
 {

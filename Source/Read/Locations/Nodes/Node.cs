@@ -22,7 +22,10 @@ namespace Read.Locations.Nodes
         /// Gets or sets the name of the node
         /// </summary>
         public NodeName Name { get; set; }
-    
+        
+        /// <summary>
+        /// Gets or sets the id of the <see cref="Location"/>
+        /// </summary>
         public LocationId LocationId {get; set;}
     }
 }

@@ -9,10 +9,10 @@ using Read.Locations.Nodes;
 
 namespace Rules.Locations.Nodes
 {
-    public class NotExist : IRuleImplementationFor<Domain.Nodes.NotExist>
+    public class NotExist : IRuleImplementationFor<Domain.Locations.Nodes.NotExist>
     {
         readonly IReadModelRepositoryFor<Node> _nodes;
         public NotExist(IReadModelRepositoryFor<Node> nodes) => _nodes = nodes;
-        public Domain.Nodes.NotExist Rule => (id) => _nodes.GetById(id) == null;
+        public Domain.Locations.Nodes.NotExist Rule => (id) => _nodes.GetById(id) == null;
     }
 }

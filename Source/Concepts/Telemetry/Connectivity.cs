@@ -2,22 +2,22 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.Concepts;
-
+ 
 namespace Concepts.Telemetry
 {
     /// <summary>
-    /// Represents the sample of a <see cref="TelemetryType"/>
+    /// Represents the values for connectivity
     /// </summary>
-    public class TelemetrySample : ConceptAs<float>
+    public enum Connectivity 
     {
         /// <summary>
-        /// Implicitly convert from float to a <see cref="TelemetryType"/> 
+        /// When something is connected
         /// </summary>
-        /// <param name="value">Value to convert from</param>
-        public static implicit operator TelemetrySample(float value)
-        {
-            return new TelemetrySample { Value = value };
-        }
+        Connected,
+
+        /// <summary>
+        /// When something is disconnected
+        /// </summary>
+        Disconnected
     }
 }
