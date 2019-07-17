@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 import { Command } from  '@dolittle/commands';
 
-export class AddLocation extends Command
+export class AddNodeToLocation extends Command
 {
     constructor() {
         super();
-        this.type = '1ad1ebea-7586-41e6-9c15-2394a68f0470';
+        this.type = 'eb6be2a0-a44a-4b9f-bbc6-f14023d94e93';
 
         this.id = '00000000-0000-0000-0000-000000000000';
+        this.locationId = '00000000-0000-0000-0000-000000000000';
         this.name = '';
     }
 }
