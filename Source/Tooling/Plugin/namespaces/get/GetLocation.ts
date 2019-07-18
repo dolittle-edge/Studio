@@ -11,7 +11,7 @@ import { requireInternet } from "@dolittle/tooling.common.packages";
 
 const name = 'location';
 
-const description = `Get status from specific location`;
+const description = `Get status from a specific location`;
 
 const nameDependency = new PromptDependency(
     'name',
