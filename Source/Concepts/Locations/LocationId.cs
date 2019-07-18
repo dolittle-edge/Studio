@@ -7,8 +7,15 @@ using Dolittle.Concepts;
 
 namespace Concepts.Locations
 {
+    /// <summary>
+    /// Represents the unique identifier of a location
+    /// </summary>
     public class LocationId : ConceptAs<Guid>
     {
+        /// <summary>
+        /// Implicitly convert from a <see cref="Guid"/> to a <see cref="LocationId"/>
+        /// </summary>
+        /// <param name="value"><see cref="Guid"/> to convert from</param>
         public static implicit operator LocationId(Guid value)
         {
             return new LocationId { Value = value };

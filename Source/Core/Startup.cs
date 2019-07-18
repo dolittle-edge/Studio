@@ -81,6 +81,5 @@ namespace Core
             app.UseDolittle();
             app.RunAsSinglePageApplication();
         }
-
     }
 }
