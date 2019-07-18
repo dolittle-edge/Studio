@@ -4,13 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import { Query } from  '@dolittle/queries';
 
-export class AllNodesForLocation extends Query
+export class AllNodes extends Query
 {
     constructor() {
         super();
-        this.nameOfQuery = 'AllNodesForLocation';
-        this.generatedFrom = 'Read.Nodes.AllNodesForLocation';
+        this.nameOfQuery = 'AllNodes';
+        this.generatedFrom = 'Read.Locations.Nodes.AllNodes';
 
-        this.location = '00000000-0000-0000-0000-000000000000';
     }
 }

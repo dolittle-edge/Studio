@@ -125,7 +125,7 @@ namespace API.Telemetry
                     var json = _fileSystem.ReadAllText(nodesFile);
                     var nodes = _serializer.FromJson<Node[]>(json);
                     status.Nodes = nodes.Select(_ =>
-                        new NodeStatus
+                        new NodeWithStatus
                         {
                             Id = _.Id,
                                 Name = _.Name,
@@ -137,7 +137,7 @@ namespace API.Telemetry
                 }
                 else
                 {
-                    status.Nodes = new NodeStatus[0];
+                    status.Nodes = new NodeWithStatus[0];
                 }
 
                 _statusByLocation[locationId] = status;

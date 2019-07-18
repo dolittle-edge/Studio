@@ -7,19 +7,10 @@ using Dolittle.ReadModels;
 
 namespace Read.Locations
 {
-    /// <summary>
-    /// Represents a location
-    /// </summary>
     public class Location : IReadModel
-    {   
-        /// <summary>
-        /// Gets or sets the unique identifier for a location
-        /// </summary>
-        public LocationId Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the location
-        /// </summary>
-        public LocationName Name { get; set; }
+    {
+        public LocationId Id {get; set;}
+        
+        public LocationName Name {get; set;}
     }
 }

@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 using Dolittle.Concepts;
+using Dolittle.Runtime.Events;
 
 namespace Concepts.Locations
 {
@@ -12,13 +13,15 @@ namespace Concepts.Locations
     /// </summary>
     public class LocationId : ConceptAs<Guid>
     {
-        /// <summary>
-        /// Implicitly convert from a <see cref="Guid"/> to a <see cref="LocationId"/>
-        /// </summary>
-        /// <param name="value"><see cref="Guid"/> to convert from</param>
+        public static readonly LocationId NotSet = Guid.Empty;
         public static implicit operator LocationId(Guid value)
         {
             return new LocationId { Value = value };
+        }
+
+        public static implicit operator EventSourceId(LocationId id)
+        {
+            return new EventSourceId { Value = id.Value };
         }
     }
 }

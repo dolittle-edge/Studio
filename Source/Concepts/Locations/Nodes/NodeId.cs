@@ -13,10 +13,7 @@ namespace Concepts.Locations.Nodes
     /// </summary>
     public class NodeId : ConceptAs<Guid>
     {
-        /// <summary>
-        /// Implicitly convert from a <see cref="Guid"/> to a <see cref="NodeId"/>
-        /// </summary>
-        /// <param name="value"><see cref="Guid"/> to convert from</param>
+        public static readonly NodeId NotSet = Guid.Empty;
         public static implicit operator NodeId(Guid value)
         {
             return new NodeId {Value = value};

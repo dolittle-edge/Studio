@@ -1,68 +1,89 @@
 {
-  "83c53185-0826-4c90-95a5-45d9604cf886": {
+  "94540597-7497-449e-a21a-dd0cd092b62f": {
     "commands": {
-      "0b01988d-cd11-4173-8872-0b4cbc45283e": {
+      "7063fc69-dd68-4892-a8fd-fbc4bb70b060": {
         "generation": 1,
-        "type": "Domain.Locations.Nodes.AddNodeToLocation, Domain"
+        "type": "Domain.Locations.AddLocation, Domain"
       }
     },
-    "events": {},
-    "eventSources": {
-      "1dcdea7c-8b45-405c-8b08-928bda959fe7": {
-        "generation": 1,
-        "type": "Domain.Locations.Nodes.LocatedNode, Domain"
-      }
-    },
-    "readModels": {
-      "316af172-c51e-4063-99b9-e66758997b3b": {
-        "generation": 1,
-        "type": "Read.Locations.Nodes.Node, Read"
-      }
-    },
-    "queries": {}
-  },
-  "6fd93e2a-8c13-47ce-91d2-23da4b7cfea5": {
-    "commands": {},
     "events": {
-      "6c6c80b0-857a-4193-93fd-8894277d5d86": {
+      "03c323a8-7f73-4528-8391-c605d3a404e7": {
         "generation": 1,
-        "type": "Events.Nodes.NodeAdded, Events"
+        "type": "Events.Locations.LocationAdded, Events"
       }
     },
-    "eventSources": {},
-    "readModels": {},
-    "queries": {}
-  },
-  "2f7a5753-205b-46f4-b8be-2a3547bcbbee": {
-    "commands": {},
-    "events": {},
-    "eventSources": {},
+    "eventSources": {
+      "0b0fbd6a-332e-419a-85e1-e3ca0a3f6b9b": {
+        "generation": 1,
+        "type": "Domain.Locations.Location, Domain"
+      }
+    },
     "readModels": {
-      "d7df588c-20d8-4a7d-aa87-8bcbd9238aaf": {
+      "7e888fa2-fc29-46b6-8b12-27cb7c0a32b8": {
         "generation": 1,
         "type": "Read.Locations.Location, Read"
       },
-      "2901a98c-c09d-47da-b5f9-318033fcd422": {
-        "generation": 1,
-        "type": "Read.Locations.ModuleStatus, Read"
-      },
-      "6c4de626-d058-451a-a394-59df8fbd4295": {
-        "generation": 1,
-        "type": "Read.Locations.NodeStatus, Read"
-      },
-      "d648e5cf-54b3-4b13-9766-ae6ba1a67e05": {
+      "52d32d31-b8b6-4a1f-8019-162b8bdbf465": {
         "generation": 1,
         "type": "Read.Locations.LocationStatus, Read"
       },
-      "67b5fcdb-f2ef-4713-9b75-424a9505674f": {
+      "5dd860d5-fcfe-4e16-8fda-bbde1bdd5953": {
         "generation": 1,
         "type": "Read.Locations.LocationWithStatus, Read"
       }
     },
     "queries": {
-      "bd10b4ef-4bd4-4e9a-980e-514cca29decd": {
+      "a5398eb3-8ff7-45e8-81f3-8b996afdc2f8": {
         "generation": 1,
         "type": "Read.Locations.AllLocations, Read"
+      },
+      "fc92633f-a688-475f-942c-6e596f42078a": {
+        "generation": 1,
+        "type": "Read.Locations.LocationById, Read"
+      }
+    }
+  },
+  "fdc6d59d-c394-480f-b8fa-a0fdfba77b74": {
+    "commands": {
+      "eb6be2a0-a44a-4b9f-bbc6-f14023d94e93": {
+        "generation": 1,
+        "type": "Domain.Locations.Nodes.AddNodeToLocation, Domain"
+      }
+    },
+    "events": {
+      "936e6195-32c0-4581-9a58-11d43453e8bd": {
+        "generation": 1,
+        "type": "Events.Locations.Nodes.NodeAddedToLocation, Events"
+      }
+    },
+    "eventSources": {
+      "6385f1ef-006d-4a84-922c-1c35d202e1dc": {
+        "generation": 1,
+        "type": "Domain.Locations.Nodes.LocatedNode, Domain"
+      }
+    },
+    "readModels": {
+      "1e153046-af9d-417b-bf27-1ae2fba66d9d": {
+        "generation": 1,
+        "type": "Read.Locations.Nodes.Node, Read"
+      },
+      "567ab566-2ae8-4d7b-9448-e70b15cdeecb": {
+        "generation": 1,
+        "type": "Read.Locations.Nodes.NodeWithStatus, Read"
+      }
+    },
+    "queries": {
+      "65ab1b52-5eed-4577-9c5a-0a7272173906": {
+        "generation": 1,
+        "type": "Read.Locations.Nodes.AllNodes, Read"
+      },
+      "9f4b5151-7c13-4811-abca-fbc8310bb7ab": {
+        "generation": 1,
+        "type": "Read.Locations.Nodes.AllNodesForLocation, Read"
+      },
+      "31fadd58-b86a-42b0-ba3a-dff0091f0acf": {
+        "generation": 1,
+        "type": "Read.Locations.Nodes.NodeById, Read"
       }
     }
   }

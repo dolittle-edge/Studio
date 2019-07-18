@@ -1,18 +1,16 @@
 ﻿/*---------------------------------------------------------------------------------------------
- *  This file is an automatically generated ReadModel Proxy
+ *  This file is an automatically generated Query Proxy
  *  
  *--------------------------------------------------------------------------------------------*/
-import { ReadModel } from  '@dolittle/readmodels';
+import { Query } from  '@dolittle/queries';
 
-export class Node extends ReadModel
+export class NodeById extends Query
 {
     constructor() {
         super();
-        this.artifact = {
-           id: 'caf63cd5-2ef5-4b47-8a73-750d996b4a72',
-           generation: '1'
-        };
+        this.nameOfQuery = 'NodeById';
+        this.generatedFrom = 'Read.Locations.Nodes.NodeById';
+
         this.id = '00000000-0000-0000-0000-000000000000';
-        this.name = '';
     }
 }

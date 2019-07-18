@@ -1,18 +1,14 @@
 {
   "modules": {},
   "features": {
-    "2f7a5753-205b-46f4-b8be-2a3547bcbbee": {
+    "94540597-7497-449e-a21a-dd0cd092b62f": {
       "name": "Locations",
       "subFeatures": {
-        "83c53185-0826-4c90-95a5-45d9604cf886": {
+        "fdc6d59d-c394-480f-b8fa-a0fdfba77b74": {
           "name": "Nodes",
           "subFeatures": {}
         }
       }
-    },
-    "6fd93e2a-8c13-47ce-91d2-23da4b7cfea5": {
-      "name": "Nodes",
-      "subFeatures": {}
     }
   }
 }

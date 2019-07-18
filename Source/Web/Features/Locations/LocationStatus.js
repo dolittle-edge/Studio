@@ -9,9 +9,10 @@ export class LocationStatus extends ReadModel
     constructor() {
         super();
         this.artifact = {
-           id: 'd648e5cf-54b3-4b13-9766-ae6ba1a67e05',
+           id: '52d32d31-b8b6-4a1f-8019-162b8bdbf465',
            generation: '1'
         };
+        this.id = '00000000-0000-0000-0000-000000000000';
         this.name = '';
         this.nodes = [];
     }

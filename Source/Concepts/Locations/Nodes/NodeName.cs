@@ -11,10 +11,7 @@ namespace Concepts.Locations.Nodes
     /// </summary>
     public class NodeName : ConceptAs<string>
     {
-        /// <summary>
-        /// Implicitly convert from <see cref="string"/> to <see cref="NodeName"/>
-        /// </summary>
-        /// <param name="value"><see cref="string"/> to convert from</param>
+        public static readonly NodeName NotSet = "";
         public static implicit operator NodeName(string value)
         {
             return new NodeName {Value = value};
