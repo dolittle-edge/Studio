@@ -11,8 +11,8 @@ namespace Rules.Locations
 {
     public class NameMustBeUnique : IRuleImplementationFor<Domain.Locations.NameMustBeUnique>
     {
-        readonly IReadModelRepositoryFor<Location> _locations;
-        public NameMustBeUnique(IReadModelRepositoryFor<Location> locations) => _locations = locations;
-        public Domain.Locations.NameMustBeUnique Rule => (name) => !_locations.Query.Any(_ => _.Name == name);
+        //readonly IReadModelRepositoryFor<Location> _locations;
+        //public NameMustBeUnique(IReadModelRepositoryFor<Location> locations) => _locations = locations;
+        public Domain.Locations.NameMustBeUnique Rule => (name) => true; //!_locations.Query.Any(_ => _.Name == name);
     }
 }

@@ -12,8 +12,9 @@ module.exports = () => {
   const obj = config.apply(null, arguments);
   obj.devServer = {
     historyApiFallback: true,
+    port: 8082,
     proxy: {
-      '/api': 'http://localhost:5000'
+      '/api': 'http://localhost:5002'
     }
   };
   obj.resolve.alias = {

@@ -10,7 +10,7 @@ namespace Domain.Locations
 {
     public class AddLocationInputValidator : CommandInputValidatorFor<AddLocation>
     {
-        AddLocationInputValidator()
+        public AddLocationInputValidator()
         {
             RuleForConcept(_ => _.Id)
                 .NotNull().WithMessage("Id is required")

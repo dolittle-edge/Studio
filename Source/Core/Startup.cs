@@ -3,6 +3,8 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Autofac;
 using Dolittle.AspNetCore.Bootstrap;
 using Dolittle.AspNetCore.Debugging.Swagger;
@@ -12,6 +14,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Read.Locations.Nodes;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Core
@@ -48,6 +51,22 @@ namespace Core
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.Use(async (context, next) => {
+                AllNodes.Tenant = context.Request.Headers.ContainsKey("tenant") ? 
+                                                Guid.Parse(context.Request.Headers["tenant"].First()) :
+                                                Guid.Empty;
+
+                AllNodes.Microservice = context.Request.Headers.ContainsKey("microservice") ? 
+                                                Guid.Parse(context.Request.Headers["microservice"].First()) :
+                                                Guid.Empty;
+
+                AllNodes.Correlation = context.Request.Headers.ContainsKey("correlation") ? 
+                                                context.Request.Headers["correlation"].First() :
+                                                string.Empty;
+                                                
+                await next.Invoke();
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,7 +84,6 @@ namespace Core
             app.UseStaticFiles();
 
             app.UseMvc();
-
 
             app.UseWebSockets(new WebSocketOptions 
             {

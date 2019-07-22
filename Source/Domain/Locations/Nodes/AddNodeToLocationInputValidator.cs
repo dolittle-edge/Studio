@@ -11,8 +11,9 @@ namespace Domain.Locations.Nodes
 {
     public class AddNodeToLocationInputValidator : CommandInputValidatorFor<AddNodeToLocation>
     {
-        AddNodeToLocationInputValidator()
+        public AddNodeToLocationInputValidator()
         {
+            /*
             RuleForConcept(_ => _.Id)
                 .NotNull().WithMessage("Id is required")
                 .SetValidator(new NodeIdValidator());
@@ -21,7 +22,7 @@ namespace Domain.Locations.Nodes
                 .SetValidator(new LocationIdValidator());
             RuleForConcept(_ => _.Name)
                 .NotNull().WithMessage("Node Name is required")
-                .SetValidator(new NodeNameValidator());
+                .SetValidator(new NodeNameValidator());*/
         }
     }
 }

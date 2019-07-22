@@ -11,8 +11,9 @@ namespace Rules.Locations
 {
     public class NotExist : IRuleImplementationFor<Domain.Locations.NotExist>
     {
-        readonly IReadModelRepositoryFor<Location> _locations;
-        public NotExist(IReadModelRepositoryFor<Location> locations) => _locations = locations;
-        public Domain.Locations.NotExist Rule => (id) => _locations.GetById(id) == null;
+        
+        //readonly IReadModelRepositoryFor<Location> _locations;
+        //public NotExist(IReadModelRepositoryFor<Location> locations) => _locations = locations;
+        public Domain.Locations.NotExist Rule => (id) => true; //_locations.GetById(id) == null;
     }
 }

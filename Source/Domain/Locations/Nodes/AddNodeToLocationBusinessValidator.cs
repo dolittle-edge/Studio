@@ -9,12 +9,13 @@ namespace Domain.Locations.Nodes
 {
     public class AddNodeToLocationBusinessValidator : CommandBusinessValidatorFor<AddNodeToLocation>
     {
-        public AddNodeToLocationBusinessValidator(NotExist notExist, NameMustBeUnique beUnique)
+        public AddNodeToLocationBusinessValidator() //NotExist notExist, NameMustBeUnique beUnique)
         {
+            /*
             RuleFor(_ => _.Id)
                 .Must(_ => notExist(_)).WithMessage(_ => $"Node with id '${_.Id.Value.ToString()} already exists'");
             RuleFor(_ => _.Name)
-                .Must(_ => beUnique(_)).WithMessage(_ => $"Node with name '${_.Name.Value}' already exists");
+                .Must(_ => beUnique(_)).WithMessage(_ => $"Node with name '${_.Name.Value}' already exists");*/
         }
     }
 }

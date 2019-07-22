@@ -14,5 +14,6 @@
     <ItemGroup>
         <PackageReference Include="Dolittle.SDK" Version="3.*" />
         <PackageReference Include="Dolittle.IO.Tenants" Version="3.*" />
+        <PackageReference Include="Dolittle.ReadModels.MongoDB" Version="3.*" />
     </ItemGroup>
 </Project>
