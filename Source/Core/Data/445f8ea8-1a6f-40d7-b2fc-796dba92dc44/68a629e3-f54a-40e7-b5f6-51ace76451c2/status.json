@@ -1,1 +1,1 @@
-{"name":"Thalatta","nodes":[{"id":"4705091a-ea74-46d9-ada1-eb4813956e83","name":"default","state":{"ActualMemory":62.95197,"DiskUsage":82.01005,"Memory":98.0618744,"SwapMemory":88.0685},"connectivity":0,"lastUpdated":"2019-05-18T15:09:20.855998+00:00"}]}
+{"name":"Thalatta","nodes":[{"id":"4705091a-ea74-46d9-ada1-eb4813956e83","name":"default","metrics":{},"infos":{},"connectivity":0,"lastUpdated":"2019-05-18T15:09:20.855998+00:00"}]}

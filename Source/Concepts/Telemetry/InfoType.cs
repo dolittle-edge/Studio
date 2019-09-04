@@ -6,19 +6,18 @@ using Dolittle.Concepts;
 
 namespace Concepts.Telemetry
 {
-
     /// <summary>
-    /// Represents the sample of a <see cref="TelemetryType"/>
+    /// Represents the concept of a type of a metric
     /// </summary>
-    public class TelemetrySample : ConceptAs<float>
+    public class InfoType : ConceptAs<string>
     {
         /// <summary>
-        /// Convert from float to a <see cref="TelemetryType"/> 
+        /// Implicitly convert from <see cref="string"/> to <see cref="InfoType"/>
         /// </summary>
-        /// <param name="value">Value to convert from</param>
-        public static implicit operator TelemetrySample(float value)
+        /// <param name="type"><see cref="string"/> to convert from</param>
+        public static implicit operator InfoType(string type)
         {
-            return new TelemetrySample { Value = value };
-        }
+            return new InfoType { Value = type };
+        }        
     }
 }

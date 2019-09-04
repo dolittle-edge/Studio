@@ -84,7 +84,7 @@ namespace API.Telemetry
         }
 
         /// <inheritdoc/>
-        public void Transmit(LocationId locationId, NodeId nodeId, IDictionary<TelemetryType, TelemetrySample> state)
+        public void Transmit(LocationId locationId, NodeId nodeId, IDictionary<MetricType, Metric> metrics, IDictionary<InfoType, Info> infos)
         {
             var status = MakeSureLocationStatusExistsFor(locationId);
             if (status != null)
@@ -92,7 +92,8 @@ namespace API.Telemetry
                 var node = status.Nodes.SingleOrDefault(_ => _.Id == nodeId);
                 if (node != null)
                 {
-                    foreach ((var key, var value) in state) node.State[key] = value;
+                    foreach ((var key, var value) in metrics) node.Metrics[key] = value;
+                    foreach ((var key, var value) in infos) node.Infos[key] = value;
 
                     node.LastUpdated = DateTimeOffset.UtcNow;
                 }
@@ -129,7 +130,8 @@ namespace API.Telemetry
                         {
                             Id = _.Id,
                                 Name = _.Name,
-                                State = new Dictionary<TelemetryType, TelemetrySample>(),
+                                Metrics = new Dictionary<MetricType, Metric>(),
+                                Infos = new Dictionary<InfoType, Info>(),
                                 Connectivity = Connectivity.Disconnected,
                                 LastUpdated = DateTimeOffset.MinValue
                         }

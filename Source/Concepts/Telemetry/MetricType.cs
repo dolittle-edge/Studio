@@ -7,17 +7,17 @@ using Dolittle.Concepts;
 namespace Concepts.Telemetry
 {
     /// <summary>
-    /// Represents the concept of a type of telemetry
+    /// Represents the concept of a type of a metric
     /// </summary>
-    public class TelemetryType : ConceptAs<string>
+    public class MetricType : ConceptAs<string>
     {
         /// <summary>
-        /// Implicitly convert from <see cref="string"/> to <see cref="TelemetryType"/>
+        /// Implicitly convert from <see cref="string"/> to <see cref="MetricType"/>
         /// </summary>
         /// <param name="type"><see cref="string"/> to convert from</param>
-        public static implicit operator TelemetryType(string type)
+        public static implicit operator MetricType(string type)
         {
-            return new TelemetryType { Value = type };
+            return new MetricType { Value = type };
         }        
     }
 }

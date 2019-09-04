@@ -23,8 +23,13 @@ namespace API.Telemetry
         public Guid NodeId { get; set; }
 
         /// <summary>
-        /// Gets or sets the key/value of state being reported
+        /// Gets or sets the key/value of metrics of state being reported
         /// </summary>
-        public IDictionary<string, float> State { get; set; }
+        public IDictionary<string, float> Metrics { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key/value of infos of state being reported
+        /// </summary>
+        public IDictionary<string, string> Infos { get; set; }
     }
 }

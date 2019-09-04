@@ -14,7 +14,8 @@ export class NodeStatus extends ReadModel
         };
         this.id = '00000000-0000-0000-0000-000000000000';
         this.name = '';
-        this.state = [];
+        this.metrics = [];
+        this.infos = [];
         this.connectivity = 0;
         this.lastUpdated = new Date();
     }

@@ -26,9 +26,14 @@ namespace Read.Locations
         public NodeName Name { get; set; }
         
         /// <summary>
-        /// Gets or sets the current telemetry state for different <see cref="TelemetryType"/>
+        /// Gets or sets the current metric states for different <see cref="MetricType"/>
         /// </summary>
-        public IDictionary<TelemetryType, TelemetrySample> State {  get; set; }
+        public IDictionary<MetricType, Metric> Metrics {  get; set; }
+
+        /// <summary>
+        /// Gets or sets the current info states for different <see cref="InfoType"/>
+        /// </summary>
+        public IDictionary<InfoType, Info> Infos {  get; set; }
 
         /// <summary>
         /// Gets or sets the connectivity status for the node
