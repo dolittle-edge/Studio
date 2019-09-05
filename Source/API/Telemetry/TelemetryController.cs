@@ -56,7 +56,8 @@ namespace API.Telemetry
             _nodeTelemeter.Transmit(
                 nodeTelemetry.LocationId, 
                 nodeTelemetry.NodeId,
-                nodeTelemetry.State.ToDictionary(_ => (TelemetryType)_.Key, _ => (TelemetrySample)_.Value)
+                nodeTelemetry.Metrics.ToDictionary(_ => (MetricType)_.Key, _ => (Metric)_.Value),
+                nodeTelemetry.Infos.ToDictionary(_ => (InfoType)_.Key, _ => (Info)_.Value)
             );
             _locationStatuses.ReportConnectionFrom(nodeTelemetry.LocationId, nodeTelemetry.NodeId);
 

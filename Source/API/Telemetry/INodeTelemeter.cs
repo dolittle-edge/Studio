@@ -48,7 +48,8 @@ namespace API.Telemetry
         /// </summary>
         /// <param name="location"><see cref="LocationId"/> for the node</param>
         /// <param name="node"><see cref="NodeId"/> for the node</param>
-        /// <param name="state">Actual state to transmit</param>
-        void Transmit(LocationId location, NodeId node, IDictionary<TelemetryType, TelemetrySample> state);
+        /// <param name="metrics">Metrics to transmit</param>
+        /// <param name="infos">Infos to transmit</param>
+        void Transmit(LocationId location, NodeId node, IDictionary<MetricType, Metric> metrics, IDictionary<InfoType, Info> infos);
     }
 }
