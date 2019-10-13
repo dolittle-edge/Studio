@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dolittle-edge-core:
+    image: dolittle/edge-studio:1.1.0-core
+    build:
+      context: "."
+      dockerfile: "Source/Core/Dockerfile"
+
+  dolittle-edge-web:
+    image: dolittle/edge-studio:1.1.0-web
+    build:
+      context: "."
+      dockerfile: "Source/Web/Dockerfile"
