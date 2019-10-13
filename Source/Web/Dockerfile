@@ -2,13 +2,13 @@ FROM node:11.6 AS build
 
 # Copy package.json and install dependencies
 WORKDIR /Source/
-COPY ./Web/package.json ./Web/package.json
+COPY ./Source/Web/package.json ./Web/package.json
 WORKDIR /Source/Web/
 RUN yarn install
 
 # Build Web project
 WORKDIR /Source/
-COPY ./Web/ ./Web/
+COPY ./Source/Web/ ./Web/
 WORKDIR /Source/Web/
 RUN yarn build
 
