@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dolittle.SDK" Version="3.*" />
-        <PackageReference Include="Dolittle.IO.Tenants" Version="3.*" />
+        <PackageReference Include="Dolittle.SDK" Version="4.*" />
+        <PackageReference Include="Dolittle.IO.Tenants" Version="4.*" />
     </ItemGroup>
 </Project>
