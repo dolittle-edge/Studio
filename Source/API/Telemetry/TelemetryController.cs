@@ -2,23 +2,14 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Concepts.Locations;
 using Concepts.Telemetry;
-using Dolittle.Serialization.Json;
-using Dolittle.Tenancy;
 using Microsoft.AspNetCore.Mvc;
-using Read.Locations;
-using Read.Locations.Nodes;
 using Dolittle.Execution;
+using Dolittle.Collections;
 
 namespace API.Telemetry
 {
-
-
     /// <summary>
     /// Represents an API controller for telemetry
     /// </summary>
@@ -28,21 +19,25 @@ namespace API.Telemetry
         readonly INodeTelemeter _nodeTelemeter;
         readonly ILocationStatuses _locationStatuses;
         readonly IExecutionContextManager _executionContextManager;
+        readonly IDataPointQueue _dataPointQueue;
 
         /// <summary>
         /// Initializes a new instance of <see cref="TelemetryController"/>
         /// </summary>
         /// <param name="nodeTelemeter"><see cref="INodeTelemeter"/> for dealing with telemetry for nodes</param>
         /// <param name="locationStatuses"><see cref="ILocationStatuses"/> for dealing with status for locations</param>
+        /// <param name="dataPointQueue"></param>
         /// <param name="executionContextManager"></param>
         public TelemetryController(
             INodeTelemeter nodeTelemeter,
             ILocationStatuses locationStatuses,
+            IDataPointQueue dataPointQueue,
             IExecutionContextManager executionContextManager)
         {
             _nodeTelemeter = nodeTelemeter;
             _locationStatuses = locationStatuses;
             _executionContextManager = executionContextManager;
+            _dataPointQueue = dataPointQueue;
         }
 
         /// <summary>
@@ -53,21 +48,29 @@ namespace API.Telemetry
         [HttpPost]
         public ActionResult Post([FromBody] NodeTelemetry nodeTelemetry)
         {
+            nodeTelemetry.Metrics.ForEach(_ =>
+            {
+                _dataPointQueue.Push(
+                    nodeTelemetry.LocationId,
+                    nodeTelemetry.NodeId,
+                    _.Key,
+                    _.Value
+                );
+            });
+
             _nodeTelemeter.Transmit(
-                nodeTelemetry.LocationId, 
+                nodeTelemetry.LocationId,
                 nodeTelemetry.NodeId,
                 nodeTelemetry.Metrics.ToDictionary(_ => (MetricType)_.Key, _ => (Metric)_.Value),
                 nodeTelemetry.Infos.ToDictionary(_ => (InfoType)_.Key, _ => (Info)_.Value)
             );
             _locationStatuses.ReportConnectionFrom(nodeTelemetry.LocationId, nodeTelemetry.NodeId);
 
-            var result = new ContentResult
+            return new ContentResult
             {
                 ContentType = "application/json",
                 StatusCode = 200,
             };
-
-            return result;
         }
     }
 }
