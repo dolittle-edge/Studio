@@ -24,7 +24,7 @@ namespace Read.Locations
         /// Gets or sets the name of the node
         /// </summary>
         public NodeName Name { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the current metric states for different <see cref="MetricType"/>
         /// </summary>

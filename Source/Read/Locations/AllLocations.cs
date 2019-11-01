@@ -12,6 +12,5 @@ namespace Read.Locations
     /// </summary>
     public class AllLocations : IQueryFor<Location>
     {
-        
     }
 }

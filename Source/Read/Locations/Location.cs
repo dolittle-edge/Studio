@@ -11,7 +11,7 @@ namespace Read.Locations
     /// Represents a location
     /// </summary>
     public class Location : IReadModel
-    {   
+    {
         /// <summary>
         /// Gets or sets the unique identifier for a location
         /// </summary>

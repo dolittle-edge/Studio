@@ -12,7 +12,7 @@ namespace Read.Locations
     /// Represents a location
     /// </summary>
     public class LocationWithStatus : IReadModel
-    {   
+    {
         /// <summary>
         /// Gets or sets the unique identifier for a location
         /// </summary>
@@ -37,5 +37,5 @@ namespace Read.Locations
         /// Gets or sets the <see cref="DateTimeOffset"/> representing the last time the location was seen
         /// </summary>
         public DateTimeOffset LastSeen { get; set; }
-    }    
+    }
 }

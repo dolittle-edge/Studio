@@ -11,7 +11,7 @@ namespace Read.Locations.Nodes
     /// Represents a node at a location
     /// </summary>
     public class Node : IReadModel
-    {   
+    {
         /// <summary>
         /// Gets or sets the unique identifier for a node
         /// </summary>

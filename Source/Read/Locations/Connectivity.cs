@@ -2,25 +2,22 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System.Collections.Generic;
-using Concepts.Locations;
-using Dolittle.ReadModels;
 
 namespace Read.Locations
 {
     /// <summary>
-    /// Represents the status of a location
+    /// Represents the values for connectivity
     /// </summary>
-    public class LocationStatus : IReadModel
+    public enum Connectivity
     {
         /// <summary>
-        /// Gets or sets the name of the location
+        /// When something is connected
         /// </summary>
-        public LocationName Name { get; set; }
+        Connected,
 
         /// <summary>
-        /// Gets or sets the <see cref="NodeStatus">status for nodes</see>
+        /// When something is disconnected
         /// </summary>
-        public IEnumerable<NodeStatus> Nodes { get; set; }
+        Disconnected
     }
 }
