@@ -6,7 +6,12 @@
         "type": "Domain.Locations.Nodes.AddNodeToLocation, Domain"
       }
     },
-    "events": {},
+    "events": {
+      "affdf992-849f-47c3-b87f-54dd02dba46a": {
+        "generation": 1,
+        "type": "Events.Locations.Nodes.NodeAdded, Events"
+      }
+    },
     "eventSources": {
       "1dcdea7c-8b45-405c-8b08-928bda959fe7": {
         "generation": 1,
@@ -26,7 +31,7 @@
     "events": {
       "6c6c80b0-857a-4193-93fd-8894277d5d86": {
         "generation": 1,
-        "type": "Events.Nodes.NodeAdded, Events"
+        "type": "Events.Locations.Nodes.NodeAdded, Events"
       }
     },
     "eventSources": {},
@@ -41,10 +46,6 @@
       "d7df588c-20d8-4a7d-aa87-8bcbd9238aaf": {
         "generation": 1,
         "type": "Read.Locations.Location, Read"
-      },
-      "2901a98c-c09d-47da-b5f9-318033fcd422": {
-        "generation": 1,
-        "type": "Read.Locations.ModuleStatus, Read"
       },
       "6c4de626-d058-451a-a394-59df8fbd4295": {
         "generation": 1,

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using Dolittle.Events;
 
-namespace Events.Nodes
+namespace Events.Locations.Nodes
 {
     public class NodeAdded : IEvent
     {
@@ -12,7 +12,7 @@ namespace Events.Nodes
         {
             Name = name;
         }
-        
+
         public string Name { get; }
     }
 }

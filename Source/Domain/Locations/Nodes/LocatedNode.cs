@@ -5,7 +5,7 @@
 using Concepts.Locations.Nodes;
 using Dolittle.Domain;
 using Dolittle.Runtime.Events;
-using Events.Nodes;
+using Events.Locations.MovNodes;
 
 namespace Domain.Locations.Nodes
 {
