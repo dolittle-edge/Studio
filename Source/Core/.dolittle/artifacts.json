@@ -39,9 +39,24 @@
     "queries": {}
   },
   "2f7a5753-205b-46f4-b8be-2a3547bcbbee": {
-    "commands": {},
-    "events": {},
-    "eventSources": {},
+    "commands": {
+      "81068b8b-40cd-462c-b616-35ab7c17047c": {
+        "generation": 1,
+        "type": "Domain.Locations.AddLocation, Domain"
+      }
+    },
+    "events": {
+      "f94c2f67-1f9b-40c3-8acb-5336aac473a9": {
+        "generation": 1,
+        "type": "Events.Locations.LocationCreated, Events"
+      }
+    },
+    "eventSources": {
+      "d33c2993-095b-476d-9779-028438702c08": {
+        "generation": 1,
+        "type": "Domain.Locations.Location, Domain"
+      }
+    },
     "readModels": {
       "d7df588c-20d8-4a7d-aa87-8bcbd9238aaf": {
         "generation": 1,
