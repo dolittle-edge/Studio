@@ -2,48 +2,34 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { Command } from "@dolittle/tooling.common.commands";
-import { IDependencyResolvers, PromptDependency, argumentUserInputType } from "@dolittle/tooling.common.dependencies";
-import { ICanOutputMessages, IBusyIndicator, NullMessageOutputter, NullBusyIndicator } from "@dolittle/tooling.common.utilities";
+import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tooling.common.commands";
+import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
+import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import request from 'request-promise-native';
 import dateformat from 'dateformat';
-import { requireInternet } from "@dolittle/tooling.common.packages";
+import { requireInternet, IConnectionChecker, connectionChecker } from "@dolittle/tooling.common.packages";
 
 const name = 'location';
-
 const description = `Get status from a specific location`;
 
 const nameDependency = new PromptDependency(
     'name',
     'The name of the location',
+    [new IsNotEmpty()],
     argumentUserInputType,
     'The name of the location'
 );
-let dependencies = [
-    nameDependency
-];
-/**
- * Represents an implementation of {ICommand} for the get location command
- *
- * @export
- * @class GetLocation
- * @extends {Command}
- */
+
 export class GetLocation extends Command {
-    /**
-     * Instantiates an instance of {GetLocation}.
-     * @param {ICommand[]} commands
-     */
-    constructor(private _edgeAPI: string) {
-        super(name, description, false, undefined, dependencies);
+
+    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker) {
+        super(name, description, false, undefined, [nameDependency]);
     }
-    async action(dependencyResolvers: IDependencyResolvers, currentWorkingDirectory: string, coreLanguage: string, commandArguments?: string[], commandOptions?: Map<string, any> , namespace?: string,
-                outputter: ICanOutputMessages = new NullMessageOutputter(), busyIndicator: IBusyIndicator = new NullBusyIndicator()) {
-        
-        let context = await dependencyResolvers.resolve({}, this.getAllDependencies(currentWorkingDirectory, coreLanguage, commandArguments, commandOptions, namespace), 
-                            currentWorkingDirectory, coreLanguage, commandArguments, commandOptions )
+    
+    async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
+        let context = await dependencyResolvers.resolve({}, this.dependencies);
         let name: any = context[nameDependency.name];
-        await requireInternet(busyIndicator);
+        await requireInternet(connectionChecker, busyIndicator);
         let body = await request(`${this._edgeAPI}/api/Locations/${name}`).promise();
         let result = JSON.parse(body);
 
@@ -61,8 +47,5 @@ export class GetLocation extends Command {
 
             outputter.table(states);
         });
-    }
-    getAllDependencies(currentWorkingDirectory: string, coreLanguage: string, commandArguments?: string[] , commandOptions?: Map<string, any>, namespace?: string ) {
-        return this.dependencies;
     }
 }
