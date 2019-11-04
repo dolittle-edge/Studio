@@ -18,7 +18,7 @@ namespace Domain.Locations
         }
         public void Handle(AddLocation command)
         {
-            _repository.Get(command.LocationId).Create(command.Name);
+            _repository.Get(command.LocationId).Add(command.Name);
         }
     }
 }

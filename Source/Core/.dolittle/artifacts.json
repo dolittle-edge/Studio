@@ -48,7 +48,7 @@
     "events": {
       "f94c2f67-1f9b-40c3-8acb-5336aac473a9": {
         "generation": 1,
-        "type": "Events.Locations.LocationCreated, Events"
+        "type": "Events.Locations.LocationAdded, Events"
       }
     },
     "eventSources": {

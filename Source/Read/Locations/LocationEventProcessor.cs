@@ -26,13 +26,15 @@ namespace Read.Locations
         {
             _locations = locations;
         }
+        
         /// <summary>
         /// 
         /// </summary>
         [EventProcessor("f98ba9f3-12a1-4f47-966e-892aad577da2")]
-        public void Process(LocationCreated @event, EventMetadata eventMetadata)
+        public void Process(LocationAdded @event, EventMetadata eventMetadata)
         {
-            _locations.Insert(new Location{
+            _locations.Insert(new Location
+            {
                 Id = (Guid)eventMetadata.EventSourceId,
                 Name = @event.Name,
             });

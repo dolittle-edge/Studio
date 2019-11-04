@@ -23,6 +23,7 @@ namespace Read.Locations
         {
             _locations = locations;
         }
+
         /// <summary>
         /// 
         /// </summary>

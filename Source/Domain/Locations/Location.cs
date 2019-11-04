@@ -15,9 +15,10 @@ namespace Domain.Locations
         {
             
         }
-        public void Create(string name)
+
+        public void Add(string name)
         {
-            Apply(new LocationCreated(name));            
+            Apply(new LocationAdded(name));
         }
     }
 }

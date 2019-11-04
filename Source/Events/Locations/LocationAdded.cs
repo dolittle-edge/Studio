@@ -8,9 +8,9 @@ using Dolittle.Events;
 
 namespace Events.Locations
 {
-    public class LocationCreated : IEvent
+    public class LocationAdded : IEvent
     {
-        public LocationCreated(string name)
+        public LocationAdded(string name)
         {
             Name = name;
         }
