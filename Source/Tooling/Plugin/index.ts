@@ -6,10 +6,11 @@ import {Plugin} from '@dolittle/tooling.common.plugins';
 import { connectionChecker } from '@dolittle/tooling.common.packages';
 import { CommandGroupsProvider, CommandsProvider, NamespaceProvider,
     EdgeNamespace, GetCommandGroup, GetLocation, GetLocations, ShowCommandGroup, 
-    ShowLocations 
+    ShowLocations, AddCommandGroup, AddLocationCommand, QueryCoordinator, CommandCoordinator
 } from "./internal";
 
-const edgeApi = 'https://edge.dolittle.studio';
+// const edgeApi = 'https://edge.dolittle.studio';
+const edgeApi = 'http://localhost:5000';
 export let commandGroupsProvider = new CommandGroupsProvider([]);
 
 export let commandsProvider = new CommandsProvider([]);
@@ -17,10 +18,13 @@ export let namespaceProvider = new NamespaceProvider([
     new EdgeNamespace([], [
         new GetCommandGroup([
             new GetLocation(edgeApi, connectionChecker),
-            new GetLocations(edgeApi)
+            new GetLocations(edgeApi, connectionChecker, new QueryCoordinator())
         ]),
         new ShowCommandGroup([
             new ShowLocations(edgeApi)
+        ]),
+        new AddCommandGroup([
+            new AddLocationCommand(edgeApi, connectionChecker, new CommandCoordinator())
         ])
     ])
 ]);

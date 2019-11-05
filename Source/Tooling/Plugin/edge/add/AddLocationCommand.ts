@@ -5,14 +5,16 @@
 import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
-import request from 'request-promise-native';
-import dateformat from 'dateformat';
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
+import { CommandCoordinator } from "../../internal";
+import { AddLocation } from "../../internal";
+import { Guid } from "../../internal";
 
 const name = 'location';
-const description = `Get status from a specific location`;
+const description = 'Add a location to a <THING>';
 
 const nameDependency = new PromptDependency(
+    // name of dependency
     'name',
     'The name of the location',
     [new IsNotEmpty()],
@@ -20,33 +22,20 @@ const nameDependency = new PromptDependency(
     'The name of the location'
 );
 
-export class GetLocation extends Command {
+export class AddLocationCommand extends Command {
 
-    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker) {
+    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker, 
+        private _commandCoordinator: CommandCoordinator) {
         super(name, description, false, undefined, [nameDependency]);
     }
     
-    async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
+    async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers,
+        failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);
         let name: any = context[nameDependency.name];
         await requireInternet(this._connectionChecker, busyIndicator);
-        let body = await request(`${this._edgeAPI}/api/Locations/${name}`).promise();
-        let result = JSON.parse(body);
-
-        result.nodes.forEach((node: any) => {
-            let lastUpdated = Date.parse(node.lastUpdated);
-            let prettyDateTime = dateformat(lastUpdated, 'yyyy-mm-dd HH:MM:ss');
-            outputter.print(`State for node: ${node.name} @ ${prettyDateTime}\n`);
-
-            let states: any[] = [];
-            let state: any = {};
-            for (let key in node.state) {
-                state[key] = `${parseInt(node.state[key])}%`
-            }
-            states.push(state);
-
-            outputter.table(states);
-            outputter.print('im new');
-        });
+        CommandCoordinator.apiBaseUrl = this._edgeAPI;
+        let commandResult = await this._commandCoordinator.handle(new AddLocation(name, Guid.create()));
+        outputter.print(commandResult);
     }
 }

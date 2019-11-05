@@ -1,7 +1,7 @@
 {
   "name": "@dolittle/tooling.edge-studio",
   "description": "A dolittle tooling plugin for the edge studio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publishConfig": {
     "access": "public"
   },
@@ -31,7 +31,9 @@
     "prepublishOnly": "yarn build && yarn test:run && yarn test:clean"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.5.3",
     "dateformat": "^3.0.3",
+    "node-fetch": "^2.6.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },
