@@ -1,7 +1,7 @@
 {
-  "name": "@dolittle/tooling.plugin.edge",
+  "name": "@dolittle/tooling.edge-studio",
   "description": "A dolittle tooling plugin for the edge studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "access": "public"
   },
@@ -15,48 +15,40 @@
   "bugs": {
     "url": "https://github.com/dolittle-edge/studio/issues"
   },
-  "keywords": [
-    "dolittle",
-    "tooling",
-    "plugin",
-    "edge"
-  ],
-  "dolittle": {
-    "tooling": "6.*"
-  },
   "files": [
-    "lib",
-    "package.json",
-    "**/*.d.ts"
+    "Distribution",
+    "package.json"
   ],
-  "main": "lib/index.js",
-  "types": "index.d.ts",
-  "typings": "index.d.ts",
+  "main": "Distribution/index.js",
+  "types": "Distribution/index.d.ts",
   "scripts": {
-    "ts:cjs": "tsc -p tsconfig.json --declaration false",
-    "ts:typedefs": "tsc --outDir . --emitDeclarationOnly",
-    "ts:all": "yarn ts:cjs && yarn ts:typedefs",
-    "ts:clean": "del './*.d.ts' '**/*.d.ts' '!node_modules/**/*' lib ",
-    "build": "yarn clean && yarn ts:all",
-    "clean": "del dist && yarn ts:clean",
-    "prepublishOnly": "yarn build"
+    "tasks": "gulp --tasks --gulpfile node_modules/@dolittle/typescript.build.node/Gulpfile.js",
+    "clean": "gulp clean --gulpfile node_modules/@dolittle/typescript.build.node/Gulpfile.js",
+    "build": "gulp build --gulpfile node_modules/@dolittle/typescript.build.node/Gulpfile.js",
+    "test": "gulp test --gulpfile node_modules/@dolittle/typescript.build.node/Gulpfile.js",
+    "test:run": "gulp test-run --gulpfile node_modules/@dolittle/typescript.build.node/Gulpfile.js",
+    "test:clean": "gulp test-clean --gulpfile node_modules/@dolittle/typescript.build.node/Gulpfile.js",
+    "prepublishOnly": "yarn build && yarn test:run && yarn test:clean"
   },
   "dependencies": {
-    "@dolittle/tooling.common.boilerplates": "6.*",
-    "@dolittle/tooling.common.commands": "6.*",
-    "@dolittle/tooling.common.configurations": "6.*",
-    "@dolittle/tooling.common.plugins": "6.*",
-    "@dolittle/tooling.common.utilities": "6.*",
     "dateformat": "^3.0.3",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },
   "devDependencies": {
+    "@dolittle/tooling.common.boilerplates": "8.*",
+    "@dolittle/tooling.common.commands": "8.*",
+    "@dolittle/tooling.common.configurations": "8.*",
+    "@dolittle/tooling.common.dependencies": "8.*",
+    "@dolittle/tooling.common.files": "8.*",
+    "@dolittle/tooling.common.logging": "8.*",
+    "@dolittle/tooling.common.packages": "8.*",
+    "@dolittle/tooling.common.plugins": "8.*",
+    "@dolittle/tooling.common.utilities": "8.*",
+    "@dolittle/typescript.build.node": "^1.1.0",
     "@types/dateformat": "^3.0.0",
     "@types/node": "12.0.0",
     "@types/request": "^2.48.1",
-    "@types/request-promise-native": "^1.0.16",
-    "del-cli": "^2.0.0",
-    "typescript": "^3.4.5"
+    "@types/request-promise-native": "^1.0.16"
   }
 }
