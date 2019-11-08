@@ -8,6 +8,8 @@ import { CommandGroupsProvider, CommandsProvider, NamespaceProvider,
     EdgeNamespace, GetCommandGroup, GetLocation, GetLocations, ShowCommandGroup, 
     ShowLocations, AddCommandGroup, AddLocationCommand, QueryCoordinator, CommandCoordinator
 } from "./internal";
+import { AddNodeToLocation } from './Locations/Nodes/AddNodeToLocation';
+import { AddNodeCommand } from './edge/add/AddNodeCommand';
 
 // const edgeApi = 'https://edge.dolittle.studio';
 const edgeApi = 'http://localhost:5000';
@@ -24,7 +26,8 @@ export let namespaceProvider = new NamespaceProvider([
             new ShowLocations(edgeApi)
         ]),
         new AddCommandGroup([
-            new AddLocationCommand(edgeApi, connectionChecker, new CommandCoordinator())
+            new AddLocationCommand(edgeApi, connectionChecker, new CommandCoordinator()),
+            new AddNodeCommand(edgeApi, connectionChecker, new CommandCoordinator())
         ])
     ])
 ]);

@@ -29,3 +29,16 @@ Linux / macOS
 ```text
 $ Build\build.sh
 ```
+
+
+## Building the CLI locally
+
+```bash
+cd Source/Tooling/Plugin
+# if packages not already installed
+yarn
+# specify your version in the package.json before building 
+yarn build
+npm pack
+# now you have a tarball which you can install to a project
+```

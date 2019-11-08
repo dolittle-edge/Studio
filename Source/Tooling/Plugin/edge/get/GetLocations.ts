@@ -19,7 +19,6 @@ export class GetLocations extends Command {
         super(name, description, false, undefined);
     }
 
-
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         // let context = await dependencyResolvers.resolve({}, this.dependencies);
         // let name: any = context[nameDependency.name];
