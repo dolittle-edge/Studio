@@ -8,7 +8,7 @@ using Concepts.Locations.Nodes;
 using Concepts.Telemetry;
 using Dolittle.ReadModels;
 
-namespace Read.Locations
+namespace Read.Locations.Nodes
 {
     /// <summary>
     /// Represents the status of a node

@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 using Concepts.Locations;
 using Dolittle.ReadModels;
+using Read.Locations.Nodes;
 
 namespace Read.Locations
 {
