@@ -8,45 +8,41 @@ import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.uti
 import request from 'request-promise-native';
 import dateformat from 'dateformat';
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
+import { QueryCoordinator } from "../../internal";
+import { LocationById } from "../../internal";
 
 const name = 'location';
 const description = `Get status from a specific location`;
 
 const nameDependency = new PromptDependency(
-    'name',
-    'The name of the location',
+    'LocationId',
+    'LocationId',
     [new IsNotEmpty()],
     argumentUserInputType,
-    'The name of the location'
+    'The id of the location'
 );
 
 export class GetLocation extends Command {
 
-    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker) {
+    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker,
+           private _queryCoordinator: QueryCoordinator) {
         super(name, description, false, undefined, [nameDependency]);
     }
     
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        let name: any = context[nameDependency.name];
+        let locationId: any = context[nameDependency.name];
         await requireInternet(this._connectionChecker, busyIndicator);
-        let body = await request(`${this._edgeAPI}/api/Locations/${name}`).promise();
-        let result = JSON.parse(body);
-
-        result.nodes.forEach((node: any) => {
-            let lastUpdated = Date.parse(node.lastUpdated);
-            let prettyDateTime = dateformat(lastUpdated, 'yyyy-mm-dd HH:MM:ss');
-            outputter.print(`State for node: ${node.name} @ ${prettyDateTime}\n`);
-
-            let states: any[] = [];
-            let state: any = {};
-            for (let key in node.state) {
-                state[key] = `${parseInt(node.state[key])}%`
-            }
-            states.push(state);
-
-            outputter.table(states);
-            outputter.print('im new');
-        });
+        QueryCoordinator.apiBaseUrl = this._edgeAPI;
+        let commandResult = await this._queryCoordinator.execute(new LocationById(locationId));
+        let results = commandResult.items;
+        outputter.print(results);
+        let formatted: any[] = results.map((location: any) => ({
+                'Id': location.id,
+                'Name': location.name,
+                'Nodes': `${location.connectedNodes}/${location.totalNodes}`,
+                'Last Seen': location.hasBeenSeen ? dateformat(location.lastSeen, 'yyyy-mm-dd HH:MM:ss') : 'never'
+        }));
+        outputter.table(formatted);
     }
 }

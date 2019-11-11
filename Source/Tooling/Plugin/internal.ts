@@ -32,8 +32,9 @@ export * from './queries/QueryRequest';
 
 export * from './Locations/AllLocations';
 export * from './Locations/AddLocation';
+export * from './Locations/LocationById';
 export * from './Locations/Nodes/AddNodeToLocation';
-export * from './Locations/Nodes/Node';
+// export * from './Locations/Nodes/Node';
 
 // edge/add
 export * from './edge/add/AddCommandGroup';

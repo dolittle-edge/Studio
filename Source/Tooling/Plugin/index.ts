@@ -19,7 +19,7 @@ export let commandsProvider = new CommandsProvider([]);
 export let namespaceProvider = new NamespaceProvider([
     new EdgeNamespace([], [
         new GetCommandGroup([
-            new GetLocation(edgeApi, connectionChecker),
+            new GetLocation(edgeApi, connectionChecker, new QueryCoordinator()),
             new GetLocations(edgeApi, connectionChecker, new QueryCoordinator())
         ]),
         new ShowCommandGroup([

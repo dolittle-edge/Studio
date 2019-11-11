@@ -72,6 +72,14 @@
       "bd10b4ef-4bd4-4e9a-980e-514cca29decd": {
         "generation": 1,
         "type": "Read.Locations.AllLocations, Read"
+      },
+      "211f7ba6-4045-4406-a748-03f1dbe82733": {
+        "generation": 1,
+        "type": "Read.Locations.LocationById, Read"
+      },
+      "92c842d3-701d-4e7b-8447-5f8349ea6284": {
+        "generation": 1,
+        "type": "Read.Locations.NodesByLocation, Read"
       }
     }
   }

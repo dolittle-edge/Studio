@@ -42,7 +42,7 @@ export class AddNodeCommand extends Command {
         let locationId: any = context[nodePromptDependency[1].name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._commandCoordinator.handle(new AddNodeToLocation(name, locationId, Guid.create()));
+        let commandResult = await this._commandCoordinator.handle(new AddNodeToLocation(name, Guid.create(), locationId));
         outputter.print(commandResult);
     }
 }
