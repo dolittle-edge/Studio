@@ -3,8 +3,11 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
+using System.Collections.Generic;
 using Concepts.Locations;
+using Concepts.Locations.Nodes;
 using Dolittle.ReadModels;
+using Read.Locations.Nodes;
 
 namespace Read.Locations
 {
@@ -34,8 +37,19 @@ namespace Read.Locations
         public int TotalNodes { get; set;}
 
         /// <summary>
+        /// Gets or sets all nodes expected to be connected
+        /// </summary>
+        public ICollection<NodeName> Nodes { get; set;}
+
+        /// <summary>
         /// Gets or sets the <see cref="DateTimeOffset"/> representing the last time the location was seen
         /// </summary>
         public DateTimeOffset LastSeen { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public bool HasBeenSeen { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace Domain.Locations
         public AddLocationInputValidator() 
         {
             RuleFor(_=>_.Name).NotEmpty().WithMessage("Name is required");
+            RuleFor(_=>_.LocationId).NotEmpty().WithMessage("Location id is required");
         }
     }
 }

@@ -4,10 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 using System;
+using System.Collections.Generic;
+using Concepts.Locations.Nodes;
 using Dolittle.Events.Processing;
 using Dolittle.ReadModels;
 using Dolittle.Runtime.Events;
 using Events.Locations;
+using Events.Locations.Nodes;
 
 namespace Read.Locations
 {
@@ -17,14 +20,17 @@ namespace Read.Locations
     public class LocationEventProcessor : ICanProcessEvents
     {
         readonly IReadModelRepositoryFor<Location> _locations;
+        readonly IReadModelRepositoryFor<LocationWithStatus> _locationsWithStatus;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="locations"></param>
-        public LocationEventProcessor(IReadModelRepositoryFor<Location> locations)
+        /// <param name="locationsWithStatus"></param>
+        public LocationEventProcessor(IReadModelRepositoryFor<Location> locations, IReadModelRepositoryFor<LocationWithStatus> locationsWithStatus)
         {
             _locations = locations;
+            _locationsWithStatus = locationsWithStatus;
         }
         
         /// <summary>
@@ -38,6 +44,24 @@ namespace Read.Locations
                 Id = (Guid)eventMetadata.EventSourceId,
                 Name = @event.Name,
             });
+            _locationsWithStatus.Insert(new LocationWithStatus{
+                Id = (Guid)eventMetadata.EventSourceId,
+                Name = @event.Name,
+                Nodes = new List<NodeName>(),
+                HasBeenSeen = false,
+            });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [EventProcessor("97867397-5783-4cca-aca4-8b9774ca8a49")]
+        public void Process(NodeAdded @event, EventMetadata eventMetadata)
+        {
+            var location = _locationsWithStatus.GetById(@event.LocationId);
+            location.Nodes.Add(@event.Name);
+            location.TotalNodes += 1;
+            _locationsWithStatus.Update(location);
         }
     }
 }

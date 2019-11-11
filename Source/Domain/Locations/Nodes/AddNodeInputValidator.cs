@@ -8,9 +8,9 @@ using FluentValidation;
 
 namespace Domain.Locations.Nodes
 {
-    public class AddLocationInputValidator : CommandInputValidatorFor<AddLocation>
+    public class AddNodeInputValidator : CommandInputValidatorFor<AddNodeToLocation>
     {
-        public AddLocationInputValidator() 
+        public AddNodeInputValidator() 
         {
             RuleFor(_=>_.Name).NotEmpty().WithMessage("Name is required");
             RuleFor(_=>_.LocationId).NotEmpty().WithMessage("Location id is required");
