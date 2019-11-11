@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Dolittle.TimeSeries.Connectors;
 using Dolittle.TimeSeries.DataPoints;
 
-
 namespace API.Telemetry
 {
     /// <summary>
@@ -23,11 +22,12 @@ namespace API.Telemetry
         /// <summary>
         /// Initializes a new instance of <see cref="TimeSeriesConnector"/>
         /// </summary>
-        public TimeSeriesConnector(IDataPointQueue dataPointQueue)
+        /// <param name="dataPointMessenger"><see cref="IDataPointMessenger"/> to use</param>
+        public TimeSeriesConnector(IDataPointMessenger dataPointMessenger)
         {
             _waitHandle = new AutoResetEvent(false);
 
-            dataPointQueue.DataPointReady += (dataPoint) =>
+            dataPointMessenger.DataPointReady += (dataPoint) =>
             {
                 _outbox.Enqueue(dataPoint);
                 _waitHandle.Set();
@@ -35,7 +35,7 @@ namespace API.Telemetry
         }
 
         /// <inheritdoc/>
-        public Source Name => "TimeSeriesConnector";
+        public Source Name => "EdgeTelemetry";
 
         /// <inheritdoc/>
         public async Task Connect(IStreamWriter writer)

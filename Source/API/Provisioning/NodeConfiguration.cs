@@ -18,10 +18,12 @@ namespace API.Provisioning
         /// The unique identifier for the location where the node resides
         /// </summary>
         public LocationId LocationId { get; set; }
+
         /// <summary>
         /// The unique identifier of the node
         /// </summary>
         public NodeId NodeId { get; set; }
+
         /// <summary>
         /// Configurations for the Edge Agent to apply to low-level systems on the node
         /// </summary>

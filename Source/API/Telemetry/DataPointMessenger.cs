@@ -12,10 +12,10 @@ using Single = Dolittle.TimeSeries.DataTypes.Single;
 namespace API.Telemetry
 {
     /// <summary>
-    /// Represents an implementation of <see cref="IDataPointQueue"/>
+    /// Represents an implementation of <see cref="IDataPointMessenger"/>
     /// </summary>
     [Singleton]
-    public class DataPointQueue : IDataPointQueue
+    public class DataPointMessenger : IDataPointMessenger
     {
         /// <inheritdoc/>
         public event DataPointReady DataPointReady = (d) => {};

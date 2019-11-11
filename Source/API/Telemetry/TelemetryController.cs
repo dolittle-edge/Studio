@@ -2,10 +2,7 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System.Linq;
-using Concepts.Telemetry;
 using Microsoft.AspNetCore.Mvc;
-using Dolittle.Execution;
 using Dolittle.Collections;
 
 namespace API.Telemetry
@@ -16,27 +13,19 @@ namespace API.Telemetry
     [Route("api/Telemetry")]
     public class TelemetryController : ControllerBase
     {
-        readonly INodeTelemeter _nodeTelemeter;
         readonly ILocationStatuses _locationStatuses;
-        readonly IExecutionContextManager _executionContextManager;
-        readonly IDataPointQueue _dataPointQueue;
+        readonly IDataPointMessenger _dataPointQueue;
 
         /// <summary>
         /// Initializes a new instance of <see cref="TelemetryController"/>
         /// </summary>
-        /// <param name="nodeTelemeter"><see cref="INodeTelemeter"/> for dealing with telemetry for nodes</param>
         /// <param name="locationStatuses"><see cref="ILocationStatuses"/> for dealing with status for locations</param>
-        /// <param name="dataPointQueue"></param>
-        /// <param name="executionContextManager"></param>
+        /// <param name="dataPointQueue"><see cref="IDataPointQueue"/> for dealing with </param>
         public TelemetryController(
-            INodeTelemeter nodeTelemeter,
             ILocationStatuses locationStatuses,
-            IDataPointQueue dataPointQueue,
-            IExecutionContextManager executionContextManager)
+            IDataPointMessenger dataPointQueue)
         {
-            _nodeTelemeter = nodeTelemeter;
             _locationStatuses = locationStatuses;
-            _executionContextManager = executionContextManager;
             _dataPointQueue = dataPointQueue;
         }
 
@@ -58,12 +47,6 @@ namespace API.Telemetry
                 );
             });
 
-            _nodeTelemeter.Transmit(
-                nodeTelemetry.LocationId,
-                nodeTelemetry.NodeId,
-                nodeTelemetry.Metrics.ToDictionary(_ => (MetricType)_.Key, _ => (Metric)_.Value),
-                nodeTelemetry.Infos.ToDictionary(_ => (InfoType)_.Key, _ => (Info)_.Value)
-            );
             _locationStatuses.ReportConnectionFrom(nodeTelemetry.LocationId, nodeTelemetry.NodeId);
 
             return new ContentResult

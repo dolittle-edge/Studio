@@ -13,7 +13,7 @@ namespace API.Telemetry
     /// <summary>
     /// Defines a <see cref="IAmAPushConnector"/> for pushing timeseries telemetry
     /// </summary>
-    public interface IDataPointQueue
+    public interface IDataPointMessenger
     {
         /// <summary>
         /// Event that gets fired when a <see cref="TagDataPoint"/> is ready
