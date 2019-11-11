@@ -4,12 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 using Concepts.Locations;
 using Concepts.Locations.Nodes;
-using Concepts.Telemetry;
 using Dolittle.Lifecycle;
 using Dolittle.TimeSeries.DataPoints;
 using Single = Dolittle.TimeSeries.DataTypes.Single;
 
-namespace API.Telemetry
+namespace TimeSeries.DataPoints
 {
     /// <summary>
     /// Represents an implementation of <see cref="IDataPointMessenger"/>
@@ -21,9 +20,9 @@ namespace API.Telemetry
         public event DataPointReady DataPointReady = (d) => {};
 
         /// <inheritdoc/>
-        public void Push(LocationId location, NodeId node, MetricType metricType, double value)
+        public void Push(LocationId location, NodeId node, string metricType, double value)
         {
-            DataPointReady(new TagDataPoint(metricType.Value, (Single)value));
+            DataPointReady(new TagDataPoint(metricType, (Single)value));
         }
     }
 }

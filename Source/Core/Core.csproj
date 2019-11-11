@@ -31,6 +31,7 @@
         <ProjectReference Include="..\Events\Events.csproj" />
         <ProjectReference Include="..\Read\Read.csproj" />
         <ProjectReference Include="..\Policies\Policies.csproj" />
+        <ProjectReference Include="..\TimeSeries\TimeSeries.csproj" />
     </ItemGroup>
 
     <ItemGroup>

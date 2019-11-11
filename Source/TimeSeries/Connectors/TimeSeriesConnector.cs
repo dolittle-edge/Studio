@@ -7,8 +7,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Dolittle.TimeSeries.Connectors;
 using Dolittle.TimeSeries.DataPoints;
+using TimeSeries.DataPoints;
 
-namespace API.Telemetry
+namespace TimeSeries.Connectors
 {
     /// <summary>
     /// Represents a <see cref="IAmAPushConnector"/> for pushing timeseries telemetry

@@ -46,18 +46,6 @@
       "d7df588c-20d8-4a7d-aa87-8bcbd9238aaf": {
         "generation": 1,
         "type": "Read.Locations.Location, Read"
-      },
-      "6c4de626-d058-451a-a394-59df8fbd4295": {
-        "generation": 1,
-        "type": "Read.Locations.NodeStatus, Read"
-      },
-      "d648e5cf-54b3-4b13-9766-ae6ba1a67e05": {
-        "generation": 1,
-        "type": "Read.Locations.LocationStatus, Read"
-      },
-      "67b5fcdb-f2ef-4713-9b75-424a9505674f": {
-        "generation": 1,
-        "type": "Read.Locations.LocationWithStatus, Read"
       }
     },
     "queries": {

@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using Microsoft.AspNetCore.Mvc;
 using Dolittle.Collections;
+using TimeSeries.DataPoints;
 
 namespace API.Telemetry
 {
@@ -14,19 +15,19 @@ namespace API.Telemetry
     public class TelemetryController : ControllerBase
     {
         readonly ILocationStatuses _locationStatuses;
-        readonly IDataPointMessenger _dataPointQueue;
+        readonly IDataPointMessenger _dataPointMessenger;
 
         /// <summary>
         /// Initializes a new instance of <see cref="TelemetryController"/>
         /// </summary>
         /// <param name="locationStatuses"><see cref="ILocationStatuses"/> for dealing with status for locations</param>
-        /// <param name="dataPointQueue"><see cref="IDataPointQueue"/> for dealing with </param>
+        /// <param name="dataPointMessenger"><see cref="IDataPointMessenger"/> for dealing with </param>
         public TelemetryController(
             ILocationStatuses locationStatuses,
-            IDataPointMessenger dataPointQueue)
+            IDataPointMessenger dataPointMessenger)
         {
             _locationStatuses = locationStatuses;
-            _dataPointQueue = dataPointQueue;
+            _dataPointMessenger = dataPointMessenger;
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace API.Telemetry
         {
             nodeTelemetry.Metrics.ForEach(_ =>
             {
-                _dataPointQueue.Push(
+                _dataPointMessenger.Push(
                     nodeTelemetry.LocationId,
                     nodeTelemetry.NodeId,
                     _.Key,

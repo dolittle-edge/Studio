@@ -7,6 +7,7 @@
         <ProjectReference Include="..\Concepts\Concepts.csproj" />
         <ProjectReference Include="..\Domain\Domain.csproj" />
         <ProjectReference Include="..\Read\Read.csproj" />
+        <ProjectReference Include="..\TimeSeries\TimeSeries.csproj" />
     </ItemGroup>
 
     <ItemGroup>
