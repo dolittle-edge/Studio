@@ -6,6 +6,7 @@ using System;
 using Autofac;
 using Dolittle.AspNetCore.Bootstrap;
 using Dolittle.Booting;
+using Dolittle.Concepts.Serialization.Json;
 using Dolittle.DependencyInversion.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +39,7 @@ namespace Core
 
                 services.AddCors();
             }
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(_ => _.SerializerSettings.Converters.Add(new ConceptConverter()));
 
             _bootResult = services.AddDolittle(_loggerFactory);
         }
@@ -59,7 +60,8 @@ namespace Core
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 });
 
-                app.UseCors(_ => {
+                app.UseCors(_ =>
+                {
                     _.AllowCredentials();
                     _.AllowAnyMethod();
                     _.AllowAnyOrigin();
@@ -73,10 +75,10 @@ namespace Core
             app.UseMvc();
 
 
-            app.UseWebSockets(new WebSocketOptions 
+            app.UseWebSockets(new WebSocketOptions
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(120),
-                ReceiveBufferSize = 4*1024
+                ReceiveBufferSize = 4 * 1024
             });
             app.UseDolittle();
             app.RunAsSinglePageApplication();
