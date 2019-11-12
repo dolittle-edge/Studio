@@ -54,5 +54,17 @@
         "type": "Read.Locations.AllLocations, Read"
       }
     }
+  },
+  "ea63e9ce-a28a-44f3-b6a7-8fd739263ec5": {
+    "commands": {},
+    "events": {},
+    "eventSources": {},
+    "readModels": {
+      "4c5458ac-5dc5-441f-9486-5519e2fc5d39": {
+        "generation": 1,
+        "type": "TimeSeries.Identification.TagToTimeSeries, TimeSeries"
+      }
+    },
+    "queries": {}
   }
 }

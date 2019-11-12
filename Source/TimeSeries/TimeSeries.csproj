@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Concepts\Concepts.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Concepts\Concepts.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Dolittle.Common" Version="1.*"/>
-    <PackageReference Include="Dolittle.SDK" Version="4.*" />
-    <PackageReference Include="Dolittle.TimeSeries.SDK" Version="7.*" />
-
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
+        <PackageReference Include="Dolittle.Common" Version="1.*"/>
+        <PackageReference Include="Dolittle.SDK" Version="4.*" />
+        <PackageReference Include="Dolittle.TimeSeries.SDK" Version="7.*" />
+    </ItemGroup>
 
 </Project>

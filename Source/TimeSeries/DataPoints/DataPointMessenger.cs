@@ -4,8 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 using Concepts.Locations;
 using Concepts.Locations.Nodes;
+using Dolittle.DependencyInversion;
 using Dolittle.Lifecycle;
 using Dolittle.TimeSeries.DataPoints;
+using TimeSeries.Identification;
 using Single = Dolittle.TimeSeries.DataTypes.Single;
 
 namespace TimeSeries.DataPoints
@@ -19,10 +21,22 @@ namespace TimeSeries.DataPoints
         /// <inheritdoc/>
         public event DataPointReady DataPointReady = (d) => {};
 
+        readonly FactoryFor<ITagDataPointIdentifier> _identifierFactory;
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="DataPointMessenger"/>
+        /// </summary>
+        /// <param name="identifierFactory"><see cref="ITagDataPointIdentifier"/> for identifying tags</param>
+        public DataPointMessenger(FactoryFor<ITagDataPointIdentifier> identifierFactory)
+        {
+            _identifierFactory = identifierFactory;
+        }
+
         /// <inheritdoc/>
         public void Push(LocationId location, NodeId node, string metricType, double value)
         {
-            DataPointReady(new TagDataPoint(metricType, (Single)value));
+            var identity = _identifierFactory().GetOrUpdate(location, node, metricType);
+            DataPointReady(new TagDataPoint(identity.Tag, (Single)value));
         }
     }
 }

@@ -16,6 +16,8 @@ namespace TimeSeries.Connectors
     /// </summary>
     public class TimeSeriesConnector : IAmAPushConnector
     {
+        internal const string SourceName = "EdgeTelemetry";
+
         readonly ConcurrentQueue<TagDataPoint> _outbox = new ConcurrentQueue<TagDataPoint>();
 
         readonly AutoResetEvent _waitHandle;
@@ -36,7 +38,7 @@ namespace TimeSeries.Connectors
         }
 
         /// <inheritdoc/>
-        public Source Name => "EdgeTelemetry";
+        public Source Name => SourceName;
 
         /// <inheritdoc/>
         public async Task Connect(IStreamWriter writer)
