@@ -1,20 +1,20 @@
 {
   "modules": {},
   "features": {
-    "2f7a5753-205b-46f4-b8be-2a3547bcbbee": {
+    "64e03667-5b1a-4ee3-aaaf-dd63c47aba3d": {
       "name": "Locations",
       "subFeatures": {
-        "83c53185-0826-4c90-95a5-45d9604cf886": {
+        "dc6173be-0065-4a7a-93e6-9b75011460bf": {
           "name": "Nodes",
           "subFeatures": {}
         }
       }
     },
-    "6fd93e2a-8c13-47ce-91d2-23da4b7cfea5": {
-      "name": "Nodes",
+    "271d4951-44ec-41b8-99a9-2c77b665b785": {
+      "name": "Installations",
       "subFeatures": {}
     },
-    "ea63e9ce-a28a-44f3-b6a7-8fd739263ec5": {
+    "8f638d7d-a273-48c5-a0e4-cc2de7363fe2": {
       "name": "Identification",
       "subFeatures": {}
     }

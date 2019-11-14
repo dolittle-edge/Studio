@@ -2,6 +2,19 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-export * from './EdgeNamespace';
-export * from './get/index';
-export * from './show/index';
+
+using System;
+using Dolittle.Events;
+
+namespace Events.Locations
+{
+    public class LocationAdded : IEvent
+    {
+        public LocationAdded(string name)
+        {
+            Name = name;
+        }
+
+        public string Name { get; }
+    }
+}

@@ -5,6 +5,7 @@
 using System;
 using Autofac;
 using Dolittle.AspNetCore.Bootstrap;
+using Dolittle.AspNetCore.Debugging.Swagger;
 using Dolittle.Booting;
 using Dolittle.Concepts.Serialization.Json;
 using Dolittle.DependencyInversion.Autofac;
@@ -32,12 +33,13 @@ namespace Core
         {
             if (_hostingEnvironment.IsDevelopment())
             {
-                services.AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                });
+            //     services.AddSwaggerGen(c =>
+            //     {
+            //         c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            //     });
 
                 services.AddCors();
+                services.AddDolittleSwagger();
             }
             services.AddMvc().AddJsonOptions(_ => _.SerializerSettings.Converters.Add(new ConceptConverter()));
 
@@ -54,11 +56,11 @@ namespace Core
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                });
+                // app.UseSwagger();
+                // app.UseSwaggerUI(c =>
+                // {
+                //     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                // });
 
                 app.UseCors(_ =>
                 {
@@ -67,6 +69,7 @@ namespace Core
                     _.AllowAnyOrigin();
                     _.AllowAnyHeader();
                 });
+                app.UseDolittleSwagger();
             }
 
             app.UseDefaultFiles();

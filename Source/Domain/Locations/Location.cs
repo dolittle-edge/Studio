@@ -2,21 +2,23 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Concepts.Locations;
-using Concepts.Locations.Nodes;
+
 using Dolittle.Domain;
 using Dolittle.Runtime.Events;
-using Events.Locations.Nodes;
+using Events.Locations;
 
-namespace Domain.Locations.Nodes
+namespace Domain.Locations
 {
-    public class LocatedNode : AggregateRoot
+    public class Location : AggregateRoot
     {
-        public LocatedNode(EventSourceId eventSourceId) : base(eventSourceId) {}
-
-        public void Add(NodeName name, LocationId locationId)
+        public Location(EventSourceId eventSourceId) : base(eventSourceId)
         {
-            Apply(new NodeAdded(name, locationId));
+            
+        }
+
+        public void Add(string name)
+        {
+            Apply(new LocationAdded(name));
         }
     }
 }
