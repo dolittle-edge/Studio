@@ -106,7 +106,12 @@
         "type": "Domain.Installations.Sites, Domain"
       }
     },
-    "readModels": {},
+    "readModels": {
+      "4fb6fb62-7d86-4a60-8dde-6f7a8dc8cfe7": {
+        "generation": 1,
+        "type": "Read.Installations.Site, Read"
+      }
+    },
     "queries": {}
   },
   "8f638d7d-a273-48c5-a0e4-cc2de7363fe2": {
