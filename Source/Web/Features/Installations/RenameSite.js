@@ -4,14 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 import { Command } from  '@dolittle/commands';
 
-export class AddNodeToLocation extends Command
+export class RenameSite extends Command
 {
     constructor() {
         super();
-        this.type = '78ba5988-6ce1-4101-9861-e3229eef3523';
+        this.type = '6feeb98f-aab8-4ce1-b331-ee46c86e643d';
 
-        this.id = '00000000-0000-0000-0000-000000000000';
-        this.locationId = '00000000-0000-0000-0000-000000000000';
-        this.name = '';
+        this.oldName = '';
+        this.newName = '';
     }
 }

@@ -5,7 +5,7 @@
 using System;
 using Autofac;
 using Dolittle.AspNetCore.Bootstrap;
-using Dolittle.AspNetCore.Debugging.Swagger;
+//using Dolittle.AspNetCore.Debugging.Swagger;
 using Dolittle.Booting;
 using Dolittle.Concepts.Serialization.Json;
 using Dolittle.DependencyInversion.Autofac;
@@ -39,7 +39,7 @@ namespace Core
             //     });
 
                 services.AddCors();
-                services.AddDolittleSwagger();
+                //services.AddDolittleSwagger();
             }
             services.AddMvc().AddJsonOptions(_ => _.SerializerSettings.Converters.Add(new ConceptConverter()));
 
@@ -69,7 +69,7 @@ namespace Core
                     _.AllowAnyOrigin();
                     _.AllowAnyHeader();
                 });
-                app.UseDolittleSwagger();
+                //app.UseDolittleSwagger();
             }
 
             app.UseDefaultFiles();
