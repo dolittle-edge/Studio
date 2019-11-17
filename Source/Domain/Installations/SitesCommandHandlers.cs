@@ -11,27 +11,31 @@ namespace Domain.Installations
 {
     public class SitesCommandHandlers : ICanHandleCommands
     {
-        readonly IAggregateRootRepositoryFor<Sites> _repository;
         readonly IExecutionContextManager _executionContextManager;
+        readonly IAggregateOf<Sites> _sites;
 
         public SitesCommandHandlers(
-            IAggregateRootRepositoryFor<Sites> repository,
+            IAggregateOf<Sites> sites,
             IExecutionContextManager executionContextManager)
         {
-            _repository = repository;
             _executionContextManager = executionContextManager;
+            _sites = sites;
         }
 
         public void Handle(RegisterSite register)
         {
-            var sites = _repository.Get(_executionContextManager.Current.Tenant.Value);
-            sites.Register(Guid.NewGuid(), register.Name);
+            if( _sites.Perform(_executionContextManager.Current.Tenant.Value, _ => _.Register(Guid.NewGuid(), register.Name)) )
+            {
+                // Yippi
+            }
         }
 
         public void Handle(RenameSite rename)
         {
-            var sites = _repository.Get(_executionContextManager.Current.Tenant.Value);
-            sites.Rename(rename.OldName, rename.NewName);
+            if( _sites.Perform(_executionContextManager.Current.Tenant.Value, _ => _.Rename(rename.OldName, rename.NewName)) )
+            {
+                // Yippi
+            }
         }
     }
 }
