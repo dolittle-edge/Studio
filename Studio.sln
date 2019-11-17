@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{D82D36
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeSeries", "Source\TimeSeries\TimeSeries.csproj", "{55800A71-0D34-4ABF-AA07-193F09F88F4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Source\Infrastructure\Infrastructure.csproj", "{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -144,8 +146,21 @@ Global
 		{55800A71-0D34-4ABF-AA07-193F09F88F4A}.Release|x64.Build.0 = Release|Any CPU
 		{55800A71-0D34-4ABF-AA07-193F09F88F4A}.Release|x86.ActiveCfg = Release|Any CPU
 		{55800A71-0D34-4ABF-AA07-193F09F88F4A}.Release|x86.Build.0 = Release|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Debug|x64.Build.0 = Debug|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Debug|x86.Build.0 = Debug|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Release|x64.ActiveCfg = Release|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Release|x64.Build.0 = Release|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Release|x86.ActiveCfg = Release|Any CPU
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55800A71-0D34-4ABF-AA07-193F09F88F4A} = {D82D3648-DEBC-4F2E-AD18-8727AF47638F}
+		{FA6461C3-FC1D-4D1C-89D1-5D4B3C024DE8} = {D82D3648-DEBC-4F2E-AD18-8727AF47638F}
 	EndGlobalSection
 EndGlobal
