@@ -24,7 +24,8 @@ namespace Domain.Installations
 
         public void Handle(RegisterSite register)
         {
-            if( _sites.Perform(_executionContextManager.Current.Tenant.Value, _ => _.Register(Guid.NewGuid(), register.Name)) )
+            if( _sites  .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                        .Perform(_ => _.Register(Guid.NewGuid(), register.Name)) )
             {
                 // Yippi
             }
@@ -32,7 +33,8 @@ namespace Domain.Installations
 
         public void Handle(RenameSite rename)
         {
-            if( _sites.Perform(_executionContextManager.Current.Tenant.Value, _ => _.Rename(rename.OldName, rename.NewName)) )
+            if( _sites  .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                        .Perform(_ => _.Rename(rename.OldName, rename.NewName)) )
             {
                 // Yippi
             }
