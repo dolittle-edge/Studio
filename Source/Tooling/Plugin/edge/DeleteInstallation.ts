@@ -6,36 +6,37 @@ import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tool
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
-import { CommandCoordinator } from "../../internal";
-import { AddLocation } from "../../internal";
-import { Guid } from "../../internal";
+import { CommandCoordinator } from "@dolittle/commands";
+// import { AddNodeToLocation } from "../../internal";
+import { Guid } from "@dolittle/core";
 
-const name = 'location';
-const description = 'Add a location to a <THING>';
+const name = 'delete';
+const description = 'deletes an installation';
 
-const nameDependency = new PromptDependency(
-    // name of dependency
+const deletePromptDependency = new PromptDependency(
     'name',
-    'The name of the location',
+    'The name of the installation',
     [new IsNotEmpty()],
     argumentUserInputType,
-    'The name of the location'
+    'The name of the installation'
 );
 
-export class AddLocationCommand extends Command {
+export class DeleteInstallation extends Command {
 
     constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker, 
         private _commandCoordinator: CommandCoordinator) {
-        super(name, description, false, undefined, [nameDependency]);
+        super(name, description, false, undefined, [deletePromptDependency]);
     }
     
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers,
         failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        let name: any = context[nameDependency.name];
+        // let name: any = context[deletePromptDependency[0].name];
+        // let siteName: any = context[deletePromptDependency[1].name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._commandCoordinator.handle(new AddLocation(name, Guid.create()));
-        outputter.print(commandResult);
+        // TODO: add the real logic here
+        // let commandResult = await this._commandCoordinator.handle(new AddNodeToLocation(name, Guid.create(), locationId));
+        // outputter.print(commandResult as any);
     }
 }

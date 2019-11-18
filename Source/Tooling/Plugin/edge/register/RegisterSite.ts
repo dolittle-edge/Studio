@@ -6,43 +6,37 @@ import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tool
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
-import { CommandCoordinator } from "../../internal";
-import { AddNodeToLocation } from "../../internal";
-import { Guid } from "../../internal";
+import { CommandCoordinator } from "@dolittle/commands";
+// import { AddNodeToLocation } from "../../internal";
+import { Guid } from "@dolittle/core";
 
-const name = 'node';
-const description = 'Add a node to a location';
+const name = 'site';
+const description = 'register a new Site with a name';
 
-const nodePromptDependency = [
-    new PromptDependency(
-        'name',
-        'The name of the node',
-        [new IsNotEmpty()],
-        argumentUserInputType,
-        'The name of the node'),
-    new PromptDependency(
-        'locationId',
-        'ID of the location',
-        [new IsNotEmpty()],
-        argumentUserInputType,
-        'ID of the location which you want to connect the node to',
-)];
+const registerPromptDependency = new PromptDependency(
+    'name',
+    'The name of the site',
+    [new IsNotEmpty()],
+    argumentUserInputType,
+    'The name of the site'
+);
 
-export class AddNodeCommand extends Command {
+export class RegisterSite extends Command {
 
     constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker, 
         private _commandCoordinator: CommandCoordinator) {
-        super(name, description, false, undefined, nodePromptDependency);
+        super(name, description, false, undefined, [registerPromptDependency]);
     }
     
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers,
         failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        let name: any = context[nodePromptDependency[0].name];
-        let locationId: any = context[nodePromptDependency[1].name];
+        // let name: any = context[registerPromptDependency[0].name];
+        // let siteName: any = context[registerPromptDependency[1].name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._commandCoordinator.handle(new AddNodeToLocation(name, Guid.create(), locationId));
-        outputter.print(commandResult);
+        // TODO: add the real logic here
+        // let commandResult = await this._commandCoordinator.handle(new AddNodeToLocation(name, Guid.create(), locationId));
+        // outputter.print(commandResult as any);
     }
 }

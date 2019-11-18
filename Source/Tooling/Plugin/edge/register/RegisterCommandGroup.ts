@@ -2,25 +2,22 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { CommandGroup, ICommand } from "@dolittle/tooling.common.commands";
+import { ICommand, CommandGroup } from "@dolittle/tooling.common.commands";
 
-const name = 'get';
+const name = 'register';
+const description = `register a new physical resource like a site or node`;
 
-const description = `Get details`;
 /**
- * Represents an implementation of {ICommandGroup} for the get command group
+ * Represents an implementation of {ICommandGroup} 
  *
  * @export
- * @class GetCommandGroup
+ * @class RenameCommandGroup
  * @extends {CommandGroup}
  */
-export class GetCommandGroup extends CommandGroup {
+export class RegisterCommandGroup extends CommandGroup {
 
-    /**
-     * Instantiates an instance of {GetCommandGroup}.
-     * @param {ICommand[]} commands
-     */
     constructor(commands: ICommand[]) {
         super(name, commands, description, false);
     }
+
 }

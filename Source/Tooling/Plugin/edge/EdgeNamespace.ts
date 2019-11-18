@@ -5,12 +5,11 @@
 import { Namespace, ICommandGroup, ICommand } from "@dolittle/tooling.common.commands";
 
 const name = 'edge';
-const description = 'The edge namespace';
+const description = 'Manage different Edge resources';
 
 export class EdgeNamespace extends Namespace {
 
     constructor(commands: ICommand[], commandGroups: ICommandGroup[]) {
         super(name, commands, commandGroups, description);
-
     }
 }
