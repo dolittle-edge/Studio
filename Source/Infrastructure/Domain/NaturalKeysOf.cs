@@ -21,7 +21,6 @@ namespace Infrastructure.Domain
         readonly ConcurrentDictionary<T, Guid> _keysToGuids = new ConcurrentDictionary<T, Guid>();
         readonly ConcurrentDictionary<Guid, T> _guidsToKeys = new ConcurrentDictionary<Guid, T>();
 
-#if(false)
         /// <summary>
         /// Initializes a new instance of <see cref="NaturalKeysOf{T}"/>
         /// </summary>
@@ -32,18 +31,16 @@ namespace Infrastructure.Domain
             _collection = GetCollection();
             Populate();
         }
-#endif        
 
         /// <inheritdoc/>
         public void Associate(T key, Guid guid)
         {
-            /*
             var association = new NaturalKeyMap<T> { Id = guid, Key = key };
             _collection.ReplaceOne(
                 map => map.Id == association.Id,
                 association,
                 new UpdateOptions { IsUpsert = true }
-            );*/
+            );
 
             if (_keysToGuids.Any(_ => _.Value == guid))
             {
