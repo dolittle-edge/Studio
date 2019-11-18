@@ -15,7 +15,7 @@ namespace Domain.Installations
     {
         readonly IAggregateRootRepositoryFor<Sites> _repository;
         readonly IExecutionContextManager _executionContextManager;
-        private readonly INaturalKeysOf<SiteName> _siteNameKeys;
+        readonly INaturalKeysOf<SiteName> _siteNameKeys;
 
         public SitesCommandHandlers(
             IAggregateRootRepositoryFor<Sites> repository,
