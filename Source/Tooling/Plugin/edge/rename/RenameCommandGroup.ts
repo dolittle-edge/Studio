@@ -19,5 +19,4 @@ export class RenameCommandGroup extends CommandGroup {
     constructor(commands: ICommand[]) {
         super(name, commands, description, false);
     }
-
 }
