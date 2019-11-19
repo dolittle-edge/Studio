@@ -7,7 +7,7 @@ using System.Linq;
 using Dolittle.Queries;
 using Dolittle.ReadModels;
 
-namespace Read.Installation
+namespace Read.Installations
 {
     /// <summary>
     /// Represents a query for getting all locactions

@@ -9,7 +9,7 @@ using Dolittle.ReadModels;
 using Dolittle.Runtime.Events;
 using Events.Installations;
 
-namespace Read.Installation
+namespace Read.Installations
 {
     /// <summary>
     /// 

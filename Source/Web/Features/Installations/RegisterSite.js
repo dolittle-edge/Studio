@@ -8,7 +8,7 @@ export class RegisterSite extends Command
 {
     constructor() {
         super();
-        this.type = 'f542ffac-c0c6-4bc0-996f-ae677d3f3a40';
+        this.type = '01193d50-0bbf-4a19-a1f4-73f4897d45bb';
 
         this.name = '';
     }

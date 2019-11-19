@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import { Query } from  '@dolittle/queries';
 
-export class AllSites extends Query
+export class AllInstallations extends Query
 {
     constructor() {
         super();
-        this.nameOfQuery = 'AllSites';
-        this.generatedFrom = 'Read.Installation.AllSites';
+        this.nameOfQuery = 'AllInstallations';
+        this.generatedFrom = 'Read.Installations.AllInstallations';
 
     }
 }

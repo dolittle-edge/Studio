@@ -5,21 +5,26 @@
 using Concepts.Installations;
 using Dolittle.ReadModels;
 
-namespace Read.Installation
+namespace Read.Installations
 {
     /// <summary>
     /// Represents a node at a location
     /// </summary>
-    public class Site : IReadModel
+    public class Installation : IReadModel
     {
         /// <summary>
         /// Gets or sets the unique identifier for a node
         /// </summary>
-        public SiteId Id { get; set; }
+        public InstallationId Id { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the node
         /// </summary>
-        public SiteName Name { get; set; }
+        public InstallationName Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the node
+        /// </summary>
+        public SiteName SiteName { get; set; }
     }
 }

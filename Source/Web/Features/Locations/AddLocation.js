@@ -8,7 +8,7 @@ export class AddLocation extends Command
 {
     constructor() {
         super();
-        this.type = '2e700c84-a3f8-438d-be84-31d1d7673591';
+        this.type = '770877c4-0496-4d09-bcc0-30e9e23aaaab';
 
         this.locationId = '00000000-0000-0000-0000-000000000000';
         this.name = '';
