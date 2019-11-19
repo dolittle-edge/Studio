@@ -4,17 +4,17 @@
 *--------------------------------------------------------------------------------------------*/
 import { ICommand, CommandGroup } from "@dolittle/tooling.common.commands";
 
-const name = 'show';
-const description = `Show information`;
+const name = 'list';
+const description = `List out all particular resources`;
 
 /**
  * Represents an implementation of {ICommandGroup} 
  *
  * @export
- * @class ShowCommandGroup
+ * @class ListCommandGroup
  * @extends {CommandGroup}
  */
-export class ShowCommandGroup extends CommandGroup {
+export class ListCommandGroup extends CommandGroup {
 
     constructor(commands: ICommand[]) {
         super(name, commands, description, false);

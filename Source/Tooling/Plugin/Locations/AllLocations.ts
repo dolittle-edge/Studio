@@ -2,16 +2,12 @@
  *  This file is an automatically generated Query Proxy
  *  
  *--------------------------------------------------------------------------------------------*/
-import { Query } from  '../internal';
+import { Query } from  '@dolittle/queries';
 
 export class AllLocations extends Query
 {
-    nameOfQuery: string;
-    generatedFrom: string;
 
     constructor() {
-        super();
-        this.nameOfQuery = 'AllLocations';
-        this.generatedFrom = 'Read.Locations.AllLocations';
+        super('AllLocations', 'Read.Locations.AllLocations');
     }
 }
