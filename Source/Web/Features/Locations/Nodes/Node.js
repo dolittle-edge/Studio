@@ -9,7 +9,7 @@ export class Node extends ReadModel
     constructor() {
         super();
         this.artifact = {
-           id: 'f690b2ed-9bcc-4027-a4af-674c4874c57f',
+           id: '09da65c8-090f-4d81-889a-d5de46d800d0',
            generation: '1'
         };
         this.id = '00000000-0000-0000-0000-000000000000';

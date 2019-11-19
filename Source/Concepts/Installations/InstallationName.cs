@@ -6,11 +6,8 @@ using Dolittle.Concepts;
 
 namespace Concepts.Installations
 {
-    /// <summary>
-    /// Represents the concept of the name of a location
-    /// </summary>
-    public class SiteName : ConceptAs<string>
+    public class InstallationName : ConceptAs<string>
     {
-        public static implicit operator SiteName(string value) => new SiteName { Value = value };
+        public static implicit operator InstallationName(string value) => new InstallationName { Value = value };
     }
 }

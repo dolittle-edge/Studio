@@ -2,15 +2,12 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.Concepts;
+using System;
 
-namespace Concepts.Installations
+namespace Domain.Installations
 {
-    /// <summary>
-    /// Represents the concept of the name of a location
-    /// </summary>
-    public class SiteName : ConceptAs<string>
+    public class NodeNameAlreadyUsed : Exception
     {
-        public static implicit operator SiteName(string value) => new SiteName { Value = value };
+        public NodeNameAlreadyUsed(string name) : base($"The '{name}' is already registerd as a node") {}
     }
 }

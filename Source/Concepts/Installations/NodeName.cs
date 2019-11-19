@@ -9,8 +9,8 @@ namespace Concepts.Installations
     /// <summary>
     /// Represents the concept of the name of a location
     /// </summary>
-    public class SiteName : ConceptAs<string>
+    public class NodeName : ConceptAs<string>
     {
-        public static implicit operator SiteName(string value) => new SiteName { Value = value };
+        public static implicit operator NodeName(string value) => new NodeName { Value = value };
     }
 }

@@ -4,12 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 import { Command } from  '@dolittle/commands';
 
-export class RegisterSite extends Command
+export class RenameInstallation extends Command
 {
     constructor() {
         super();
-        this.type = 'f366eb02-43b6-417e-b8bc-162930da4ecb';
+        this.type = '7384a27b-e5af-4c8f-a5b4-04b439b29ce7';
 
-        this.name = '';
+        this.oldName = '';
+        this.newName = '';
     }
 }

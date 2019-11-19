@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import { Command } from  '@dolittle/commands';
 
-export class RegisterSite extends Command
+export class RegisterNode extends Command
 {
     constructor() {
         super();
-        this.type = 'f366eb02-43b6-417e-b8bc-162930da4ecb';
+        this.type = '13042495-de94-4055-90ed-60ec7965dda2';
 
         this.name = '';
     }
