@@ -7,17 +7,15 @@ using Dolittle.Events;
 
 namespace Events.Installations
 {
-    public class InstallationCreated : IEvent
+    public class NodeRegistered : IEvent
     {
-        public InstallationCreated(Guid installationId, string name, Guid siteId)
+        public NodeRegistered(Guid nodeId, string name)
         {
-            InstallationId = installationId;
+            NodeId = nodeId;
             Name = name;
-            SiteId = siteId;
         }
 
-        public Guid InstallationId { get; }
+        public Guid NodeId { get; }
         public string Name { get; }
-        public Guid SiteId { get; }
     }
 }

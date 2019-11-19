@@ -1,137 +1,101 @@
 {
-  "7eb9bb26-0761-4cbd-8ce8-a5b9c70ad324": {
-    "commands": {
-      "770877c4-0496-4d09-bcc0-30e9e23aaaab": {
-        "generation": 1,
-        "type": "Domain.Locations.AddLocation, Domain"
-      }
-    },
-    "events": {
-      "165890f9-1ff5-46cc-9314-01053a3aa595": {
-        "generation": 1,
-        "type": "Events.Locations.LocationAdded, Events"
-      }
-    },
-    "eventSources": {
-      "efc3e442-70e8-4250-bf5e-3373f9aa44d9": {
-        "generation": 1,
-        "type": "Domain.Locations.Location, Domain"
-      }
-    },
-    "readModels": {
-      "a09989f8-4fe1-4f9d-b5aa-73dca48ed241": {
-        "generation": 1,
-        "type": "Read.Locations.Location, Read"
-      },
-      "f3264133-b0fc-4193-bab4-73da748b184a": {
-        "generation": 1,
-        "type": "Read.Locations.LocationWithStatus, Read"
-      }
-    },
-    "queries": {
-      "58901619-c67f-4fcf-bdd9-f05659b685e2": {
-        "generation": 1,
-        "type": "Read.Locations.AllLocations, Read"
-      },
-      "0fdfaacc-629b-47b8-90ae-e5c165ea39cb": {
-        "generation": 1,
-        "type": "Read.Locations.LocationById, Read"
-      },
-      "87714df9-ab9e-46bb-b131-2282453a7f58": {
-        "generation": 1,
-        "type": "Read.Locations.NodesByLocation, Read"
-      }
-    }
-  },
-  "fe609c74-f943-46c6-8b12-f3939a92a792": {
-    "commands": {
-      "22cecc74-71b4-4076-a8a0-49cf63a98b27": {
-        "generation": 1,
-        "type": "Domain.Locations.Nodes.AddNodeToLocation, Domain"
-      }
-    },
-    "events": {
-      "06660874-d69a-48b1-9b6b-83580d9c9c33": {
-        "generation": 1,
-        "type": "Events.Locations.Nodes.NodeAdded, Events"
-      }
-    },
-    "eventSources": {
-      "dcd93051-beca-4782-82bf-bcd3a2683205": {
-        "generation": 1,
-        "type": "Domain.Locations.Nodes.LocatedNode, Domain"
-      }
-    },
-    "readModels": {
-      "09da65c8-090f-4d81-889a-d5de46d800d0": {
-        "generation": 1,
-        "type": "Read.Locations.Nodes.Node, Read"
-      }
-    },
-    "queries": {
-      "26e074b9-4934-4964-89ce-645ca94f0e55": {
-        "generation": 1,
-        "type": "Read.Locations.Nodes.AllNodes, Read"
-      }
-    }
-  },
   "3edfd8c4-ca12-417e-add8-fb2d20205f4d": {
     "commands": {
-      "3e0a8d0e-d115-452a-a2e2-cef6a716ce1d": {
+      "152ed284-440c-45d4-acdf-763dbd869404": {
         "generation": 1,
         "type": "Domain.Installations.CreateInstallation, Domain"
       },
-      "01193d50-0bbf-4a19-a1f4-73f4897d45bb": {
+      "13042495-de94-4055-90ed-60ec7965dda2": {
+        "generation": 1,
+        "type": "Domain.Installations.RegisterNode, Domain"
+      },
+      "f366eb02-43b6-417e-b8bc-162930da4ecb": {
         "generation": 1,
         "type": "Domain.Installations.RegisterSite, Domain"
       },
-      "23dddc61-24da-417f-9305-d110c478d46b": {
+      "6156d018-a87e-43a4-bd72-7ce7e4c76f27": {
         "generation": 1,
         "type": "Domain.Installations.RenameSite, Domain"
+      },
+      "7384a27b-e5af-4c8f-a5b4-04b439b29ce7": {
+        "generation": 1,
+        "type": "Domain.Installations.RenameInstallation, Domain"
+      },
+      "a93f2a72-9dea-42f4-b8a5-87c322678671": {
+        "generation": 1,
+        "type": "Domain.Installations.RenameNode, Domain"
       }
     },
     "events": {
-      "1abd6aac-a607-45b2-a018-76654fe20bcd": {
+      "9943a7e7-8933-4450-82c9-01be52f21ff4": {
         "generation": 1,
         "type": "Events.Installations.InstallationCreated, Events"
       },
-      "cdd97f02-7033-41eb-8d79-da6c7c17b5bf": {
+      "bcfd154d-639c-4189-a852-e3f4e048d827": {
+        "generation": 1,
+        "type": "Events.Installations.NodeRegistered, Events"
+      },
+      "d0ee1567-31ca-4e83-9ba7-0339d5208ff6": {
         "generation": 1,
         "type": "Events.Installations.SiteRegistered, Events"
       },
-      "268cfd7a-1ef2-4457-baaf-433419c0f897": {
+      "3a4bd4d6-2ef4-46ba-98d9-0c7002397dbc": {
         "generation": 1,
         "type": "Events.Installations.SiteRenamed, Events"
+      },
+      "1422c2ee-f8ae-4c1b-af93-4ff934f991f5": {
+        "generation": 1,
+        "type": "Events.Installations.InstallationRenamed, Events"
+      },
+      "c5165852-3560-48ad-b91a-cc9048b08a4e": {
+        "generation": 1,
+        "type": "Events.Installations.NodeRenamed, Events"
       }
     },
     "eventSources": {
-      "ce0d4bf7-fb53-494d-8df2-62cab5d3e0d3": {
+      "6cea3afb-1073-4eac-8306-53e38b693f69": {
         "generation": 1,
         "type": "Domain.Installations.Installations, Domain"
       },
-      "f9dadb5e-5c94-40e9-b714-78ebd9338fb7": {
+      "3b38b6a9-f5df-483d-9fc4-f0b59cb2a19b": {
+        "generation": 1,
+        "type": "Domain.Installations.Nodes, Domain"
+      },
+      "4d0767fa-d349-4917-b938-6b9c8609ece3": {
         "generation": 1,
         "type": "Domain.Installations.Sites, Domain"
       }
     },
     "readModels": {
-      "0e7898a8-000a-4148-8324-3def1e141060": {
+      "e227d61a-407e-4056-b317-e02e69878e91": {
         "generation": 1,
         "type": "Read.Installations.Installation, Read"
       },
-      "f1c40ab3-7c65-4d5e-ac6a-e452cda548a3": {
+      "0b1e0bed-6ca8-415b-89ba-0016989b1e34": {
+        "generation": 1,
+        "type": "Read.Installations.Node, Read"
+      },
+      "2d346f64-48ff-4b69-9a5d-920de32fbff0": {
         "generation": 1,
         "type": "Read.Installations.Site, Read"
       }
     },
     "queries": {
-      "cb198d5d-8500-4b68-8b3f-57dbe5a6d03c": {
+      "696e9b5c-d058-484d-aef2-791d6767a019": {
         "generation": 1,
         "type": "Read.Installations.AllInstallations, Read"
       },
-      "594aac2d-9259-45ff-b783-f5c494fb6003": {
+      "b75b5045-6725-4bf3-92d8-30801a30247c": {
+        "generation": 1,
+        "type": "Read.Installations.AllNodes, Read"
+      },
+      "615208de-3616-478d-af40-d53a08914793": {
         "generation": 1,
         "type": "Read.Installations.AllSites, Read"
+      },
+      "6f655914-6729-41d1-b306-cabd9570821c": {
+        "generation": 1,
+        "type": "Read.Installations.InstallationsOnSite, Read"
       }
     }
   },
@@ -140,7 +104,7 @@
     "events": {},
     "eventSources": {},
     "readModels": {
-      "5dd44e99-d33f-40e1-a713-5d717e5af7fc": {
+      "c5761303-1e67-44b0-82f9-60c596020c3a": {
         "generation": 1,
         "type": "TimeSeries.Identification.TagToTimeSeries, TimeSeries"
       }

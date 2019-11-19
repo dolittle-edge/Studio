@@ -25,6 +25,6 @@ namespace Read.Installations
         /// <summary>
         /// Gets or sets the name of the node
         /// </summary>
-        public SiteName SiteName { get; set; }
+        public SiteId SiteId { get; set; }
     }
 }

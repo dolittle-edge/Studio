@@ -2,16 +2,15 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+using Dolittle.Concepts;
 
-using System;
-using Dolittle.Commands;
-
-namespace Domain.Locations
+namespace Concepts.Installations
 {
-    public class AddLocation : ICommand
+    /// <summary>
+    /// Represents the concept of the name of a location
+    /// </summary>
+    public class NodeName : ConceptAs<string>
     {
-        public Guid LocationId { get; set; }
-        public string Name { get; set; }
-        
+        public static implicit operator NodeName(string value) => new NodeName { Value = value };
     }
 }

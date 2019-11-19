@@ -18,35 +18,36 @@ namespace Domain.Installations
             public Installation(InstallationId installationId) => InstallationId = installationId;
             public InstallationId InstallationId { get; }
             public string Name { get; set; }
+            public SiteId SiteId { get; set; }
         }
         public Installations(EventSourceId id) : base(id) { }
 
         readonly List<Installation> _installations = new List<Installation>();
 
-        public void Create(InstallationId installationId, string name, SiteName siteName)
+        public void Create(InstallationId installationId, string name, SiteId siteId)
         {
             ThrowIfInstallationNameIsAlreadyUsed(name);
 
-            Apply(new InstallationCreated(installationId, siteName, name));
+            Apply(new InstallationCreated(installationId, name, siteId));
         }
 
-        // public void Rename(string oldName, string newName)
-        // {
-        //     ThrowIfInstallationNameIsAlreadyUsed(newName);
+        public void Rename(string oldName, string newName)
+        {
+            ThrowIfInstallationNameIsAlreadyUsed(newName);
 
-        //     var site = _installations.Single(_ => _.Name == oldName);
-        //     Apply(new SiteRenamed(site.SiteId, newName));
-        // }
+            var installation = _installations.Single(_ => _.Name == oldName);
+            Apply(new InstallationRenamed(installation.InstallationId, newName));
+        }
 
         void On(InstallationCreated @event)
         {
             _installations.Add(new Installation(@event.InstallationId) { Name = @event.Name });
         }
 
-        // void On(SiteRenamed @event)
-        // {
-        //     _installations.Single(_ => _.SiteId == @event.SiteId).Name = @event.Name;
-        // }
+        void On(InstallationRenamed @event)
+        {
+            _installations.Single(_ => _.InstallationId == @event.InstallationId).Name = @event.Name;
+        }
 
         void ThrowIfInstallationNameIsAlreadyUsed(string name)
         {

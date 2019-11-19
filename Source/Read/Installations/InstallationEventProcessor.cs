@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-using System;
 using Dolittle.Events.Processing;
 using Dolittle.ReadModels;
 using Dolittle.Runtime.Events;
@@ -18,10 +17,6 @@ namespace Read.Installations
     {
         readonly IReadModelRepositoryFor<Installation> _installations;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="insallations"></param>
         public InstallationEventProcessor(IReadModelRepositoryFor<Installation> insallations)
         {
             _installations = insallations;
@@ -37,8 +32,16 @@ namespace Read.Installations
             {
                 Id = @event.InstallationId,
                 Name = @event.Name,
-                SiteName = @event.SiteName,
+                SiteId = @event.SiteId,
             });
+        }
+
+        [EventProcessor("c5e7ffca-aaab-4ae7-9ad9-a1a87247f8d7")]
+        public void Process(InstallationRenamed @event)
+        {
+            var installation = _installations.GetById(@event.InstallationId);
+            installation.Name = @event.Name;
+            _installations.Update(installation);
         }
     }
 }

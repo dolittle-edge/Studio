@@ -2,23 +2,20 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+using System;
+using Dolittle.Events;
 
-using Dolittle.Domain;
-using Dolittle.Runtime.Events;
-using Events.Locations;
-
-namespace Domain.Locations
+namespace Events.Installations
 {
-    public class Location : AggregateRoot
+    public class NodeRenamed : IEvent
     {
-        public Location(EventSourceId eventSourceId) : base(eventSourceId)
+        public NodeRenamed(Guid nodeId, string name)
         {
-            
+            NodeId = nodeId;
+            Name = name;
         }
 
-        public void Add(string name)
-        {
-            Apply(new LocationAdded(name));
-        }
+        public Guid NodeId { get; }
+        public string Name { get; }
     }
 }

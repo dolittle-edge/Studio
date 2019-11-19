@@ -2,17 +2,13 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.Commands;
-using Dolittle.Domain;
-using Concepts.Locations.Nodes;
-using Concepts.Locations;
+using System;
+using Dolittle.Concepts;
 
-namespace Domain.Locations.Nodes
+namespace Concepts.Installations
 {
-    public class AddNodeToLocation : ICommand
+    public class NodeId : ConceptAs<Guid>
     {
-        public NodeId Id { get; set; }
-        public LocationId LocationId { get; set; }
-        public NodeName Name { get; set; }       
+        public static implicit operator NodeId(Guid nodeId) => new NodeId { Value = nodeId };
     }
 }

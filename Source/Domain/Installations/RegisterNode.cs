@@ -2,21 +2,14 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System;
-using Dolittle.Events;
 
+using Concepts.Installations;
+using Dolittle.Commands;
 
-namespace Events.Locations.Nodes
+namespace Domain.Installations
 {
-    public class NodeAdded : IEvent
+    public class RegisterNode : ICommand
     {
-        public NodeAdded(string name, Guid locationId)
-        {
-            Name = name;
-            LocationId = locationId;
-        }
-
-        public string Name { get; }
-        public Guid LocationId { get; }
+        public NodeName Name { get; set; }
     }
 }
