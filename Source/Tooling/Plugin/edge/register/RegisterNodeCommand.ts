@@ -7,21 +7,20 @@ import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmp
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
-// import { AddNodeToLocation } from "../../internal";
-import { Guid } from "@dolittle/core";
+import { RegisterNode } from "../../internal";
 
-const name = 'site';
-const description = 'register a new Site with a name';
+const name = 'node';
+const description = 'register a new node with a name';
 
 const registerPromptDependency = new PromptDependency(
     'name',
-    'The name of the site',
+    'The name of the node',
     [new IsNotEmpty()],
     argumentUserInputType,
-    'The name of the site'
+    'The name of the node'
 );
 
-export class RegisterSite extends Command {
+export class RegisterNodeCommand extends Command {
 
     constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker, 
         private _commandCoordinator: CommandCoordinator) {
@@ -31,12 +30,10 @@ export class RegisterSite extends Command {
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers,
         failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        // let name: any = context[registerPromptDependency[0].name];
-        // let siteName: any = context[registerPromptDependency[1].name];
+        let name: any = context[registerPromptDependency.name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        // TODO: add the real logic here
-        // let commandResult = await this._commandCoordinator.handle(new AddNodeToLocation(name, Guid.create(), locationId));
-        // outputter.print(commandResult as any);
+        let commandResult = await this._commandCoordinator.handle(new RegisterNode(name));
+        outputter.print(commandResult as any);
     }
 }

@@ -7,10 +7,8 @@ import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmp
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
-// import { AddNodeToLocation } from "../../internal";
-import { Guid } from "@dolittle/core";
 
-const name = 'delete';
+const name = 'installation';
 const description = 'deletes an installation';
 
 const deletePromptDependency = new PromptDependency(
@@ -21,7 +19,7 @@ const deletePromptDependency = new PromptDependency(
     'The name of the installation'
 );
 
-export class DeleteInstallation extends Command {
+export class DeleteInstallationCommand extends Command {
 
     constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker, 
         private _commandCoordinator: CommandCoordinator) {

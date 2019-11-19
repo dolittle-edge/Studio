@@ -2,19 +2,19 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import {Plugin} from '@dolittle/tooling.common.plugins';
+import { Plugin } from '@dolittle/tooling.common.plugins';
 import { connectionChecker } from '@dolittle/tooling.common.packages';
 import { CommandGroupsProvider, CommandsProvider, NamespaceProvider,
-    EdgeNamespace, CreateInstallation, MoveNode, DeleteInstallation, DescribeCommandGroup, DescribeInstallation, 
+    EdgeNamespace, AddNodeCommand, DescribeCommandGroup, DescribeInstallation, 
     DescribeNode, DescribeSite, ListCommandGroup, ListInstallations, ListNodes, ListSites, RenameCommandGroup,
-    RenameInstallation, RenameNode, RenameSite, RegisterCommandGroup, RegisterSite, RegisterNode
+    RenameInstallationCommand, RenameNodeCommand, RenameSiteCommand, RegisterCommandGroup, RegisterSiteCommand,
+    RegisterNodeCommand, CreateCommandGroup, CreateInstallationCommand, DeleteCommandGroup, DeleteInstallationCommand,
+
 } from "./internal";
 import { CommandCoordinator } from "@dolittle/commands";
 import { QueryCoordinator } from "@dolittle/queries";
-// import { AddNodeToLocation } from './Locations/Nodes/AddNodeToLocation';
-// import { AddNodeCommand } from './edge/add/AddNodeCommand';
 import nodeFetch from "node-fetch";
-import { Command } from '@dolittle/tooling.common.commands';
+import { AddCommandGroup } from './edge/add/AddCommandGroup';
 
 (global as any).fetch = nodeFetch;
 
@@ -26,11 +26,16 @@ export let commandsProvider = new CommandsProvider([]
 );
 export let namespaceProvider = new NamespaceProvider([
     // add CreateInstallation as a base level command as it only applies to installations
-    new EdgeNamespace([
-            new CreateInstallation(edgeApi, connectionChecker, new CommandCoordinator()),
-            new MoveNode(edgeApi, connectionChecker, new CommandCoordinator()),
-            new DeleteInstallation(edgeApi, connectionChecker, new CommandCoordinator())
-        ], [
+    new EdgeNamespace([], [
+        new AddCommandGroup([
+            new AddNodeCommand(edgeApi, connectionChecker, new CommandCoordinator())
+        ]),
+        new CreateCommandGroup([
+            new CreateInstallationCommand(edgeApi, connectionChecker, new CommandCoordinator()),
+        ]),
+        new DeleteCommandGroup([
+            new DeleteInstallationCommand(edgeApi, connectionChecker, new CommandCoordinator())
+        ]),
         new DescribeCommandGroup([
             new DescribeInstallation(edgeApi, connectionChecker, new QueryCoordinator()),
             new DescribeNode(edgeApi, connectionChecker, new QueryCoordinator()),
@@ -42,13 +47,13 @@ export let namespaceProvider = new NamespaceProvider([
             new ListSites(edgeApi, connectionChecker, new QueryCoordinator())
         ]),
         new RenameCommandGroup([
-            new RenameInstallation(edgeApi, connectionChecker, new CommandCoordinator()),
-            new RenameNode(edgeApi, connectionChecker, new CommandCoordinator()),
-            new RenameSite(edgeApi, connectionChecker, new CommandCoordinator())
+            new RenameInstallationCommand(edgeApi, connectionChecker, new CommandCoordinator()),
+            new RenameNodeCommand(edgeApi, connectionChecker, new CommandCoordinator()),
+            new RenameSiteCommand(edgeApi, connectionChecker, new CommandCoordinator())
         ]),
         new RegisterCommandGroup([
-            new RegisterNode(edgeApi, connectionChecker, new CommandCoordinator()),
-            new RegisterSite(edgeApi, connectionChecker, new CommandCoordinator())
+            new RegisterNodeCommand(edgeApi, connectionChecker, new CommandCoordinator()),
+            new RegisterSiteCommand(edgeApi, connectionChecker, new CommandCoordinator())
         ])
     ])
 ]);

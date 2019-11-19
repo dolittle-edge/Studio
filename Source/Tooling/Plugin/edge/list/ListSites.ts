@@ -7,7 +7,7 @@ import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmp
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { QueryCoordinator } from "@dolittle/queries";
-
+import { AllSites } from "../../internal";
 import dateformat from 'dateformat';
 
 const name = 'sites';
@@ -21,19 +21,14 @@ export class ListSites extends Command {
         super(name, description, false, undefined);
     }
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
-/*         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        let locationId: any = context[nameDependency.name];
         await requireInternet(this._connectionChecker, busyIndicator);
         QueryCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._queryCoordinator.execute(new LocationById(locationId));
+        let commandResult = await this._queryCoordinator.execute(new AllSites());
         let results = commandResult.items;
-        outputter.print(results as any);
         let formatted: any[] = results.map((location: any) => ({
                 'Id': location.id,
                 'Name': location.name,
-                'Nodes': `${location.connectedNodes}/${location.totalNodes}`,
-                'Last Seen': location.hasBeenSeen ? dateformat(location.lastSeen, 'yyyy-mm-dd HH:MM:ss') : 'never'
         }));
-        outputter.table(formatted); */
+        outputter.table(formatted);
     }
 }

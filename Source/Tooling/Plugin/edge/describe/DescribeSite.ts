@@ -7,6 +7,7 @@ import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmp
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { QueryCoordinator } from "@dolittle/queries";
+import { InstallationsOnSite } from "../../internal";
 
 import dateformat from 'dateformat';
 
@@ -14,7 +15,7 @@ const name = 'site';
 
 const description = `Display detailed information of a site`;
 
-const nameDependency = new PromptDependency(
+const describeSitePromptDependency = new PromptDependency(
     'site name',
     'name of the site',
     [new IsNotEmpty()],
@@ -26,22 +27,19 @@ export class DescribeSite extends Command {
 
     constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker,
            private _queryCoordinator: QueryCoordinator) {
-        super(name, description, false, undefined);
+        super(name, description, false, undefined, [describeSitePromptDependency]);
     }
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
-/*         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        let locationId: any = context[nameDependency.name];
+        const context = await dependencyResolvers.resolve({}, this.dependencies);
+        const siteName: any = context[describeSitePromptDependency.name];
         await requireInternet(this._connectionChecker, busyIndicator);
         QueryCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._queryCoordinator.execute(new LocationById(locationId));
-        let results = commandResult.items;
-        outputter.print(results as any);
-        let formatted: any[] = results.map((location: any) => ({
+        const commandResult = await this._queryCoordinator.execute(new InstallationsOnSite(siteName));
+        const results = commandResult.items;
+        const formatted: any[] = results.map((location: any) => ({
                 'Id': location.id,
                 'Name': location.name,
-                'Nodes': `${location.connectedNodes}/${location.totalNodes}`,
-                'Last Seen': location.hasBeenSeen ? dateformat(location.lastSeen, 'yyyy-mm-dd HH:MM:ss') : 'never'
         }));
-        outputter.table(formatted); */
+        outputter.table(formatted);
     }
 }

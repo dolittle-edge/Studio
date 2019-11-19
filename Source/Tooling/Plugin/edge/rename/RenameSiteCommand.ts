@@ -7,50 +7,42 @@ import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmp
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
+import { RenameSite } from "../../internal";
 
-import dateformat from 'dateformat';
+const name = 'site';
 
-const name = 'move';
+const description = `Display detailed information of a site`;
 
-const description = `Move a node to an installation`;
-
-const nameDependencies = [
+const renameSitePromptDependencies = [
         new PromptDependency(
-        'node name',
-        ' name of the node',
+        'current name',
+        'current name of the site',
         [new IsNotEmpty()],
         argumentUserInputType,
-        'name of the node'
+        'current name of the site'
     ),
         new PromptDependency(
-        'instalation name',
-        'name of the installation to be moved in to',
+        'new name',
+        'new name of the site',
         [new IsNotEmpty()],
         argumentUserInputType,
-        'name of the installation to be moved in to'
+        'new name of the site'
     )
 ];
 
-export class MoveNode extends Command {
+export class RenameSiteCommand extends Command {
 
     constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker,
            private _commandCoordinator : CommandCoordinator) {
-        super(name, description, false, undefined, nameDependencies);
+        super(name, description, false, undefined, renameSitePromptDependencies);
     }
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
-/*         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        let locationId: any = context[nameDependency.name];
+        let context = await dependencyResolvers.resolve({}, this.dependencies);
+        let oldName: any = context[renameSitePromptDependencies[0].name];
+        let newName: any = context[renameSitePromptDependencies[1].name];
         await requireInternet(this._connectionChecker, busyIndicator);
-        QueryCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._queryCoordinator.execute(new LocationById(locationId));
-        let results = commandResult.items;
-        outputter.print(results as any);
-        let formatted: any[] = results.map((location: any) => ({
-                'Id': location.id,
-                'Name': location.name,
-                'Nodes': `${location.connectedNodes}/${location.totalNodes}`,
-                'Last Seen': location.hasBeenSeen ? dateformat(location.lastSeen, 'yyyy-mm-dd HH:MM:ss') : 'never'
-        }));
-        outputter.table(formatted); */
+        CommandCoordinator.apiBaseUrl = this._edgeAPI;
+        let commandResult = await this._commandCoordinator.handle(new RenameSite(oldName, newName));
+        outputter.print(commandResult as any);
     }
 }

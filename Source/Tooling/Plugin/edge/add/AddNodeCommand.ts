@@ -8,41 +8,41 @@ import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.uti
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
 
-import dateformat from 'dateformat';
 
-const name = 'site';
+const name = 'node';
 
-const description = `Display detailed information of a site`;
+const description = `Add a node to an installation`;
 
 const nameDependencies = [
         new PromptDependency(
-        'current name',
-        'current name of the site',
+        'node name',
+        ' name of the node',
         [new IsNotEmpty()],
         argumentUserInputType,
-        'current name of the site'
+        'name of the node'
     ),
         new PromptDependency(
-        'new name',
-        'new name of the site',
+        'installation name',
+        'name of the installation to be added in to',
         [new IsNotEmpty()],
         argumentUserInputType,
-        'new name of the site'
+        'name of the installation to be added in to'
     )
 ];
 
-export class RenameSite extends Command {
+export class AddNodeCommand extends Command {
 
     constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker,
-           private _commandCoordinator : CommandCoordinator) {
+        private _commandCoordinator : CommandCoordinator) {
         super(name, description, false, undefined, nameDependencies);
     }
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
-/*         let context = await dependencyResolvers.resolve({}, this.dependencies);
-        let locationId: any = context[nameDependency.name];
+        let context = await dependencyResolvers.resolve({}, this.dependencies);
+        const nodename: string = context[nameDependencies[0].name];
+        const installationName: string = context[nameDependencies[1].name];
         await requireInternet(this._connectionChecker, busyIndicator);
-        QueryCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._queryCoordinator.execute(new LocationById(locationId));
+        CommandCoordinator.apiBaseUrl = this._edgeAPI;
+/*         let commandResult = await this._commandCoordinator.handle());
         let results = commandResult.items;
         outputter.print(results as any);
         let formatted: any[] = results.map((location: any) => ({
