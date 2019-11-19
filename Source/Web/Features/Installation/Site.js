@@ -4,20 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import { ReadModel } from  '@dolittle/readmodels';
 
-export class LocationWithStatus extends ReadModel
+export class Site extends ReadModel
 {
     constructor() {
         super();
         this.artifact = {
-           id: '5b862e7e-57fa-4a21-bfcf-3c11b3ebebde',
+           id: '1ef90212-a9eb-449a-8b28-8685a0c18173',
            generation: '1'
         };
         this.id = '00000000-0000-0000-0000-000000000000';
         this.name = '';
-        this.connectedNodes = 0;
-        this.totalNodes = 0;
-        this.nodes = [];
-        this.lastSeen = new Date();
-        this.hasBeenSeen = false;
     }
 }
