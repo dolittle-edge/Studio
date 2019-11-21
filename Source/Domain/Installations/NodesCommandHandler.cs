@@ -15,19 +15,23 @@ namespace Domain.Installations
     {
         readonly IAggregateOf<Nodes> _nodes;
         readonly IExecutionContextManager _executionContextManager;
-        private readonly INaturalKeysOf<NodeName> _nodeNameKeys;
-        private readonly INaturalKeysOf<InstallationName> _installationNameKeys;
+
+        readonly INaturalKeysOf<SiteName> _siteNameKeys;
+        readonly INaturalKeysOf<NodeName> _nodeNameKeys;
+        readonly INaturalKeysOf<InstallationOnSite> _installationOnSiteKeys;
 
 
         public NodesCommandHandler(
             IAggregateOf<Nodes> nodes,
+            INaturalKeysOf<SiteName> siteNameKeys,
             INaturalKeysOf<NodeName> nodeNameKeys,
-            INaturalKeysOf<InstallationName> installationNameKeys,
+            INaturalKeysOf<InstallationOnSite> installationOnSiteKeys,
             IExecutionContextManager executionContextManager)
         {
             _nodes = nodes;
+            _siteNameKeys = siteNameKeys;
             _nodeNameKeys = nodeNameKeys;
-            _installationNameKeys = installationNameKeys;
+            _installationOnSiteKeys = installationOnSiteKeys;
             _executionContextManager = executionContextManager;
         }
 
@@ -44,7 +48,8 @@ namespace Domain.Installations
 
         public void Handle(RegisterNodeWithInstallation register)
         {
-            var installationId = _installationNameKeys.GetFor(register.InstallationName);
+            var siteId = _siteNameKeys.GetFor(register.SiteName);
+            var installationId = _installationOnSiteKeys.GetFor(new InstallationOnSite { SiteId = siteId, InstallationName = register.InstallationName });
             var nodeId = Guid.NewGuid();
             if (_nodes
                 .Rehydrate(_executionContextManager.Current.Tenant.Value)
