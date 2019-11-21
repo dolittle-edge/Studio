@@ -1,4 +1,4 @@
-/*---------------------------------------------------------------------------------------------
+﻿/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
@@ -12,15 +12,15 @@ namespace Read.Installations
     /// <summary>
     /// Represents a query for getting all locactions
     /// </summary>
-    public class AllNodes : IQueryFor<Node>
+    public class UnassociatedNodes : IQueryFor<UnassociatedNode>
     {
-        readonly IReadModelRepositoryFor<Node> _nodes;
+        readonly IReadModelRepositoryFor<UnassociatedNode> _nodes;
 
-        public AllNodes(IReadModelRepositoryFor<Node> nodes)
+        public UnassociatedNodes(IReadModelRepositoryFor<UnassociatedNode> nodes)
         {
             _nodes = nodes;
         }
 
-        public IQueryable<Node> Query => _nodes.Query;
+        public IQueryable<UnassociatedNode> Query => _nodes.Query;
     }
 }

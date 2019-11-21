@@ -8,7 +8,7 @@ export class RegisterNodeWithInstallation extends Command
 {
     constructor() {
         super();
-        this.type = '222a4379-6cb4-46b1-aead-9e5fd424497a';
+        this.type = '56442e08-5a8c-443a-8d0b-fd544b597ed6';
 
         this.name = '';
         this.installationName = '';

@@ -10,7 +10,7 @@ export class CreateInstallation extends Command
     siteName: string;
 
     constructor(name: string, siteName: string) {
-        super('152ed284-440c-45d4-acdf-763dbd869404');
+        super('7f0fdd84-e22f-4297-815a-ddf2fa6d4526');
         this.name = name;
         this.siteName = siteName;
     }

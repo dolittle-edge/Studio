@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Concepts.Installations;
 using Dolittle.Domain;
+using Dolittle.Rules;
 using Dolittle.Runtime.Events;
 using Events.Installations;
 
@@ -13,6 +14,9 @@ namespace Domain.Installations
 {
     public class InstallationsOnSite : AggregateRoot
     {
+        static Reason InstallationNameAlreadyExists = Reason.Create("2144abf5-fec4-458f-866a-fdab84515d9a","Installation '{Name}' already exists");
+        static Reason InstallationWithNameDoesNotExists = Reason.Create("a9c05481-ea6c-4ca3-a53e-a2bc378c6f34","Installation '{Name}' does not exist");
+
         class Installation
         {
             public Installation(InstallationId installationId) => InstallationId = installationId;
@@ -27,14 +31,15 @@ namespace Domain.Installations
 
         public void Start(InstallationId installationId, string name)
         {
-            ThrowIfInstallationNameIsAlreadyUsed(name);
-
-            Apply(new InstallationStarted(installationId, name));
+            if( Evaluate(() => DuplicateInstallationNameNotAllowed(name)) )
+                Apply(new InstallationStarted(installationId, name));
         }
 
         public void Rename(string oldName, string newName)
         {
-            ThrowIfInstallationNameIsAlreadyUsed(newName);
+            if( !Evaluate(
+                    () => InstallationMustExist(oldName),
+                    () => DuplicateInstallationNameNotAllowed(newName)) ) return;
 
             var installation = _installations.Single(_ => _.Name == oldName);
             Apply(new InstallationRenamed(installation.InstallationId, newName));
@@ -50,9 +55,16 @@ namespace Domain.Installations
             _installations.Single(_ => _.InstallationId == @event.InstallationId).Name = @event.Name;
         }
 
-        void ThrowIfInstallationNameIsAlreadyUsed(string name)
+        RuleEvaluationResult InstallationMustExist(string name)
         {
-            if (_installations.Any(_ => _.Name == name)) throw new InstallationNameAlreadyUsed(name);
+            if (!_installations.Any(_ => _.Name == name)) return RuleEvaluationResult.Fail(name, InstallationWithNameDoesNotExists.WithArgs(new{Name=name}));
+            return RuleEvaluationResult.Success;
+        }
+
+        RuleEvaluationResult DuplicateInstallationNameNotAllowed(string name)
+        {
+            if (_installations.Any(_ => _.Name == name)) return RuleEvaluationResult.Fail(name, InstallationNameAlreadyExists.WithArgs(new{Name=name}));
+            return RuleEvaluationResult.Success;
         }
     }
 }

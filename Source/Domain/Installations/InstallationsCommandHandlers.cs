@@ -13,7 +13,6 @@ namespace Domain.Installations
 {
     public class InstallationsCommandHandlers : ICanHandleCommands
     {
-        readonly IExecutionContextManager _executionContextManager;
         readonly IAggregateOf<InstallationsOnSite> _installationsOnSite;
         readonly INaturalKeysOf<SiteName> _siteNameKeys;
         readonly INaturalKeysOf<InstallationOnSite> _installationOnSiteKeys;
@@ -21,12 +20,10 @@ namespace Domain.Installations
         public InstallationsCommandHandlers(
             IAggregateOf<InstallationsOnSite> installationsOnSite,
             INaturalKeysOf<SiteName> siteNameKeys,
-            INaturalKeysOf<InstallationOnSite> installationOnSiteKeys,
-            IExecutionContextManager executionContextManager)
+            INaturalKeysOf<InstallationOnSite> installationOnSiteKeys)
         {
             _installationsOnSite = installationsOnSite;
             _siteNameKeys = siteNameKeys;
-            _executionContextManager = executionContextManager;
             _installationOnSiteKeys = installationOnSiteKeys;
         }
 

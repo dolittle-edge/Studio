@@ -6,9 +6,9 @@ namespace Read.Installations
 {
     public class NodeEventProcessors : ICanProcessEvents
     {
-        readonly IReadModelRepositoryFor<Node> _repository;
+        readonly IReadModelRepositoryFor<UnassociatedNode> _repository;
 
-        public NodeEventProcessors(IReadModelRepositoryFor<Node> repository)
+        public NodeEventProcessors(IReadModelRepositoryFor<UnassociatedNode> repository)
         {
             _repository = repository;
         }
@@ -16,7 +16,7 @@ namespace Read.Installations
         [EventProcessor("c73b4930-e2fd-411c-94b8-f394789b9abc")]
         public void Process(NodeRegistered @event)
         {
-            _repository.Insert(new Node { Id = @event.NodeId, Name = @event.Name });
+            _repository.Insert(new UnassociatedNode { Id = @event.NodeId, Name = @event.Name });
         }
 
         [EventProcessor("d8c62032-00be-439c-bd9c-aed304c6a234")]

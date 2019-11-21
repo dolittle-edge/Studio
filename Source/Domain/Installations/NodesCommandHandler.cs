@@ -13,14 +13,14 @@ namespace Domain.Installations
 {
     public class NodesCommandHandler : ICanHandleCommands
     {
-        readonly IAggregateRootRepositoryFor<Nodes> _repository;
+        readonly IAggregateRootRepositoryFor<UnassociatedNodes> _repository;
         readonly IExecutionContextManager _executionContextManager;
         private readonly INaturalKeysOf<NodeName> _nodeNameKeys;
         private readonly INaturalKeysOf<InstallationName> _installationNameKeys;
 
 
         public NodesCommandHandler(
-            IAggregateRootRepositoryFor<Nodes> repository,
+            IAggregateRootRepositoryFor<UnassociatedNodes> repository,
             INaturalKeysOf<NodeName> nodeNameKeys,
             INaturalKeysOf<InstallationName> installationNameKeys,
             IExecutionContextManager executionContextManager)
