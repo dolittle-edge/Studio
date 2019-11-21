@@ -26,13 +26,13 @@ namespace Read.Installations
         /// 
         /// </summary>
         [EventProcessor("eafbe9b6-44f9-40c5-9a7b-f6f196dc44fe")]
-        public void Process(InstallationCreated @event, EventMetadata eventMetadata)
+        public void Process(InstallationStarted @event, EventMetadata eventMetadata)
         {
             _installations.Insert(new Installation
             {
                 Id = @event.InstallationId,
                 Name = @event.Name,
-                SiteId = @event.SiteId,
+                SiteId = eventMetadata.EventSourceId.Value
             });
         }
 

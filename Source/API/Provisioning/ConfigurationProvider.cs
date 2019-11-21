@@ -2,9 +2,8 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
 using System.IO;
-using Concepts.Locations.Nodes;
+using Concepts.Installations;
 using Dolittle.IO;
 using Dolittle.Serialization.Json;
 using Dolittle.Tenancy;

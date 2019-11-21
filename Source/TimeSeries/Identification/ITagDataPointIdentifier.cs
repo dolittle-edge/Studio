@@ -2,8 +2,7 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Concepts.Locations;
-using Concepts.Locations.Nodes;
+using Concepts.Installations;
 
 namespace TimeSeries.Identification
 {
@@ -15,12 +14,13 @@ namespace TimeSeries.Identification
     {
         /// <summary>
         /// Get or update the identification of a metric type on a <see cref="NodeId">node</see>
-        /// at a <see cref="LocationId">location</see>
+        /// within an <see cref="InstallationId">installation</see> at a <see cref="SiteId">site</see>
         /// </summary>
-        /// <param name="location"><see cref="LocationId"/> for the tag</param>
+        /// <param name="site"><see cref="SiteId"/> for the tag</param>
+        /// <param name="installation"><see cref="InstallationId"/> for the tag</param>
         /// <param name="node"><see cref="NodeId"/> for the tag</param>
         /// <param name="metricType">The type of metric</param>
         /// <returns><see cref="string"/> with the tag name</returns>
-        TagToTimeSeries GetOrUpdate(LocationId location, NodeId node, string metricType);
+        TagToTimeSeries GetOrUpdate(SiteId site, InstallationId installation, NodeId node, string metricType);
     }
 }

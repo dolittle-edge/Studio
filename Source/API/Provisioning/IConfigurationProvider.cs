@@ -2,8 +2,7 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
-using Concepts.Locations.Nodes;
+using Concepts.Installations;
 
 namespace API.Provisioning
 {
@@ -18,6 +17,7 @@ namespace API.Provisioning
         /// <param name="information"><see cref="SystemInformation"/> identifying the node</param>
         /// <returns><see cref="ProvisioningStatus"/> for the node</returns>
         ProvisioningStatus GetProvisioningStatusForNode(SystemInformation information);
+
         /// <summary>
         /// Checks the current provisioning status for a node identified by its <see cref="NodeId"/>
         /// </summary>
@@ -31,6 +31,7 @@ namespace API.Provisioning
         /// <param name="information"><see cref="SystemInformation"/> identifying the node</param>
         /// <returns><see cref="NodeConfiguration"/> for the node</returns>
         NodeConfiguration GetConfigurationForNode(SystemInformation information);
+
         /// <summary>
         /// Gets the current configuration for a node identified by its <see cref="NodeId"/>
         /// </summary>

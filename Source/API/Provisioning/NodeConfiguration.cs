@@ -4,8 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 using System.Collections.Generic;
-using Concepts.Locations;
-using Concepts.Locations.Nodes;
+using Concepts.Installations;
 
 namespace API.Provisioning
 {
@@ -15,9 +14,14 @@ namespace API.Provisioning
     public class NodeConfiguration
     {
         /// <summary>
-        /// Gets or sets the unique identifier for the location where the node resides
+        /// Gets or sets the unique identifier for the site where the installation is
         /// </summary>
-        public LocationId LocationId { get; set; }
+        public SiteId SiteId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique identifier for the installation which the node is associated with
+        /// </summary>
+        public InstallationId InstallationId { get; set; }
 
         /// <summary>
         /// Gets or sets the unique identifier of the node

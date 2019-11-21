@@ -1,15 +1,17 @@
-/*---------------------------------------------------------------------------------------------
+﻿/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+
 using Concepts.Installations;
 using Dolittle.Commands;
 
 namespace Domain.Installations
 {
-    public class CreateInstallation : ICommand
+    public class RegisterNodeWithInstallation : ICommand
     {
-        public SiteName SiteName { get; set; }
-        public InstallationName Name { get; set; }
+        public NodeName Name { get; set; }
+
+        public InstallationName InstallationName { get; set; }
     }
 }

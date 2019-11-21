@@ -39,7 +39,7 @@
         <PackageReference Include="Dolittle.Common" Version="1.*"/>
         <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" AllowExplicitVersion="true" />
 
-        <PackageReference Include="Dolittle.AspNetCore" Version="6.*" />
+        <PackageReference Include="Dolittle.AspNetCore" Version="7.*" />
         <PackageReference Include="Dolittle.AspNetCore.Debugging.Swagger" Version="3.*" />
         <PackageReference Include="Dolittle.SDK" Version="4.*" />
 

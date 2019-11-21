@@ -8,7 +8,7 @@ export class RegisterNode extends Command
 {
     constructor() {
         super();
-        this.type = '6179ffc4-6ac0-47a8-bcad-b17a429163ce';
+        this.type = '75d49a0d-9a66-4c57-859a-f38389b3e26c';
 
         this.name = '';
     }

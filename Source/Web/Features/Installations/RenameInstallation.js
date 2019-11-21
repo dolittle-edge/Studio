@@ -8,8 +8,9 @@ export class RenameInstallation extends Command
 {
     constructor() {
         super();
-        this.type = '739d5e4d-2050-4e30-aa8d-daafb32ee6e5';
+        this.type = '91fbe8e8-de50-424e-b08b-f5e86cd939f8';
 
+        this.siteId = '00000000-0000-0000-0000-000000000000';
         this.oldName = '';
         this.newName = '';
     }

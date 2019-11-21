@@ -39,7 +39,7 @@ namespace Domain.Installations
             nodes.Register(nodeId, register.Name);
         }
 
-        public void Handle(RegisterNodeToInstallation register)
+        public void Handle(RegisterNodeWithInstallation register)
         {
             var nodes = _repository.Get(_executionContextManager.Current.Tenant.Value);
             var nodeId = Guid.NewGuid();

@@ -11,7 +11,7 @@ using Events.Installations;
 
 namespace Domain.Installations
 {
-    public class Installations : AggregateRoot
+    public class InstallationsOnSite : AggregateRoot
     {
         class Installation
         {
@@ -20,15 +20,16 @@ namespace Domain.Installations
             public string Name { get; set; }
             public SiteId SiteId { get; set; }
         }
-        public Installations(EventSourceId id) : base(id) { }
 
         readonly List<Installation> _installations = new List<Installation>();
 
-        public void Create(InstallationId installationId, string name, SiteId siteId)
+        public InstallationsOnSite(EventSourceId id) : base(id) { }
+
+        public void Start(InstallationId installationId, string name)
         {
             ThrowIfInstallationNameIsAlreadyUsed(name);
 
-            Apply(new InstallationCreated(installationId, name, siteId));
+            Apply(new InstallationStarted(installationId, name));
         }
 
         public void Rename(string oldName, string newName)
@@ -39,7 +40,7 @@ namespace Domain.Installations
             Apply(new InstallationRenamed(installation.InstallationId, newName));
         }
 
-        void On(InstallationCreated @event)
+        void On(InstallationStarted @event)
         {
             _installations.Add(new Installation(@event.InstallationId) { Name = @event.Name });
         }
