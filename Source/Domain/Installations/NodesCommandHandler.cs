@@ -16,14 +16,18 @@ namespace Domain.Installations
         readonly IAggregateRootRepositoryFor<Nodes> _repository;
         readonly IExecutionContextManager _executionContextManager;
         private readonly INaturalKeysOf<NodeName> _nodeNameKeys;
+        private readonly INaturalKeysOf<InstallationName> _installationNameKeys;
+
 
         public NodesCommandHandler(
             IAggregateRootRepositoryFor<Nodes> repository,
             INaturalKeysOf<NodeName> nodeNameKeys,
+            INaturalKeysOf<InstallationName> installationNameKeys,
             IExecutionContextManager executionContextManager)
         {
             _repository = repository;
             _nodeNameKeys = nodeNameKeys;
+            _installationNameKeys = installationNameKeys;
             _executionContextManager = executionContextManager;
         }
 
@@ -33,6 +37,15 @@ namespace Domain.Installations
             var nodeId = Guid.NewGuid();
             _nodeNameKeys.Associate(register.Name, nodeId);
             nodes.Register(nodeId, register.Name);
+        }
+
+        public void Handle(RegisterNodeToInstallation register)
+        {
+            var nodes = _repository.Get(_executionContextManager.Current.Tenant.Value);
+            var nodeId = Guid.NewGuid();
+            var installationId = _installationNameKeys.GetFor(register.InstallationName);
+            _nodeNameKeys.Associate(register.Name, nodeId);
+            nodes.RegisterToInstallation(nodeId, register.Name, installationId);
         }
 
         public void Handle(RenameNode rename)

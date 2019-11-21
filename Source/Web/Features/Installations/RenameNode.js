@@ -8,7 +8,7 @@ export class RenameNode extends Command
 {
     constructor() {
         super();
-        this.type = 'a93f2a72-9dea-42f4-b8a5-87c322678671';
+        this.type = '3674ca44-712d-4b88-842b-54e66635c752';
 
         this.oldName = '';
         this.newName = '';

@@ -31,6 +31,13 @@ namespace Domain.Installations
             Apply(new NodeRegistered(nodeId, name));
         }
 
+        public void RegisterToInstallation(NodeId nodeId, string name, InstallationId installationId)
+        {
+            ThrowIfNodeNameIsAlreadyUsed(name);
+
+            Apply(new NodeRegisteredToInstallation(nodeId, name, installationId));
+        }
+
         public void Rename(string oldName, string newName)
         {
             ThrowIfNodeNameIsAlreadyUsed(newName);

@@ -4,15 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 import { ReadModel } from  '@dolittle/readmodels';
 
-export class TagToTimeSeries extends ReadModel
+export class NodeWithInstallation extends ReadModel
 {
     constructor() {
         super();
         this.artifact = {
-           id: '7704bb79-2b9f-4975-ae73-33c73dd8f665',
+           id: '34ce11d6-37d3-4830-a813-a896952d5cd7',
            generation: '1'
         };
         this.id = '00000000-0000-0000-0000-000000000000';
-        this.tag = '';
+        this.name = '';
+        this.installationId = '00000000-0000-0000-0000-000000000000';
     }
 }
