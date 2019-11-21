@@ -2,22 +2,23 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tooling.common.commands";
+import { Command, CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { QueryCoordinator } from "@dolittle/queries";
 import { AllInstallations } from "../../internal";
+import { IContexts, ILoginService } from "@dolittle/tooling.common.login";
 
 const name = 'installations';
 
 const description = `List all created installations`;
 
-export class ListInstallations extends Command {
+export class ListInstallations extends AuthenticatedCommand {
 
-    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker,
+    constructor(private _edgeAPI: string, loginService: ILoginService, contexts: IContexts, private _connectionChecker: IConnectionChecker,
            private _queryCoordinator: QueryCoordinator) {
-        super(name, description, false, undefined);
+        super(loginService, contexts, name, description, false, undefined);
     }
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         await requireInternet(this._connectionChecker, busyIndicator);

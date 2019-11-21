@@ -2,12 +2,13 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tooling.common.commands";
+import { Command, CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
 import { RegisterNode } from "../../internal";
+import { IContexts, ILoginService } from "@dolittle/tooling.common.login";
 
 const name = 'node';
 const description = 'register a new node with a name';
@@ -20,11 +21,11 @@ const registerPromptDependency = new PromptDependency(
     'The name of the node'
 );
 
-export class RegisterNodeCommand extends Command {
+export class RegisterNodeCommand extends AuthenticatedCommand {
 
-    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker, 
+    constructor(private _edgeAPI: string, loginService: ILoginService, contexts: IContexts, private _connectionChecker: IConnectionChecker, 
         private _commandCoordinator: CommandCoordinator) {
-        super(name, description, false, undefined, [registerPromptDependency]);
+        super(loginService, contexts, name, description, false, undefined, [registerPromptDependency]);
     }
     
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers,

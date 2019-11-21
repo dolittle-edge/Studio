@@ -2,12 +2,13 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tooling.common.commands";
+import { Command, CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
 import { RenameNode } from "../../internal";
+import { IContexts, ILoginService } from "@dolittle/tooling.common.login";
 
 const name = 'node';
 
@@ -30,11 +31,11 @@ const renameNodePropmtDependencies = [
     )
 ];
 
-export class RenameNodeCommand extends Command {
+export class RenameNodeCommand extends AuthenticatedCommand {
 
-    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker,
-           private _commandCoordinator : CommandCoordinator) {
-        super(name, description, false, undefined, renameNodePropmtDependencies);
+    constructor(private _edgeAPI: string, loginService: ILoginService, contexts: IContexts, private _connectionChecker: IConnectionChecker,
+        private _commandCoordinator : CommandCoordinator) {
+        super(loginService, contexts, name, description, false, undefined, renameNodePropmtDependencies);
     }
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);

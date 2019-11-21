@@ -4,22 +4,29 @@
 *--------------------------------------------------------------------------------------------*/
 import { Plugin } from '@dolittle/tooling.common.plugins';
 import { connectionChecker } from '@dolittle/tooling.common.packages';
+import { CommandCoordinator } from "@dolittle/commands";
+import { QueryCoordinator } from "@dolittle/queries";
+import { contexts, loginService } from '@dolittle/tooling.common.login';
+import nodeFetch from "node-fetch";
 import { CommandGroupsProvider, CommandsProvider, NamespaceProvider,
     EdgeNamespace, AddNodeCommand, DescribeCommandGroup, DescribeInstallation, 
     DescribeNode, DescribeSite, ListCommandGroup, ListInstallations, ListNodes, ListSites, RenameCommandGroup,
     RenameInstallationCommand, RenameNodeCommand, RenameSiteCommand, RegisterCommandGroup, RegisterSiteCommand,
     RegisterNodeCommand, CreateCommandGroup, CreateInstallationCommand, DeleteCommandGroup, DeleteInstallationCommand,
-
+    createAuthenticateCallback, AddCommandGroup
 } from "./internal";
-import { CommandCoordinator } from "@dolittle/commands";
-import { QueryCoordinator } from "@dolittle/queries";
-import nodeFetch from "node-fetch";
-import { AddCommandGroup } from './edge/add/AddCommandGroup';
 
 (global as any).fetch = nodeFetch;
 
+CommandCoordinator.beforeHandle(createAuthenticateCallback(contexts));
+QueryCoordinator.beforeExecute(createAuthenticateCallback(contexts));
+
+let commandCoordinator = new CommandCoordinator();
+let queryCoordinator = new QueryCoordinator();
+
 // const edgeApi = 'https://edge.dolittle.studio';
 const edgeApi = 'http://localhost:5000/api';
+
 export let commandGroupsProvider = new CommandGroupsProvider([]);
 
 export let commandsProvider = new CommandsProvider([]
@@ -28,32 +35,32 @@ export let namespaceProvider = new NamespaceProvider([
     // add CreateInstallation as a base level command as it only applies to installations
     new EdgeNamespace([], [
         new AddCommandGroup([
-            new AddNodeCommand(edgeApi, connectionChecker, new CommandCoordinator())
+            new AddNodeCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator)
         ]),
         new CreateCommandGroup([
-            new CreateInstallationCommand(edgeApi, connectionChecker, new CommandCoordinator()),
+            new CreateInstallationCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator),
         ]),
         new DeleteCommandGroup([
-            new DeleteInstallationCommand(edgeApi, connectionChecker, new CommandCoordinator())
+            new DeleteInstallationCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator)
         ]),
         new DescribeCommandGroup([
-            new DescribeInstallation(edgeApi, connectionChecker, new QueryCoordinator()),
-            new DescribeNode(edgeApi, connectionChecker, new QueryCoordinator()),
-            new DescribeSite(edgeApi, connectionChecker, new QueryCoordinator())
+            new DescribeInstallation(edgeApi, loginService, contexts, connectionChecker, queryCoordinator),
+            new DescribeNode(edgeApi, loginService, contexts, connectionChecker, queryCoordinator),
+            new DescribeSite(edgeApi, loginService, contexts, connectionChecker, queryCoordinator)
         ]),
         new ListCommandGroup([
-            new ListInstallations(edgeApi, connectionChecker, new QueryCoordinator()),
-            new ListNodes(edgeApi, connectionChecker, new QueryCoordinator()),
-            new ListSites(edgeApi, connectionChecker, new QueryCoordinator())
+            new ListInstallations(edgeApi, loginService, contexts, connectionChecker, queryCoordinator),
+            new ListNodes(edgeApi, loginService, contexts, connectionChecker, queryCoordinator),
+            new ListSites(edgeApi, loginService, contexts, connectionChecker, queryCoordinator)
         ]),
         new RenameCommandGroup([
-            new RenameInstallationCommand(edgeApi, connectionChecker, new CommandCoordinator()),
-            new RenameNodeCommand(edgeApi, connectionChecker, new CommandCoordinator()),
-            new RenameSiteCommand(edgeApi, connectionChecker, new CommandCoordinator())
+            new RenameInstallationCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator),
+            new RenameNodeCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator),
+            new RenameSiteCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator)
         ]),
         new RegisterCommandGroup([
-            new RegisterNodeCommand(edgeApi, connectionChecker, new CommandCoordinator()),
-            new RegisterSiteCommand(edgeApi, connectionChecker, new CommandCoordinator())
+            new RegisterNodeCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator),
+            new RegisterSiteCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator)
         ])
     ])
 ]);

@@ -4,6 +4,8 @@
 *--------------------------------------------------------------------------------------------*/
 // Order of exports is important!
 
+export * from './authenticationCallbacks';
+
 export * from './CommandGroupsProvider';
 export * from './CommandsProvider';
 export * from './NamespaceProvider';

@@ -2,12 +2,13 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { Command, CommandContext, IFailedCommandOutputter } from "@dolittle/tooling.common.commands";
+import { Command, CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
 import { CreateInstallation } from "../../internal";
+import { ILoginService, IContexts } from "@dolittle/tooling.common.login";
 
 const name = 'installation';
 const description = 'create a new installation connected to a site';
@@ -27,11 +28,11 @@ const createPromptDependency = [
         'name of the site you want to create the installation for',
 )];
 
-export class CreateInstallationCommand extends Command {
+export class CreateInstallationCommand extends AuthenticatedCommand {
 
-    constructor(private _edgeAPI: string, private _connectionChecker: IConnectionChecker, 
+    constructor(private _edgeAPI: string, loginService: ILoginService, contexts: IContexts, private _connectionChecker: IConnectionChecker, 
         private _commandCoordinator: CommandCoordinator) {
-        super(name, description, false, undefined, createPromptDependency);
+        super(loginService, contexts, name, description, false, undefined, createPromptDependency);
     }
     
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers,

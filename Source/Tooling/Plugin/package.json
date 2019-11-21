@@ -48,6 +48,7 @@
     "@dolittle/tooling.common.dependencies": "8.*",
     "@dolittle/tooling.common.files": "8.*",
     "@dolittle/tooling.common.logging": "8.*",
+    "@dolittle/tooling.common.login": "8.*",
     "@dolittle/tooling.common.packages": "8.*",
     "@dolittle/tooling.common.plugins": "8.*",
     "@dolittle/tooling.common.utilities": "8.*",
