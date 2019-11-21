@@ -11,7 +11,7 @@ using Events.Installations;
 
 namespace Domain.Installations
 {
-    public class UnassociatedNodes : AggregateRoot
+    public class Nodes : AggregateRoot
     {
         class Node
         {
@@ -22,7 +22,7 @@ namespace Domain.Installations
 
         readonly List<Node> _nodes = new List<Node>();
 
-        public UnassociatedNodes(EventSourceId id) : base(id) {}
+        public Nodes(EventSourceId id) : base(id) {}
 
         public void Register(NodeId nodeId, string name)
         {

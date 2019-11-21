@@ -13,19 +13,19 @@ namespace Domain.Installations
 {
     public class NodesCommandHandler : ICanHandleCommands
     {
-        readonly IAggregateRootRepositoryFor<UnassociatedNodes> _repository;
+        readonly IAggregateOf<Nodes> _nodes;
         readonly IExecutionContextManager _executionContextManager;
         private readonly INaturalKeysOf<NodeName> _nodeNameKeys;
         private readonly INaturalKeysOf<InstallationName> _installationNameKeys;
 
 
         public NodesCommandHandler(
-            IAggregateRootRepositoryFor<UnassociatedNodes> repository,
+            IAggregateOf<Nodes> nodes,
             INaturalKeysOf<NodeName> nodeNameKeys,
             INaturalKeysOf<InstallationName> installationNameKeys,
             IExecutionContextManager executionContextManager)
         {
-            _repository = repository;
+            _nodes = nodes;
             _nodeNameKeys = nodeNameKeys;
             _installationNameKeys = installationNameKeys;
             _executionContextManager = executionContextManager;
@@ -33,27 +33,33 @@ namespace Domain.Installations
 
         public void Handle(RegisterNode register)
         {
-            var nodes = _repository.Get(_executionContextManager.Current.Tenant.Value);
             var nodeId = Guid.NewGuid();
-            _nodeNameKeys.Associate(register.Name, nodeId);
-            nodes.Register(nodeId, register.Name);
+            if (_nodes
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Register(nodeId, register.Name)))
+            {
+                _nodeNameKeys.Associate(register.Name, nodeId);
+            }
         }
 
         public void Handle(RegisterNodeWithInstallation register)
         {
-            var nodes = _repository.Get(_executionContextManager.Current.Tenant.Value);
+            /*
+            var nodes = _nodes.Get(_executionContextManager.Current.Tenant.Value);
             var nodeId = Guid.NewGuid();
             var installationId = _installationNameKeys.GetFor(register.InstallationName);
             _nodeNameKeys.Associate(register.Name, nodeId);
             nodes.RegisterToInstallation(nodeId, register.Name, installationId);
+            */
         }
 
         public void Handle(RenameNode rename)
         {
-            var nodes = _repository.Get(_executionContextManager.Current.Tenant.Value);
+            /*
+            var nodes = _nodes.Get(_executionContextManager.Current.Tenant.Value);
             nodes.Rename(rename.OldName, rename.NewName);
             var nodeId = _nodeNameKeys.GetFor(rename.OldName);
-            _nodeNameKeys.Associate(rename.NewName, nodeId);
+            _nodeNameKeys.Associate(rename.NewName, nodeId);*/
         }
     }
 }
