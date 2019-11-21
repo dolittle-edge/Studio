@@ -2,8 +2,7 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Concepts.Locations;
-using Concepts.Locations.Nodes;
+using Concepts.Installations;
 using Dolittle.DependencyInversion;
 using Dolittle.Lifecycle;
 using Dolittle.TimeSeries.DataPoints;
@@ -33,10 +32,10 @@ namespace TimeSeries.DataPoints
         }
 
         /// <inheritdoc/>
-        public void Push(LocationId location, NodeId node, string metricType, double value)
+        public void Push(SiteId siteId, InstallationId installation, NodeId node, string metricType, double value)
         {
-            var identity = _identifierFactory().GetOrUpdate(location, node, metricType);
-            DataPointReady(new TagDataPoint(identity.Tag, (Single)value));
+            //var identity = _identifierFactory().GetOrUpdate(location, node, metricType);
+            //DataPointReady(new TagDataPoint(identity.Tag, (Single)value));
         }
     }
 }

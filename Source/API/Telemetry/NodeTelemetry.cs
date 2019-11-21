@@ -2,8 +2,8 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System;
 using System.Collections.Generic;
+using Concepts.Installations;
 
 namespace API.Telemetry
 {
@@ -13,14 +13,19 @@ namespace API.Telemetry
     public class NodeTelemetry
     {
         /// <summary>
-        /// Gets or sets the unique identifier for the location
+        /// Gets or sets the unique identifier of the site
         /// </summary>
-        public Guid LocationId {  get; set; }
+        public SiteId SiteId {  get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique identifier for the installation
+        /// </summary>
+        public InstallationId InstallationId {  get; set; }
 
         /// <summary>
         /// Gets or sets the unique identifier for the <see cref="NodeTelemetry"/>
         /// </summary>
-        public Guid NodeId { get; set; }
+        public NodeId NodeId { get; set; }
 
         /// <summary>
         /// Gets or sets the key/value of metrics of state being reported

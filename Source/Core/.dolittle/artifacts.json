@@ -90,6 +90,10 @@
       "b2da86b0-d78f-4993-8218-3874a6f17f1a": {
         "generation": 1,
         "type": "Read.Installations.Site, Read"
+      },
+      "c64f3965-74a5-4672-a36e-2f3650aa6482": {
+        "generation": 1,
+        "type": "Read.Installations.NodeStatus, Read"
       }
     },
     "queries": {
