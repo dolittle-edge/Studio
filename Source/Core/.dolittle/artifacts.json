@@ -110,6 +110,10 @@
       "4fb6fb62-7d86-4a60-8dde-6f7a8dc8cfe7": {
         "generation": 1,
         "type": "Read.Installations.Site, Read"
+      },
+      "c64f3965-74a5-4672-a36e-2f3650aa6482": {
+        "generation": 1,
+        "type": "Read.Installations.NodeStatus, Read"
       }
     },
     "queries": {}
