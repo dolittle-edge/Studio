@@ -14,8 +14,8 @@ namespace Domain.Installations
 {
     public class Sites : AggregateRoot
     {
-        public static BrokenRuleReason SiteNameAlreadyExists = BrokenRuleReason.Create("9ceff948-f9e0-4584-9478-94a00c45b55c", "Site '{Site}' already exists");
-        public static BrokenRuleReason SiteWithNameDoesNotExists = BrokenRuleReason.Create("60c1f7be-3937-4625-a23a-1842e411ac55", "Site '{Site}' does not exist");
+        static Reason SiteNameAlreadyExists = Reason.Create("9ceff948-f9e0-4584-9478-94a00c45b55c", "Site '{Site}' already exists");
+        static Reason SiteWithNameDoesNotExists = Reason.Create("60c1f7be-3937-4625-a23a-1842e411ac55", "Site '{Site}' does not exist");
 
         public class Site
         {
