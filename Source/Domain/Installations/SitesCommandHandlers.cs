@@ -3,11 +3,9 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
-using Concepts.Installations;
 using Dolittle.Commands.Handling;
 using Dolittle.Domain;
 using Dolittle.Execution;
-using Infrastructure.Domain;
 
 namespace Domain.Installations
 {
@@ -26,20 +24,16 @@ namespace Domain.Installations
 
         public void Handle(RegisterSite register)
         {
-            if( _sites  .Rehydrate(_executionContextManager.Current.Tenant.Value)
-                        .Perform(_ => _.Register(Guid.NewGuid(), register.Name)) )
-            {
-                // Yippi
-            }
+            _sites
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Register(Guid.NewGuid(), register.Name));
         }
 
         public void Handle(RenameSite rename)
         {
-            if( _sites  .Rehydrate(_executionContextManager.Current.Tenant.Value)
-                        .Perform(_ => _.Rename(rename.OldName, rename.NewName)) )
-            {
-                // Yippi
-            }
+            _sites
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Rename(rename.OldName, rename.NewName));
         }
     }
 }
