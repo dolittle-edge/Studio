@@ -44,13 +44,14 @@ namespace Domain.Installations
 
         public void Handle(RegisterNodeWithInstallation register)
         {
-            /*
-            var nodes = _nodes.Get(_executionContextManager.Current.Tenant.Value);
-            var nodeId = Guid.NewGuid();
             var installationId = _installationNameKeys.GetFor(register.InstallationName);
-            _nodeNameKeys.Associate(register.Name, nodeId);
-            nodes.RegisterToInstallation(nodeId, register.Name, installationId);
-            */
+            var nodeId = Guid.NewGuid();
+            if (_nodes
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Register(nodeId, register.Name, installationId)))
+            {
+                _nodeNameKeys.Associate(register.Name, nodeId);
+            }
         }
 
         public void Handle(RenameNode rename)

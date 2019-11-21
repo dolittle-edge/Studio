@@ -17,6 +17,11 @@ namespace Domain.Installations
         static Reason NodeNameAlreadyExists = Reason.Create("aa184789-1c5d-44cd-9890-a292e3993748", "Node '{Node}' already exists");
         static Reason NodeWithNameDoesNotExists = Reason.Create("215b195e-e88a-4457-a7c8-18c3f49e06d1", "Node '{Node}' does not exist");
 
+        class Installation
+        {
+            public Installation(InstallationId installationId) => InstallationId = installationId;
+            public InstallationId InstallationId { get; }
+        }
 
         class Node
         {
