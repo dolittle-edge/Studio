@@ -9,9 +9,6 @@
             "host": "mongodb://localhost:27017",
             "database": "event_store",
             "useSSL": false
-        },
-        "files": {
-            "rootPath": "./Data/"
         }
     },
 
@@ -25,9 +22,6 @@
             "host": "mongodb://localhost:27017",
             "database": "event_store",
             "useSSL": false
-        },
-        "files": {
-            "rootPath": "./Data/"
         }
     }
 }

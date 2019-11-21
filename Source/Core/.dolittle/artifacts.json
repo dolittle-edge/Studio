@@ -71,7 +71,7 @@
       },
       "02fe2fbd-6037-40e0-8db1-6b43414e9ed0": {
         "generation": 1,
-        "type": "Domain.Installations.UnassociatedNodes, Domain"
+        "type": "Domain.Installations.Nodes, Domain"
       }
     },
     "readModels": {
