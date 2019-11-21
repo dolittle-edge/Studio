@@ -44,18 +44,21 @@ namespace API.Telemetry
         [HttpPost]
         public ActionResult Post([FromBody] NodeTelemetry nodeTelemetry)
         {
+            /*
             _executionContextManager.CurrentFor(TenantId.Development);
             nodeTelemetry.Metrics.ForEach(_ =>
             {
                 _dataPointMessenger.Push(
-                    nodeTelemetry.LocationId,
+                    nodeTelemetry.SiteId,
+                    nodeTelemetry.InstallationId,
                     nodeTelemetry.NodeId,
                     _.Key,
                     _.Value
                 );
-            });
+            });*/
+            
 
-            _locationStatuses.ReportConnectionFrom(nodeTelemetry.LocationId, nodeTelemetry.NodeId);
+            //_locationStatuses.ReportConnectionFrom(nodeTelemetry.SiteId, nodeTelemetry.InstallationId, nodeTelemetry.NodeId);
 
             return new ContentResult
             {
