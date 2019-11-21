@@ -2,10 +2,10 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { Command, CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
+import { CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
-import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
+import { IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { QueryCoordinator } from "@dolittle/queries";
 
 import dateformat from 'dateformat';
