@@ -2,20 +2,14 @@
  *  This file is an automatically generated Query Proxy
  *  
  *--------------------------------------------------------------------------------------------*/
-import { Query } from  '../internal';
+import { Query } from  '@dolittle/queries';
 
 export class LocationById extends Query
 {
-    nameOfQuery: string;
-    generatedFrom: string;
     locationId: string;
 
     constructor(locationId: string) {
-        super();
-        this.nameOfQuery = 'LocationById';
-        this.generatedFrom = 'Read.Locations.LocationById';
-
+        super('LocationById', 'Read.Locations.LocationById');
         this.locationId = locationId;
-        // this.locationId = '00000000-0000-0000-0000-000000000000';
     }
 }

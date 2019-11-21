@@ -8,7 +8,7 @@ export class RenameSite extends Command
 {
     constructor() {
         super();
-        this.type = '6feeb98f-aab8-4ce1-b331-ee46c86e643d';
+        this.type = '6156d018-a87e-43a4-bd72-7ce7e4c76f27';
 
         this.oldName = '';
         this.newName = '';

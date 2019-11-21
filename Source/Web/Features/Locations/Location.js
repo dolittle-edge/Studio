@@ -9,7 +9,7 @@ export class Location extends ReadModel
     constructor() {
         super();
         this.artifact = {
-           id: 'aec2f0f4-7b42-45ee-9e45-1ab366f85600',
+           id: 'a09989f8-4fe1-4f9d-b5aa-73dca48ed241',
            generation: '1'
         };
         this.id = '00000000-0000-0000-0000-000000000000';
