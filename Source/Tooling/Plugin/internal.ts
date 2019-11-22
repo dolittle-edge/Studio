@@ -19,6 +19,7 @@ export * from './Installations/RegisterSite';
 export * from './Installations/RenameInstallation';
 export * from './Installations/RenameNode';
 export * from './Installations/RenameSite';
+export * from './Installations/RegisterNodeWithInstallation';
 
 // edge
 export * from './edge/EdgeNamespace'

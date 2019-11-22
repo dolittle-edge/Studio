@@ -4,15 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import { Command } from  '@dolittle/commands';
 
-export class CreateInstallation extends Command
+export class RegisterNodeWithInstallation extends Command
 {
     name: string;
-    siteName: string;
+    installationName: String;
 
-    constructor(name: string, siteName: string) {
-        super('7f0fdd84-e22f-4297-815a-ddf2fa6d4526');
-        // super('7f0fdd84-e22f-4297-815a-ddf2fa6d4526');
+    constructor(name: string, installationName: string) {
+        super('56442e08-5a8c-443a-8d0b-fd544b597ed6');
+
         this.name = name;
-        this.siteName = siteName;
+        this.installationName = installationName;
     }
 }

@@ -344,3 +344,5 @@ package-lock.json
 dist
 
 Artifacts
+
+*.tgz
