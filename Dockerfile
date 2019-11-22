@@ -25,7 +25,7 @@ WORKDIR /work/Source/Core/
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 
 WORKDIR /App
 COPY --from=build /work/Source/Core/out ./
