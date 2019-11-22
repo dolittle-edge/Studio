@@ -61,7 +61,6 @@ namespace Core
                 ReceiveBufferSize = 4 * 1024
             });
             app.UseDolittle();
-            app.RunAsSinglePageApplication();
         }
     }
 }
