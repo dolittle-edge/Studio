@@ -16,22 +16,18 @@ namespace API.Telemetry
     [Route("api/Telemetry")]
     public class TelemetryController : ControllerBase
     {
-        readonly ILocationStatuses _locationStatuses;
         readonly IDataPointMessenger _dataPointMessenger;
         readonly IExecutionContextManager _executionContextManager;
 
         /// <summary>
         /// Initializes a new instance of <see cref="TelemetryController"/>
         /// </summary>
-        /// <param name="locationStatuses"><see cref="ILocationStatuses"/> for dealing with status for locations</param>
         /// <param name="executionContextManager"></param>
         /// <param name="dataPointMessenger"><see cref="IDataPointMessenger"/> for dealing with </param>
         public TelemetryController(
-            ILocationStatuses locationStatuses,
             IExecutionContextManager executionContextManager,
             IDataPointMessenger dataPointMessenger)
         {
-            _locationStatuses = locationStatuses;
             _dataPointMessenger = dataPointMessenger;
             _executionContextManager = executionContextManager;
         }
@@ -44,18 +40,21 @@ namespace API.Telemetry
         [HttpPost]
         public ActionResult Post([FromBody] NodeTelemetry nodeTelemetry)
         {
+            /*
             _executionContextManager.CurrentFor(TenantId.Development);
             nodeTelemetry.Metrics.ForEach(_ =>
             {
                 _dataPointMessenger.Push(
-                    nodeTelemetry.LocationId,
+                    nodeTelemetry.SiteId,
+                    nodeTelemetry.InstallationId,
                     nodeTelemetry.NodeId,
                     _.Key,
                     _.Value
                 );
-            });
+            });*/
+            
 
-            _locationStatuses.ReportConnectionFrom(nodeTelemetry.LocationId, nodeTelemetry.NodeId);
+            //_locationStatuses.ReportConnectionFrom(nodeTelemetry.SiteId, nodeTelemetry.InstallationId, nodeTelemetry.NodeId);
 
             return new ContentResult
             {

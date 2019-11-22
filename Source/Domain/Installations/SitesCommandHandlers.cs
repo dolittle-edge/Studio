@@ -13,34 +13,40 @@ namespace Domain.Installations
 {
     public class SitesCommandHandlers : ICanHandleCommands
     {
-        readonly IAggregateRootRepositoryFor<Sites> _repository;
         readonly IExecutionContextManager _executionContextManager;
-        private readonly INaturalKeysOf<SiteName> _siteNameKeys;
+        readonly IAggregateOf<Sites> _sites;
+        readonly INaturalKeysOf<SiteName> _siteNameKeys;
 
         public SitesCommandHandlers(
-            IAggregateRootRepositoryFor<Sites> repository,
+            IAggregateOf<Sites> sites,
             INaturalKeysOf<SiteName> siteNameKeys,
             IExecutionContextManager executionContextManager)
         {
-            _repository = repository;
-            _siteNameKeys = siteNameKeys;
             _executionContextManager = executionContextManager;
+            _sites = sites;
+            _siteNameKeys = siteNameKeys;
         }
 
         public void Handle(RegisterSite register)
         {
-            var sites = _repository.Get(_executionContextManager.Current.Tenant.Value);
             var siteId = Guid.NewGuid();
-            _siteNameKeys.Associate(register.Name, siteId);
-            sites.Register(siteId, register.Name);
+            if (_sites
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Register(siteId, register.Name)))
+            {
+                _siteNameKeys.Associate(register.Name, siteId);
+            }
         }
 
         public void Handle(RenameSite rename)
         {
-            var sites = _repository.Get(_executionContextManager.Current.Tenant.Value);
-            sites.Rename(rename.OldName, rename.NewName);
             var siteId = _siteNameKeys.GetFor(rename.OldName);
-            _siteNameKeys.Associate(rename.NewName, siteId);
+            if (_sites
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Rename(rename.OldName, rename.NewName)))
+            {
+                _siteNameKeys.Associate(rename.NewName, siteId);
+            }
         }
     }
 }

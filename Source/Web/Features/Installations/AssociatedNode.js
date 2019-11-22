@@ -4,15 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 import { ReadModel } from  '@dolittle/readmodels';
 
-export class Node extends ReadModel
+export class AssociatedNode extends ReadModel
 {
     constructor() {
         super();
         this.artifact = {
-           id: '8cc6f839-0de2-43ed-83cc-e3f7dda64397',
+           id: 'aa678364-4ce1-4f5a-b6c4-223316250a6e',
            generation: '1'
         };
         this.id = '00000000-0000-0000-0000-000000000000';
         this.name = '';
+        this.installationId = '00000000-0000-0000-0000-000000000000';
     }
 }

@@ -8,9 +8,9 @@ export class CreateInstallation extends Command
 {
     constructor() {
         super();
-        this.type = '152ed284-440c-45d4-acdf-763dbd869404';
+        this.type = '7f0fdd84-e22f-4297-815a-ddf2fa6d4526';
 
-        this.name = '';
         this.siteName = '';
+        this.name = '';
     }
 }

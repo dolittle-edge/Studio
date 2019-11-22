@@ -20,7 +20,7 @@ namespace Read.Installations
         private readonly INaturalKeysOf<SiteName> _siteNameKeys;
 
         public InstallationsOnSite(
-            IReadModelRepositoryFor<Installation> installations,             
+            IReadModelRepositoryFor<Installation> installations,
             INaturalKeysOf<SiteName> siteNameKeys)
         {
             _installations = installations;

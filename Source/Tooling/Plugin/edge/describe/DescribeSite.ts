@@ -38,8 +38,7 @@ export class DescribeSite extends AuthenticatedCommand {
         const commandResult = await this._queryCoordinator.execute(new InstallationsOnSite(siteName));
         const results = commandResult.items;
         const formatted: any[] = results.map((location: any) => ({
-                'Id': location.id,
-                'Name': location.name,
+                'Name': location.name
         }));
         outputter.table(formatted);
     }

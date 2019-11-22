@@ -13,34 +13,59 @@ namespace Domain.Installations
 {
     public class NodesCommandHandler : ICanHandleCommands
     {
-        readonly IAggregateRootRepositoryFor<Nodes> _repository;
+        readonly IAggregateOf<Nodes> _nodes;
         readonly IExecutionContextManager _executionContextManager;
-        private readonly INaturalKeysOf<NodeName> _nodeNameKeys;
+
+        readonly INaturalKeysOf<SiteName> _siteNameKeys;
+        readonly INaturalKeysOf<NodeName> _nodeNameKeys;
+        readonly INaturalKeysOf<InstallationOnSite> _installationOnSiteKeys;
+
 
         public NodesCommandHandler(
-            IAggregateRootRepositoryFor<Nodes> repository,
+            IAggregateOf<Nodes> nodes,
+            INaturalKeysOf<SiteName> siteNameKeys,
             INaturalKeysOf<NodeName> nodeNameKeys,
+            INaturalKeysOf<InstallationOnSite> installationOnSiteKeys,
             IExecutionContextManager executionContextManager)
         {
-            _repository = repository;
+            _nodes = nodes;
+            _siteNameKeys = siteNameKeys;
             _nodeNameKeys = nodeNameKeys;
+            _installationOnSiteKeys = installationOnSiteKeys;
             _executionContextManager = executionContextManager;
         }
 
         public void Handle(RegisterNode register)
         {
-            var nodes = _repository.Get(_executionContextManager.Current.Tenant.Value);
             var nodeId = Guid.NewGuid();
-            _nodeNameKeys.Associate(register.Name, nodeId);
-            nodes.Register(nodeId, register.Name);
+            if (_nodes
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Register(nodeId, register.Name)))
+            {
+                _nodeNameKeys.Associate(register.Name, nodeId);
+            }
+        }
+
+        public void Handle(RegisterNodeWithInstallation register)
+        {
+            var siteId = _siteNameKeys.GetFor(register.SiteName);
+            var installationId = _installationOnSiteKeys.GetFor(new InstallationOnSite { SiteId = siteId, InstallationName = register.InstallationName });
+            var nodeId = Guid.NewGuid();
+            if (_nodes
+                .Rehydrate(_executionContextManager.Current.Tenant.Value)
+                .Perform(_ => _.Register(nodeId, register.Name, installationId)))
+            {
+                _nodeNameKeys.Associate(register.Name, nodeId);
+            }
         }
 
         public void Handle(RenameNode rename)
         {
-            var nodes = _repository.Get(_executionContextManager.Current.Tenant.Value);
+            /*
+            var nodes = _nodes.Get(_executionContextManager.Current.Tenant.Value);
             nodes.Rename(rename.OldName, rename.NewName);
             var nodeId = _nodeNameKeys.GetFor(rename.OldName);
-            _nodeNameKeys.Associate(rename.NewName, nodeId);
+            _nodeNameKeys.Associate(rename.NewName, nodeId);*/
         }
     }
 }

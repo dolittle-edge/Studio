@@ -33,11 +33,6 @@ namespace Core
         {
             if (_hostingEnvironment.IsDevelopment())
             {
-            //     services.AddSwaggerGen(c =>
-            //     {
-            //         c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-            //     });
-
                 services.AddCors();
                 services.AddDolittleSwagger();
             }
@@ -56,27 +51,9 @@ namespace Core
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                // app.UseSwagger();
-                // app.UseSwaggerUI(c =>
-                // {
-                //     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                // });
-
-                app.UseCors(_ =>
-                {
-                    _.AllowCredentials();
-                    _.AllowAnyMethod();
-                    _.AllowAnyOrigin();
-                    _.AllowAnyHeader();
-                });
                 app.UseDolittleSwagger();
             }
-
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-
             app.UseMvc();
-
 
             app.UseWebSockets(new WebSocketOptions
             {
@@ -84,7 +61,6 @@ namespace Core
                 ReceiveBufferSize = 4 * 1024
             });
             app.UseDolittle();
-            app.RunAsSinglePageApplication();
         }
     }
 }

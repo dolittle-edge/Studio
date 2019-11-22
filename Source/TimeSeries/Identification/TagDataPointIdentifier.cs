@@ -5,8 +5,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using Concepts.Locations;
-using Concepts.Locations.Nodes;
+using Concepts.Installations;
 using Dolittle.Collections;
 using Dolittle.Lifecycle;
 using Dolittle.ReadModels;
@@ -41,9 +40,9 @@ namespace TimeSeries.Identification
         }
 
         /// <inheritdoc/>
-        public TagToTimeSeries GetOrUpdate(LocationId location, NodeId node, string metricType)
+        public TagToTimeSeries GetOrUpdate(SiteId site, InstallationId installation, NodeId node, string metricType)
         {
-            var tag = $"{location.Value}_{node.Value}_{metricType}";
+            var tag = $"{site.Value}_{installation.Value}_{node.Value}_{metricType}";
             if (_cache.ContainsKey(tag)) return _cache[tag];
 
             var map = new TagToTimeSeries { Id = Guid.NewGuid(), Tag = tag };

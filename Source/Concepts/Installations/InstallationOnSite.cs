@@ -2,12 +2,13 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System;
+using Dolittle.Concepts;
 
-namespace Domain.Installations
+namespace Concepts.Installations
 {
-    public class SiteNameAlreadyUsed : Exception
+    public class InstallationOnSite : Value<InstallationOnSite>
     {
-        public SiteNameAlreadyUsed(string name) : base($"The '{name}' is already registerd as a site") {}
+        public SiteId SiteId { get; set; }
+        public InstallationName InstallationName { get; set; }
     }
 }

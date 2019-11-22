@@ -1,9 +1,9 @@
-using Concepts.Installations;
+﻿using Concepts.Installations;
 using Dolittle.ReadModels;
 
 namespace Read.Installations
 {
-    public class Node : IReadModel
+    public class UnassociatedNode : IReadModel
     {
         public NodeId Id { get; set; }
 

@@ -9,7 +9,7 @@ export class TagToTimeSeries extends ReadModel
     constructor() {
         super();
         this.artifact = {
-           id: 'c5761303-1e67-44b0-82f9-60c596020c3a',
+           id: '9a958f80-b3bc-4fb9-af6d-c6d15578e7dc',
            generation: '1'
         };
         this.id = '00000000-0000-0000-0000-000000000000';
