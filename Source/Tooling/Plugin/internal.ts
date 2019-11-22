@@ -20,6 +20,7 @@ export * from './Installations/RenameInstallation';
 export * from './Installations/RenameNode';
 export * from './Installations/RenameSite';
 export * from './Installations/RegisterNodeWithInstallation';
+export * from './Installations/NodesWithinInstallation';
 
 // edge
 export * from './edge/EdgeNamespace'
