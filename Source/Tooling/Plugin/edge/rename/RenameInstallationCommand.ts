@@ -11,24 +11,30 @@ import { RenameInstallation } from "../../internal";
 
 const name = 'installation';
 
-const description = `Display detailed information of an installation`;
+const description = `Rename an installation inside a site`;
 
 const renameInstallationPromptDependencies = [
-        new PromptDependency(
+    new PromptDependency(
         'current name',
         'current name of the installation',
         [new IsNotEmpty()],
         argumentUserInputType,
         'current name of the installation'
     ),
-        new PromptDependency(
+    new PromptDependency(
         'new name',
         'new name of the installation',
         [new IsNotEmpty()],
         argumentUserInputType,
         'new name of the installation'
-    )
-];
+    ),
+    new PromptDependency(
+        'site name',
+        'name of the site',
+        [new IsNotEmpty()],
+        argumentUserInputType,
+        'name of the site'
+)];
 
 export class RenameInstallationCommand extends Command {
 

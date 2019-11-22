@@ -21,13 +21,14 @@ const nameDependencies = [
         'name of the installation',
         [new IsNotEmpty()],
         argumentUserInputType,
-        'name of the installation'),
+        'name of the installation'
+    ),
     new PromptDependency(
         'site name',
         'name of the site',
         [new IsNotEmpty()],
         argumentUserInputType,
-        'name of the installation'
+        'name of the site'
 )];
 
 export class DescribeInstallation extends Command {
