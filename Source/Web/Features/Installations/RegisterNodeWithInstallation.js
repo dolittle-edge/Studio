@@ -11,6 +11,7 @@ export class RegisterNodeWithInstallation extends Command
         this.type = '56442e08-5a8c-443a-8d0b-fd544b597ed6';
 
         this.name = '';
+        this.siteName = '';
         this.installationName = '';
     }
 }

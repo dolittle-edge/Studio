@@ -32,22 +32,24 @@ namespace Domain.Installations
             var siteId = _siteNameKeys.GetFor(command.SiteName);
             var installationId = Guid.NewGuid();
 
-            _installationOnSiteKeys.Associate(new InstallationOnSite{SiteId=siteId, InstallationName=command.Name}, installationId);
-
-            _installationsOnSite
+            if (_installationsOnSite
                 .Rehydrate(siteId)
-                .Perform(_ => _.Start(installationId, command.Name));
+                .Perform(_ => _.Start(installationId, command.Name)))
+            {
+                _installationOnSiteKeys.Associate(new InstallationOnSite { SiteId = siteId, InstallationName = command.Name }, installationId);
+            }
         }
 
         public void Handle(RenameInstallation command)
         {
-            var installationId = _installationOnSiteKeys.GetFor(new InstallationOnSite{SiteId=command.SiteId, InstallationName=command.OldName});
+            var installationId = _installationOnSiteKeys.GetFor(new InstallationOnSite { SiteId = command.SiteId, InstallationName = command.OldName });
 
-            _installationsOnSite
+            if (_installationsOnSite
                 .Rehydrate(command.SiteId)
-                .Perform(_ => _.Rename(command.OldName, command.NewName));
-
-            _installationOnSiteKeys.Associate(new InstallationOnSite{SiteId=command.SiteId, InstallationName=command.NewName}, installationId);
+                .Perform(_ => _.Rename(command.OldName, command.NewName)))
+            {
+                _installationOnSiteKeys.Associate(new InstallationOnSite { SiteId = command.SiteId, InstallationName = command.NewName }, installationId);
+            }
         }
     }
 }

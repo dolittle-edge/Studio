@@ -11,7 +11,7 @@ namespace Domain.Installations
     public class RegisterNodeWithInstallation : ICommand
     {
         public NodeName Name { get; set; }
-
+        public SiteName SiteName { get; set; }
         public InstallationName InstallationName { get; set; }
     }
 }
