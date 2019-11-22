@@ -20,6 +20,12 @@ const registerPromptDependency = [
         argumentUserInputType,
         'The name of the node'),
     new PromptDependency(
+        'site name',
+        'The name of the site',
+        [new IsNotEmpty()],
+        argumentUserInputType,
+        'The name of the site'),
+    new PromptDependency(
         'installation name',
         'The name of the installation',
         [new IsNotEmpty()],
@@ -38,10 +44,11 @@ export class RegisterNodeCommand extends Command {
         failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);
         let nodeName: any = context[registerPromptDependency[0].name];
-        let installationName: any = context[registerPromptDependency[1].name];
+        let siteName: any = context[registerPromptDependency[1].name];
+        let installationName: any = context[registerPromptDependency[2].name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._commandCoordinator.handle(new RegisterNodeWithInstallation(nodeName, installationName));
+        let commandResult = await this._commandCoordinator.handle(new RegisterNodeWithInstallation(nodeName, siteName, installationName));
         outputter.print(commandResult as any);
     }
 }
