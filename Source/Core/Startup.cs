@@ -53,10 +53,6 @@ namespace Core
                 app.UseDeveloperExceptionPage();
                 app.UseDolittleSwagger();
             }
-
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-
             app.UseMvc();
 
             app.UseWebSockets(new WebSocketOptions
