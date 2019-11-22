@@ -45,7 +45,7 @@
       },
       "38362f04-9828-454d-9168-fb28e95f9703": {
         "generation": 1,
-        "type": "Events.Installations.NodeRegisteredToInstallation, Events"
+        "type": "Events.Installations.NodeRegisteredWithInstallation, Events"
       },
       "9b637f0e-8484-4701-8d96-cf09bc634380": {
         "generation": 1,

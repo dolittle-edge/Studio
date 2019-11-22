@@ -11,6 +11,7 @@ export class NodesWithinInstallation extends Query
         this.nameOfQuery = 'NodesWithinInstallation';
         this.generatedFrom = 'Read.Installations.NodesWithinInstallation';
 
-        this.installationId = '00000000-0000-0000-0000-000000000000';
+        this.installationName = '';
+        this.siteName = '';
     }
 }

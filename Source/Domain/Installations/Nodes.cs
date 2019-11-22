@@ -43,7 +43,7 @@ namespace Domain.Installations
         public void Register(NodeId nodeId, string name, InstallationId installationId)
         {
             if (Evaluate(() => DuplicateNodeNameNotAllowed(name)))
-            Apply(new NodeRegisteredToInstallation(nodeId, name, installationId));
+            Apply(new NodeRegisteredWithInstallation(nodeId, name, installationId));
         }
 
         public void Rename(string oldName, string newName)
