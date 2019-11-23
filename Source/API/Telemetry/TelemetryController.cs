@@ -7,6 +7,7 @@ using Dolittle.Collections;
 using TimeSeries.DataPoints;
 using Dolittle.Execution;
 using Dolittle.Tenancy;
+using Read.Installations;
 
 namespace API.Telemetry
 {
@@ -17,19 +18,19 @@ namespace API.Telemetry
     public class TelemetryController : ControllerBase
     {
         readonly IDataPointMessenger _dataPointMessenger;
-        readonly IExecutionContextManager _executionContextManager;
+        private readonly ICurrentNodeStatus _currentNodeStatus;
 
         /// <summary>
         /// Initializes a new instance of <see cref="TelemetryController"/>
         /// </summary>
-        /// <param name="executionContextManager"></param>
         /// <param name="dataPointMessenger"><see cref="IDataPointMessenger"/> for dealing with </param>
+        /// <param name="currentNodeStatus"><see cref="ICurrentNodeStatus"/> for reporting current status of nodes</param>
         public TelemetryController(
-            IExecutionContextManager executionContextManager,
-            IDataPointMessenger dataPointMessenger)
+            IDataPointMessenger dataPointMessenger,
+            ICurrentNodeStatus currentNodeStatus)
         {
             _dataPointMessenger = dataPointMessenger;
-            _executionContextManager = executionContextManager;
+            _currentNodeStatus = currentNodeStatus;
         }
 
         /// <summary>
@@ -40,8 +41,6 @@ namespace API.Telemetry
         [HttpPost]
         public ActionResult Post([FromBody] NodeTelemetry nodeTelemetry)
         {
-            /*
-            _executionContextManager.CurrentFor(TenantId.Development);
             nodeTelemetry.Metrics.ForEach(_ =>
             {
                 _dataPointMessenger.Push(
@@ -51,10 +50,15 @@ namespace API.Telemetry
                     _.Key,
                     _.Value
                 );
-            });*/
-            
+            });
 
-            //_locationStatuses.ReportConnectionFrom(nodeTelemetry.SiteId, nodeTelemetry.InstallationId, nodeTelemetry.NodeId);
+            _currentNodeStatus.Report(
+                nodeTelemetry.SiteId,
+                nodeTelemetry.InstallationId,
+                nodeTelemetry.NodeId,
+                nodeTelemetry.Metrics,
+                nodeTelemetry.Infos
+            );
 
             return new ContentResult
             {

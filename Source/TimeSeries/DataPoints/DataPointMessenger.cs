@@ -34,8 +34,8 @@ namespace TimeSeries.DataPoints
         /// <inheritdoc/>
         public void Push(SiteId siteId, InstallationId installation, NodeId node, string metricType, double value)
         {
-            //var identity = _identifierFactory().GetOrUpdate(location, node, metricType);
-            //DataPointReady(new TagDataPoint(identity.Tag, (Single)value));
+            var identity = _identifierFactory().GetOrUpdate(siteId, installation, node, metricType);
+            DataPointReady(new TagDataPoint(identity.Tag, (Single)value));
         }
     }
 }

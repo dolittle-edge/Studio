@@ -8,7 +8,7 @@ using Concepts.Installations;
 namespace API.Telemetry
 {
     /// <summary>
-    /// Represents a node on a location
+    /// Represents a node within an installation at a site
     /// </summary>
     public class NodeTelemetry
     {

@@ -1,15 +1,6 @@
 {
   "modules": {},
   "features": {
-    "7eb9bb26-0761-4cbd-8ce8-a5b9c70ad324": {
-      "name": "Locations",
-      "subFeatures": {
-        "fe609c74-f943-46c6-8b12-f3939a92a792": {
-          "name": "Nodes",
-          "subFeatures": {}
-        }
-      }
-    },
     "3edfd8c4-ca12-417e-add8-fb2d20205f4d": {
       "name": "Installations",
       "subFeatures": {}

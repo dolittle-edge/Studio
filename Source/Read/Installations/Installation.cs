@@ -8,7 +8,7 @@ using Dolittle.ReadModels;
 namespace Read.Installations
 {
     /// <summary>
-    /// Represents a node at a location
+    /// Represents an installation at a site
     /// </summary>
     public class Installation : IReadModel
     {
