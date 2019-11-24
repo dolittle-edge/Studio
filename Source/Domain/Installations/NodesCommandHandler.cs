@@ -53,7 +53,7 @@ namespace Domain.Installations
             var nodeId = Guid.NewGuid();
             if (_nodes
                 .Rehydrate(_executionContextManager.Current.Tenant.Value)
-                .Perform(_ => _.Register(nodeId, register.Name, installationId)))
+                .Perform(_ => _.Register(nodeId, register.Name, siteId, installationId)))
             {
                 _nodeNameKeys.Associate(register.Name, nodeId);
             }

@@ -40,10 +40,10 @@ namespace Domain.Installations
             Apply(new NodeRegistered(nodeId, name));
         }
 
-        public void Register(NodeId nodeId, string name, InstallationId installationId)
+        public void Register(NodeId nodeId, string name, SiteId siteId, InstallationId installationId)
         {
             if (Evaluate(() => DuplicateNodeNameNotAllowed(name)))
-            Apply(new NodeRegisteredWithInstallation(nodeId, name, installationId));
+            Apply(new NodeRegisteredWithInstallation(siteId, installationId, nodeId, name));
         }
 
         public void Rename(string oldName, string newName)

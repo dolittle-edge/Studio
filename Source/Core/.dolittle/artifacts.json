@@ -94,6 +94,10 @@
       "064afb61-d640-4b72-af73-4d6e483cca4b": {
         "generation": 1,
         "type": "Read.Installations.UnassociatedNode, Read"
+      },
+      "8bee819b-42bd-4bbe-9f6d-188245892312": {
+        "generation": 1,
+        "type": "Read.Installations.SiteStatus, Read"
       }
     },
     "queries": {
@@ -116,6 +120,18 @@
       "497065f3-e0d1-4b6c-aed6-fd90b176dbf2": {
         "generation": 1,
         "type": "Read.Installations.UnassociatedNodes, Read"
+      },
+      "85c86567-472c-4279-b2d9-4cc6039ccdcf": {
+        "generation": 1,
+        "type": "Read.Installations.CurrentStatusForSite, Read"
+      },
+      "37b6aa99-f95d-4ce2-8e3a-338e26de1dc0": {
+        "generation": 1,
+        "type": "Read.Installations.StatusForAllSites, Read"
+      },
+      "b7b6ac85-6171-4dc2-9b9b-2471f5e77d9d": {
+        "generation": 1,
+        "type": "Read.Installations.NodeStatusesForSite, Read"
       }
     }
   },
