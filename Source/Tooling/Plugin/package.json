@@ -28,7 +28,8 @@
     "test": "gulp test --gulpfile node_modules/@dolittle/typescript.build/Gulpfile.js",
     "test:run": "gulp test-run --gulpfile node_modules/@dolittle/typescript.build/Gulpfile.js",
     "test:clean": "gulp test-clean --gulpfile node_modules/@dolittle/typescript.build/Gulpfile.js",
-    "prepublishOnly": "yarn build && yarn test:run && yarn test:clean"
+    "prepublishOnly": "yarn build && yarn test:run && yarn test:clean",
+    "publish-locally": "yarn build && npm pack && npm i -g dolittle-tooling.edge-studio*"
   },
   "dependencies": {
     "@dolittle/commands": "^2.0.0",
