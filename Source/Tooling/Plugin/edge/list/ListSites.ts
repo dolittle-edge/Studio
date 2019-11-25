@@ -8,6 +8,7 @@ import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.uti
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { QueryCoordinator } from "@dolittle/queries";
 import { AllSites } from "../../internal";
+import { StatusForAllSites } from "../../internal";
 import dateformat from 'dateformat';
 import { IContexts, ILoginService } from "@dolittle/tooling.common.login";
 
@@ -24,11 +25,11 @@ export class ListSites extends AuthenticatedCommand {
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         await requireInternet(this._connectionChecker, busyIndicator);
         QueryCoordinator.apiBaseUrl = this._edgeAPI;
+        // TODO: change this into a more fulfilling answer like StatusForAllSites
         let commandResult = await this._queryCoordinator.execute(new AllSites());
         let results = commandResult.items;
-        let formatted: any[] = results.map((location: any) => ({
-                'Id': location.id,
-                'Name': location.name,
+        let formatted: any[] = results.map((site: any) => ({
+                'Name': site.name
         }));
         outputter.table(formatted);
     }

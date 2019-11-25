@@ -14,11 +14,11 @@ const name = 'site';
 const description = 'register a new site with a name';
 
 const registerPromptDependency = new PromptDependency(
-    'name',
-    'The name of the site',
+    'site name',
+    'A unique name for the site',
     [new IsNotEmpty()],
     argumentUserInputType,
-    'The name of the site'
+    'A unique name for the site',
 );
 
 export class RegisterSiteCommand extends AuthenticatedCommand {
@@ -34,7 +34,16 @@ export class RegisterSiteCommand extends AuthenticatedCommand {
         let name: any = context[registerPromptDependency.name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._commandCoordinator.handle(new RegisterSite(name));
-        outputter.print(commandResult as any);
+        let commandResult: any = await this._commandCoordinator.handle(new RegisterSite(name));
+        if (commandResult.success) {
+            outputter.print(`Site '${name}' registered succesfully`)
+        } else if (commandResult.hasBrokenRules) {
+            commandResult.brokenRules.forEach((brokenRule: any) => {
+                outputter.error(`Rules broken: ${brokenRule.rule}`);
+                brokenRule.causes.forEach((cause: any) => {
+                    outputter.error(`Cause: ${cause.title}`);
+                });
+            });
+        }
     }
 }
