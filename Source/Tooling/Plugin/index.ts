@@ -25,12 +25,24 @@ let commandCoordinator = new CommandCoordinator();
 let queryCoordinator = new QueryCoordinator();
 
 // const edgeApi = 'https://edge.dolittle.studio';
+
 const edgeApi = 'http://localhost:5000/api';
+/*
+force use the old development tenant id instead of the default <unkown> one. This is because Swagger uses the old 
+development tenant id by default so for dev purposes it's easier to use that instead of the newer <unkown>. Otherwise
+you end up with your resources.json using both the dev and <unkown> tenants targeting the same db, messing everything up
+https://github.com/dolittle-interaction/AspNetCore.Debugging.Swagger/blob/master/Source/SwaggerGen/DocumentGenerator.cs#L64
+*/
+CommandCoordinator.beforeHandle((options) => {
+    (options.headers as any)['Tenant-ID'] = `445f8ea8-1a6f-40d7-b2fc-796dba92dc44`;
+});
+QueryCoordinator.beforeExecute((options) => {
+    (options.headers as any)['Tenant-ID'] = `445f8ea8-1a6f-40d7-b2fc-796dba92dc44`;
+});
 
 export let commandGroupsProvider = new CommandGroupsProvider([]);
+export let commandsProvider = new CommandsProvider([]);
 
-export let commandsProvider = new CommandsProvider([]
-);
 export let namespaceProvider = new NamespaceProvider([
     // add CreateInstallation as a base level command as it only applies to installations
     new EdgeNamespace([], [

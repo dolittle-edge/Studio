@@ -48,6 +48,8 @@ namespace Core
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // this should be first on the list
+            app.UseDolittle();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -60,7 +62,6 @@ namespace Core
                 KeepAliveInterval = TimeSpan.FromSeconds(120),
                 ReceiveBufferSize = 4 * 1024
             });
-            app.UseDolittle();
         }
     }
 }
