@@ -23,6 +23,7 @@ export * from './Installations/RenameNode';
 export * from './Installations/RenameSite';
 export * from './Installations/RegisterNodeWithInstallation';
 export * from './Installations/NodesWithinInstallation';
+export * from './Installations/StatusForAllSites';
 
 // edge
 export * from './edge/EdgeNamespace'
