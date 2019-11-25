@@ -2,15 +2,13 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.Concepts;
+using System.Collections.Generic;
+using Concepts.Installations;
 
-namespace Concepts.Installations
+namespace Read.Installations
 {
-    /// <summary>
-    /// Represents the concept of the name of a node
-    /// </summary>
-    public class SiteName : ConceptAs<string>
+    public interface ICurrentNodeStatus
     {
-        public static implicit operator SiteName(string value) => new SiteName { Value = value };
+        void Report(SiteId siteId, InstallationId installationId, NodeId nodeId, IDictionary<string, float> metrics, IDictionary<string,string> infos);
     }
 }

@@ -7,7 +7,7 @@ using Dolittle.Concepts;
 namespace Concepts.Installations
 {
     /// <summary>
-    /// Represents the concept of the name of a location
+    /// Represents the concept of the name of a node
     /// </summary>
     public class NodeName : ConceptAs<string>
     {
