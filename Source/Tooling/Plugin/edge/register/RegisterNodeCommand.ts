@@ -8,7 +8,7 @@ import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.uti
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
 import { IContexts, ILoginService } from "@dolittle/tooling.common.login";
-import { RegisterNodeWithInstallation } from "../../internal";
+import { RegisterNodeWithInstallation, DolittleOutputter } from "../../internal";
 
 const name = 'node';
 const description = 'register a new node with a name';
@@ -43,12 +43,15 @@ export class RegisterNodeCommand extends AuthenticatedCommand {
     
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         let context = await dependencyResolvers.resolve({}, this.dependencies);
+        outputter = new DolittleOutputter();
         let nodeName: any = context[registerPromptDependency[0].name];
         let installationName: any = context[registerPromptDependency[1].name];
         let siteName: any = context[registerPromptDependency[2].name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._commandCoordinator.handle(new RegisterNodeWithInstallation(nodeName, installationName, siteName));
-        outputter.print(commandResult as any);
+        let commandResult: any = await this._commandCoordinator.handle(new RegisterNodeWithInstallation(nodeName, installationName, siteName));
+        const successString: string = `Node '${nodeName}' registered succesfully to '${installationName}' at '${siteName}'`;
+        const failString: string = `Error while registering node '${nodeName}' to '${installationName}' at '${siteName}'`;
+        outputter.print(commandResult, successString, failString);
     }
 }

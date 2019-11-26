@@ -37,6 +37,7 @@
     "@dolittle/queries": "^2.0.0",
     "@dolittle/readmodels": "^2.0.0",
     "@types/node-fetch": "^2.5.3",
+    "chalk": "^3.0.0",
     "dateformat": "^3.0.3",
     "node-fetch": "^2.6.0",
     "request": "^2.88.0",

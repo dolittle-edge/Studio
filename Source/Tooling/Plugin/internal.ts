@@ -10,6 +10,8 @@ export * from './CommandGroupsProvider';
 export * from './CommandsProvider';
 export * from './NamespaceProvider';
 
+export * from './DolittleOutputter';
+
 // get all the proxies
 export * from './Installations/AllInstallations';
 export * from './Installations/AllNodes';
