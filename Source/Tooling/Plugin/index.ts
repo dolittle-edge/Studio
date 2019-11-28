@@ -9,11 +9,11 @@ import { QueryCoordinator } from "@dolittle/queries";
 import { contexts, loginService } from '@dolittle/tooling.common.login';
 import nodeFetch from "node-fetch";
 import { CommandGroupsProvider, CommandsProvider, NamespaceProvider,
-    EdgeNamespace, AddNodeCommand, DescribeCommandGroup, DescribeInstallation, 
+    EdgeNamespace, DescribeCommandGroup, DescribeInstallation, 
     DescribeNode, DescribeSite, ListCommandGroup, ListInstallations, ListNodes, ListSites, RenameCommandGroup,
     RenameInstallationCommand, RenameNodeCommand, RenameSiteCommand, RegisterCommandGroup, RegisterSiteCommand,
     RegisterNodeCommand, CreateCommandGroup, CreateInstallationCommand, DeleteCommandGroup, DeleteInstallationCommand,
-    createAuthenticateCallback, AddCommandGroup
+    createAuthenticateCallback,
 } from "./internal";
 
 (global as any).fetch = nodeFetch;
@@ -46,9 +46,6 @@ export let commandsProvider = new CommandsProvider([]);
 export let namespaceProvider = new NamespaceProvider([
     // add CreateInstallation as a base level command as it only applies to installations
     new EdgeNamespace([], [
-        new AddCommandGroup([
-            new AddNodeCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator)
-        ]),
         new CreateCommandGroup([
             new CreateInstallationCommand(edgeApi, loginService, contexts, connectionChecker, commandCoordinator),
         ]),
