@@ -9,6 +9,7 @@ import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.pac
 import { CommandCoordinator } from "@dolittle/commands";
 import { RenameSite } from "../../internal";
 import { IContexts, ILoginService } from "@dolittle/tooling.common.login";
+import { DolittleOutputter } from "../../DolittleOutputter";
 
 const name = 'site';
 
@@ -38,12 +39,15 @@ export class RenameSiteCommand extends AuthenticatedCommand {
         super(loginService, contexts, name, description, false, undefined, renameSitePromptDependencies);
     }
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
+        outputter = new DolittleOutputter();
         let context = await dependencyResolvers.resolve({}, this.dependencies);
         let oldName: any = context[renameSitePromptDependencies[0].name];
         let newName: any = context[renameSitePromptDependencies[1].name];
         await requireInternet(this._connectionChecker, busyIndicator);
         CommandCoordinator.apiBaseUrl = this._edgeAPI;
-        let commandResult = await this._commandCoordinator.handle(new RenameSite(oldName, newName));
-        outputter.print(commandResult as any);
+        let commandResult: any = await this._commandCoordinator.handle(new RenameSite(oldName, newName));
+        const successString: string = `Site '${oldName}' renamed to '${newName}'`;
+        const failString: string = `Error while renaming site '${oldName}' to '${newName}'`;
+        outputter.print(commandResult, successString, failString);
     }
 }

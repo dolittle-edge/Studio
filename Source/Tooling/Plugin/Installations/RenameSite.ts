@@ -10,7 +10,7 @@ export class RenameSite extends Command
     newName: string;
 
     constructor(oldName: string, newName: string) {
-        super('6156d018-a87e-43a4-bd72-7ce7e4c76f27');
+        super('15dbeb7f-ddbc-4ae4-b48a-e5e673687b57');
         this.oldName = oldName;
         this.newName = newName;
     }
