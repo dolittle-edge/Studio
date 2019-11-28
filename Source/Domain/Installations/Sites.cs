@@ -41,7 +41,7 @@ namespace Domain.Installations
                     () => DuplicateSiteNameNotAllowed(newName)))
             {
                 var site = _sites.Single(_ => _.Name == oldName);
-                Apply(new SiteRegistered(site.SiteId, newName));
+                Apply(new SiteRenamed(site.SiteId, newName));
             }
         }
 
