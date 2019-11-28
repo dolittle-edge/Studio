@@ -52,5 +52,4 @@ export class DolittleOutputter implements ICanOutputMessages {
     table(data: any[]) {
         console.table(data);
     }
-
 }

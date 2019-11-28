@@ -45,9 +45,7 @@ export class DescribeInstallation extends AuthenticatedCommand {
         await requireInternet(this._connectionChecker, busyIndicator);
         QueryCoordinator.apiBaseUrl = this._edgeAPI;
         let commandResult = await this._queryCoordinator.execute(new NodesWithinInstallation(installationName, siteName));
-        let results = commandResult.items;
-        outputter.print(results as any);
-        let formatted: any[] = results.map((location: any) => ({
+        let formatted: any[] = commandResult.items.map((location: any) => ({
                 'Name': location.name,
         }));
         outputter.table(formatted);
