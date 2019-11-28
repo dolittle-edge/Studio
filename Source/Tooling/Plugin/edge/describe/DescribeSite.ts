@@ -2,12 +2,12 @@
 *  Copyright (c) Dolittle. All rights reserved.
 *  Licensed under the MIT License. See LICENSE in the project root for license information.
 *--------------------------------------------------------------------------------------------*/
-import { Command, CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
+import { CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
 import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { QueryCoordinator } from "@dolittle/queries";
-import { InstallationsOnSite } from "../../internal";
+import { CurrentStatusForSite, InstallationsOnSite } from "../../internal";
 
 import dateformat from 'dateformat';
 import { IContexts, ILoginService } from "@dolittle/tooling.common.login";
@@ -36,10 +36,14 @@ export class DescribeSite extends AuthenticatedCommand {
         await requireInternet(this._connectionChecker, busyIndicator);
         QueryCoordinator.apiBaseUrl = this._edgeAPI;
         const commandResult = await this._queryCoordinator.execute(new InstallationsOnSite(siteName));
-        const results = commandResult.items;
-        const formatted: any[] = results.map((location: any) => ({
-                'Name': location.name
-        }));
-        outputter.table(formatted);
+        // const commandResult = await this._queryCoordinator.execute(new CurrentStatusForSite(siteName));
+        if (commandResult.items) {
+            const formatted: any[] = commandResult.items.map((location: any) => ({
+                    'Name': location.name
+            }));
+            outputter.table(formatted);
+        } else {
+            outputter.error('No results or query broken')
+        }
     }
 }

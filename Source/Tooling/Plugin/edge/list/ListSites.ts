@@ -25,11 +25,13 @@ export class ListSites extends AuthenticatedCommand {
     async onAction(commandContext: CommandContext, dependencyResolvers: IDependencyResolvers, failedCommandOutputter: IFailedCommandOutputter, outputter: ICanOutputMessages, busyIndicator: IBusyIndicator) {
         await requireInternet(this._connectionChecker, busyIndicator);
         QueryCoordinator.apiBaseUrl = this._edgeAPI;
-        // TODO: change this into a more fulfilling answer like StatusForAllSites
-        let commandResult = await this._queryCoordinator.execute(new AllSites());
-        let results = commandResult.items;
+        let result = await this._queryCoordinator.execute(new StatusForAllSites());
+        let results = result.items;
         let formatted: any[] = results.map((site: any) => ({
-                'Name': site.name
+                'Connected/Total Nodes': `${site.connectedNodes} / ${site.totalNodes}`,
+                'Threshold': site.threshold,
+                'Last seen nodes': site.lastSeenNodes ? site.lastSeenNodes : 'never',
+                'Last seen': dateformat(site.LastSeen, 'HH:MM dd.mm.yyyy')
         }));
         outputter.table(formatted);
     }

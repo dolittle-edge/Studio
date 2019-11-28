@@ -26,6 +26,7 @@ export * from './Installations/RenameSite';
 export * from './Installations/RegisterNodeWithInstallation';
 export * from './Installations/NodesWithinInstallation';
 export * from './Installations/StatusForAllSites';
+export * from './Installations/CurrentStatusForSite';
 
 // edge
 export * from './edge/EdgeNamespace'
@@ -35,9 +36,6 @@ export * from './edge/create/CreateInstallationCommand';
 // delete an installation
 export * from './edge/delete/DeleteCommandGroup';
 export * from './edge/delete/DeleteInstallationCommand';
-// add a node
-export * from './edge/add/AddCommandGroup';
-export * from './edge/add/AddNodeCommand';
 // describe
 export * from './edge/describe/DescribeCommandGroup';
 export * from './edge/describe/DescribeInstallation';
