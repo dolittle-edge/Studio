@@ -18,9 +18,13 @@ export class DolittleOutputter implements ICanOutputMessages {
                 });
             });
         } else {
-            // just a regular error
             this.error('Command failed:')
             this.error(failString);
+            if (json.exception && json.exception.message) {
+                // @joel is this useful at all?
+                this.error(json.exception.message);
+                this.error(json.exception.stackTrace);
+            }
         }
     }
 
