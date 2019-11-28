@@ -4,7 +4,7 @@
 *--------------------------------------------------------------------------------------------*/
 import { Command, CommandContext, IFailedCommandOutputter, AuthenticatedCommand } from "@dolittle/tooling.common.commands";
 import { IDependencyResolvers, PromptDependency, argumentUserInputType, IsNotEmpty } from "@dolittle/tooling.common.dependencies";
-import { ICanOutputMessages, IBusyIndicator } from "@dolittle/tooling.common.utilities";
+import { ICanOutputMessages, IBusyIndicator, Exception } from "@dolittle/tooling.common.utilities";
 import { requireInternet, IConnectionChecker} from "@dolittle/tooling.common.packages";
 import { CommandCoordinator } from "@dolittle/commands";
 import { ILoginService, IContexts } from "@dolittle/tooling.common.login";
@@ -37,5 +37,6 @@ export class DeleteInstallationCommand extends AuthenticatedCommand {
         // TODO: add the real logic here
         // let commandResult = await this._commandCoordinator.handle(new AddNodeToLocation(name, Guid.create(), locationId));
         // outputter.print(commandResult as any);
+        throw new Exception('Unimplemented command');
     }
 }
