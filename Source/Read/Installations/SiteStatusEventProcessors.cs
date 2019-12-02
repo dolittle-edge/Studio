@@ -21,6 +21,7 @@ namespace Read.Installations
             var status = new SiteStatus
             {
                 Id = @event.SiteId,
+                Name = @event.Name,
                 LastSeenNodes = new Dictionary<string,DateTimeOffset>()
             };
             _siteStatusCollection.InsertOne(status);

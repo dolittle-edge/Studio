@@ -28,6 +28,7 @@ export class ListSites extends AuthenticatedCommand {
         let result = await this._queryCoordinator.execute(new StatusForAllSites());
         let results = result.items;
         let formatted: any[] = results.map((site: any) => ({
+                'Name': site.name,
                 'Connected/Total Nodes': `${site.connectedNodes} / ${site.totalNodes}`,
                 'Threshold': site.threshold,
                 'Last seen nodes': site.lastSeenNodes ? site.lastSeenNodes : 'never',

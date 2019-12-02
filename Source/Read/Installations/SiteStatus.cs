@@ -15,6 +15,7 @@ namespace Read.Installations
         static TimeSpan _threshold = TimeSpan.FromMinutes(5);
 
         public SiteId Id { get; set; }
+        public SiteName Name { get; set; }
         public int TotalNodes { get; set; }
         public int ConnectedNodes => LastSeenNodes.Values.Count(_ => DateTimeOffset.UtcNow.Subtract(_) < _threshold);
         public TimeSpan Threshold => _threshold;

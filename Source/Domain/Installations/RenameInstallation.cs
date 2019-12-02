@@ -9,7 +9,7 @@ namespace Domain.Installations
 {
     public class RenameInstallation : ICommand
     {
-        public SiteId SiteId { get; set; }
+        public SiteName SiteName { get; set; }
         public InstallationName OldName { get; set; }
         public InstallationName NewName { get; set; }
     }

@@ -35,13 +35,13 @@ namespace Domain.Installations
                 Apply(new InstallationStarted(installationId, name));
         }
 
-        public void Rename(string oldName, string newName)
+        public void Rename(string oldName, string newName, InstallationId installationId)
         {
             if( !Evaluate(
                     () => InstallationMustExist(oldName),
                     () => DuplicateInstallationNameNotAllowed(newName)) ) return;
 
-            var installation = _installations.Single(_ => _.Name == oldName);
+            var installation = _installations.Single(_ => _.InstallationId == installationId);
             Apply(new InstallationRenamed(installation.InstallationId, newName));
         }
 
