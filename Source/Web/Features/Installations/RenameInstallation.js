@@ -10,7 +10,7 @@ export class RenameInstallation extends Command
         super();
         this.type = '62ad82f9-675c-4810-b7d0-0f420b31fde8';
 
-        this.siteId = '00000000-0000-0000-0000-000000000000';
+        this.siteName = '';
         this.oldName = '';
         this.newName = '';
     }

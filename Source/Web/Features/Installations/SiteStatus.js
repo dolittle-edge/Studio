@@ -13,6 +13,7 @@ export class SiteStatus extends ReadModel
            generation: '1'
         };
         this.id = '00000000-0000-0000-0000-000000000000';
+        this.name = '';
         this.totalNodes = 0;
         this.lastSeenNodes = [];
     }
