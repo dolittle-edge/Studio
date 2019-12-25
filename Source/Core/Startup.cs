@@ -1,21 +1,20 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using Autofac;
-using Dolittle.AspNetCore.Bootstrap;
+using Dolittle.AspNetCore.Debugging.Swagger;
 using Dolittle.Booting;
+using Dolittle.Concepts.Serialization.Json;
 using Dolittle.DependencyInversion.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace Core
 {
-    public partial class Startup
+    public class Startup
     {
         readonly IHostingEnvironment _hostingEnvironment;
         readonly ILoggerFactory _loggerFactory;
@@ -31,14 +30,11 @@ namespace Core
         {
             if (_hostingEnvironment.IsDevelopment())
             {
-                services.AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                });
-
                 services.AddCors();
+                services.AddDolittleSwagger();
             }
-            services.AddMvc();
+
+            services.AddMvc().AddJsonOptions(_ => _.SerializerSettings.Converters.Add(new ConceptConverter()));
 
             _bootResult = services.AddDolittle(_loggerFactory);
         }
@@ -50,36 +46,21 @@ namespace Core
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // this should be first on the list
+            app.UseDolittle();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                });
-
-                app.UseCors(_ => {
-                    _.AllowCredentials();
-                    _.AllowAnyMethod();
-                    _.AllowAnyOrigin();
-                    _.AllowAnyHeader();
-                });
+                app.UseDolittleSwagger();
             }
-
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
 
             app.UseMvc();
 
-
-            app.UseWebSockets(new WebSocketOptions 
+            app.UseWebSockets(new WebSocketOptions
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(120),
-                ReceiveBufferSize = 4*1024
+                ReceiveBufferSize = 4 * 1024
             });
-            app.UseDolittle();
-            app.RunAsSinglePageApplication();
         }
     }
 }

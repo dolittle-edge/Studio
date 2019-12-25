@@ -1,13 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Build/MSBuild/default.props"/>
-
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-    </PropertyGroup>
+    <Import Project="../../default.props"/>
 
     <ItemGroup>
         <ProjectReference Include="..\Events\Events.csproj" />
         <ProjectReference Include="..\Concepts\Concepts.csproj" />
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

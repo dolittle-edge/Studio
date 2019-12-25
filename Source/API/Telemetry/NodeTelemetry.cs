@@ -1,35 +1,39 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-using System;
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System.Collections.Generic;
+using Concepts.Installations;
 
 namespace API.Telemetry
 {
     /// <summary>
-    /// Represents a node on a location
+    /// Represents a node within an installation at a site.
     /// </summary>
     public class NodeTelemetry
     {
         /// <summary>
-        /// Gets or sets the unique identifier for the location
+        /// Gets or sets the unique identifier of the site.
         /// </summary>
-        public Guid LocationId {  get; set; }
+        public SiteId SiteId { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique identifier for the <see cref="NodeTelemetry"/>
+        /// Gets or sets the unique identifier for the installation.
         /// </summary>
-        public Guid NodeId { get; set; }
+        public InstallationId InstallationId { get; set; }
 
         /// <summary>
-        /// Gets or sets the key/value of metrics of state being reported
+        /// Gets or sets the unique identifier for the <see cref="NodeTelemetry"/>.
         /// </summary>
-        public IDictionary<string, float> Metrics { get; set; }
+        public NodeId NodeId { get; set; }
 
         /// <summary>
-        /// Gets or sets the key/value of infos of state being reported
+        /// Gets or sets the key/value of metrics of state being reported.
         /// </summary>
-        public IDictionary<string, string> Infos { get; set; }
+        public IDictionary<string, float> Metrics { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key/value of infos of state being reported.
+        /// </summary>
+        public IDictionary<string, string> Infos { get; set; }
     }
 }

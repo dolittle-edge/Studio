@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../default.props"/>
+
+    <ItemGroup>
+        <PackageReference Include="Dolittle.SDK" Version="4.*" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
+    </ItemGroup>
+
+</Project>

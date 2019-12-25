@@ -1,15 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <Import Project="../../Build/MSBuild/default.props"/>
-
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-    </PropertyGroup>
+    <Import Project="../../default.props"/>
 
     <ItemGroup>
         <ProjectReference Include="..\Concepts\Concepts.csproj" />
         <ProjectReference Include="..\Domain\Domain.csproj" />
         <ProjectReference Include="..\Read\Read.csproj" />
+        <ProjectReference Include="..\TimeSeries\TimeSeries.csproj" />
     </ItemGroup>
 
     <ItemGroup>

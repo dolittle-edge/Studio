@@ -1,17 +1,12 @@
 {
   "modules": {},
   "features": {
-    "2f7a5753-205b-46f4-b8be-2a3547bcbbee": {
-      "name": "Locations",
-      "subFeatures": {
-        "83c53185-0826-4c90-95a5-45d9604cf886": {
-          "name": "Nodes",
-          "subFeatures": {}
-        }
-      }
+    "3edfd8c4-ca12-417e-add8-fb2d20205f4d": {
+      "name": "Installations",
+      "subFeatures": {}
     },
-    "6fd93e2a-8c13-47ce-91d2-23da4b7cfea5": {
-      "name": "Nodes",
+    "850f3507-63d1-48ac-9677-e51c276cfcce": {
+      "name": "Identification",
       "subFeatures": {}
     }
   }
