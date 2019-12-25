@@ -1,7 +1,5 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Dolittle.Events.Processing;
 using Dolittle.ReadModels;
@@ -10,9 +8,6 @@ using Events.Installations;
 
 namespace Read.Installations
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class InstallationEventProcessor : ICanProcessEvents
     {
         readonly IReadModelRepositoryFor<Installation> _installations;
@@ -21,10 +16,7 @@ namespace Read.Installations
         {
             _installations = insallations;
         }
-        
-        /// <summary>
-        /// 
-        /// </summary>
+
         [EventProcessor("eafbe9b6-44f9-40c5-9a7b-f6f196dc44fe")]
         public void Process(InstallationStarted @event, EventMetadata eventMetadata)
         {

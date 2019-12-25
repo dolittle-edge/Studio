@@ -1,7 +1,6 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ using TimeSeries.Connectors;
 namespace TimeSeries.Identification
 {
     /// <summary>
-    /// Represents an implementation of <see cref="ITagDataPointIdentifier"/>
+    /// Represents an implementation of <see cref="ITagDataPointIdentifier"/>.
     /// </summary>
     [SingletonPerTenant]
     public class TagDataPointIdentifier : ITagDataPointIdentifier
@@ -26,10 +25,10 @@ namespace TimeSeries.Identification
         readonly ITimeSeriesIdentifier _timeSeriesIdentifier;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="TagDataPointIdentifier"/>
+        /// Initializes a new instance of the <see cref="TagDataPointIdentifier"/> class.
         /// </summary>
-        /// <param name="readModels"><see cref="IReadModelRepositoryFor{T}"/> for <see cref="TagToTimeSeries"/></param>
-        /// <param name="timeSeriesIdentifier"><see cref="ITimeSeriesIdentifier"/> for identification up towards the runtime</param>
+        /// <param name="readModels"><see cref="IReadModelRepositoryFor{T}"/> for <see cref="TagToTimeSeries"/>.</param>
+        /// <param name="timeSeriesIdentifier"><see cref="ITimeSeriesIdentifier"/> for identification up towards the runtime.</param>
         public TagDataPointIdentifier(
             IReadModelRepositoryFor<TagToTimeSeries> readModels,
             ITimeSeriesIdentifier timeSeriesIdentifier)

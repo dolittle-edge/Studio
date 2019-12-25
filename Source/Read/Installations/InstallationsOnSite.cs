@@ -1,7 +1,5 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Linq;
 using Concepts.Installations;
@@ -12,7 +10,7 @@ using Infrastructure.Domain;
 namespace Read.Installations
 {
     /// <summary>
-    /// Represents a query for getting all locactions
+    /// Represents a query for getting all locactions.
     /// </summary>
     public class InstallationsOnSite : IQueryFor<Installation>
     {
@@ -29,7 +27,6 @@ namespace Read.Installations
 
         public SiteName SiteName { get; set; }
 
-        // public IQueryable<Installation> Query => _installations.Query;
         public IQueryable<Installation> Query
         {
             get

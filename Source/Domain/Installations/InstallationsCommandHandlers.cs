@@ -1,7 +1,6 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using Concepts.Installations;
 using Dolittle.Commands.Handling;
@@ -37,8 +36,7 @@ namespace Domain.Installations
             {
                 _installationOnSiteKeys.Associate(
                     new InstallationOnSite { SiteId = siteId, InstallationName = command.Name },
-                    installationId
-                );
+                    installationId);
             }
         }
 
@@ -46,19 +44,17 @@ namespace Domain.Installations
         {
             var siteId = _siteNameKeys.GetFor(command.SiteName);
             var installationId = _installationOnSiteKeys.GetFor(
-                new InstallationOnSite { SiteId = siteId, InstallationName = command.OldName }
-            );
+                new InstallationOnSite { SiteId = siteId, InstallationName = command.OldName });
 
+            // we already know the unique installationId here so we can pass that into the Aggregate instead of having
+            // to make another lookup for the installation with a siteID
             if (_installationsOnSite
                 .Rehydrate(siteId)
-                // we already know the unique installationId here so we can pass that into the Aggregate instead of having
-                // to make another lookup for the installation with a siteID
                 .Perform(_ => _.Rename(command.OldName, command.NewName, installationId)))
             {
                 _installationOnSiteKeys.Associate(
                     new InstallationOnSite { SiteId = siteId, InstallationName = command.NewName },
-                    installationId
-                );
+                    installationId);
             }
         }
     }

@@ -1,7 +1,6 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System.Collections.Generic;
 using System.Linq;
 using Concepts.Installations;
@@ -14,19 +13,15 @@ namespace Domain.Installations
 {
     public class Sites : AggregateRoot
     {
-        static Reason SiteNameAlreadyExists = Reason.Create("9ceff948-f9e0-4584-9478-94a00c45b55c", "Site '{Site}' already exists");
-        static Reason SiteWithNameDoesNotExists = Reason.Create("60c1f7be-3937-4625-a23a-1842e411ac55", "Site '{Site}' does not exist");
-
-        public class Site
-        {
-            public Site(SiteId siteId) => SiteId = siteId;
-            public SiteId SiteId { get; }
-            public string Name { get; set; }
-        }
+        static readonly Reason SiteNameAlreadyExists = Reason.Create("9ceff948-f9e0-4584-9478-94a00c45b55c", "Site '{Site}' already exists");
+        static readonly Reason SiteWithNameDoesNotExists = Reason.Create("60c1f7be-3937-4625-a23a-1842e411ac55", "Site '{Site}' does not exist");
 
         readonly List<Site> _sites = new List<Site>();
 
-        public Sites(EventSourceId id) : base(id) { }
+        public Sites(EventSourceId id)
+            : base(id)
+        {
+        }
 
         public void Register(SiteId siteId, string name)
         {
@@ -57,14 +52,23 @@ namespace Domain.Installations
 
         RuleEvaluationResult SiteMustExist(string name)
         {
-            if (!_sites.Any(_ => _.Name == name)) return RuleEvaluationResult.Fail(name, SiteWithNameDoesNotExists.WithArgs(new{Site=name}));
+            if (!_sites.Any(_ => _.Name == name)) return RuleEvaluationResult.Fail(name, SiteWithNameDoesNotExists.WithArgs(new { Site = name }));
             return RuleEvaluationResult.Success;
         }
 
         RuleEvaluationResult DuplicateSiteNameNotAllowed(string name)
         {
-            if (_sites.Any(_ => _.Name == name)) return RuleEvaluationResult.Fail(name, SiteNameAlreadyExists.WithArgs(new{Site=name}));
+            if (_sites.Any(_ => _.Name == name)) return RuleEvaluationResult.Fail(name, SiteNameAlreadyExists.WithArgs(new { Site = name }));
             return RuleEvaluationResult.Success;
+        }
+
+        class Site
+        {
+            public Site(SiteId siteId) => SiteId = siteId;
+
+            public SiteId SiteId { get; }
+
+            public string Name { get; set; }
         }
     }
 }

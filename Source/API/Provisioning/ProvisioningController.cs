@@ -20,8 +20,11 @@ namespace API.Provisioning
         readonly ILogger _logger;
 
         /// <summary>
-        /// Creates an instance of <see cref="ProvisioningController"/>
+        /// Initializes a new instance of the <see cref="ProvisioningController"/> class.
         /// </summary>
+        /// <param name="provider"><see cref="IConfigurationProvider"/> for providing configuration.</param>
+        /// <param name="serializer">JSON <see cref="ISerializer"/>.</param>
+        /// <param name="logger"><see cref="ILogger"/> for logging.</param>
         public ProvisioningController(IConfigurationProvider provider, ISerializer serializer, ILogger logger)
         {
             _provider = provider;
@@ -30,19 +33,17 @@ namespace API.Provisioning
         }
 
         /// <summary>
-        /// Get the Edge Agent configuration for a node
+        /// [GET] Action for getting the Edge Agent configuration for a node.
         /// </summary>
-        /// <param name="information"><see cref="SystemInformation"/> describing the node requesting Edge Agent configuration</param>
-        /// <returns><see cref="IActionResult"/></returns>
+        /// <param name="information"><see cref="SystemInformation"/> describing the node requesting Edge Agent configuration.</param>
+        /// <returns><see cref="IActionResult"/> with the result.</returns>
         [HttpPost("Get")]
         public IActionResult GetConfiguration([FromBody] SystemInformation information)
         {
             _logger.Information($"Getting Edge Agent configuration for node '{information.SerialNumber}'");
 
-            var status = _provider.GetProvisioningStatusForNode(information);
-            switch (status)
+            switch (_provider.GetProvisioningStatusForNode(information))
             {
-                //case ProvisioningStatus.NotConfigured:
                 default:
                     return NotFound();
 
@@ -57,18 +58,18 @@ namespace API.Provisioning
         }
 
         /// <summary>
-        /// 
+        /// [POST] Action for checkinf for updates to the configuration.
         /// </summary>
-        /// <returns><see cref="IActionResult"/></returns>
+        /// <param name="nodeId"><see cref="Guid"/> for the node to check.</param>
+        /// <param name="hash">The hash.</param>
+        /// <returns><see cref="IActionResult"/>.</returns>
         [HttpPost("Check")]
         public IActionResult CheckForConfigurationUpdates([FromForm] Guid nodeId, [FromForm] string hash)
         {
             _logger.Information($"Checking for updates to Edge Agent configuration for node '{nodeId}', current configuration hash '{hash}'");
 
-            var status = _provider.GetProvisioningStatusForNodeById(nodeId);
-            switch (status)
+            switch (_provider.GetProvisioningStatusForNodeById(nodeId))
             {
-                //case ProvisioningStatus.NotConfigured:
                 default:
                     return NotFound();
 
@@ -77,7 +78,7 @@ namespace API.Provisioning
 
                 case ProvisioningStatus.Configured:
                     var configuration = _provider.GetConfigurationForNodeById(nodeId);
-                    if (ComputeConfigurationHash(configuration).Equals(hash))
+                    if (ComputeConfigurationHash(configuration).Equals(hash, StringComparison.InvariantCulture))
                     {
                         return StatusCode(304);
                     }

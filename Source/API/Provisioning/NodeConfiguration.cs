@@ -19,7 +19,7 @@ namespace API.Provisioning
         /// <summary>
         /// Gets or sets the unique identifier for the installation which the node is associated with.
         /// </summary>
-        public InstallationId InstallationId { get; set; }
+        public InstallationId InstallationId { get; set; }
 
         /// <summary>
         /// Gets or sets the unique identifier of the node.
@@ -29,11 +29,11 @@ namespace API.Provisioning
         /// <summary>
         /// Gets or sets the configurations for the Edge Agent to apply to low-level systems on the node.
         /// </summary>
-        public IDictionary<string,object> Configuration { get; set; }
+        public IDictionary<string, object> Configuration { get; set; }
 
         /// <summary>
         /// Gets or sets the token used for API calls.
         /// </summary>
-        public string Token { get; set; }
+        public string Token { get; set; }
     }
 }

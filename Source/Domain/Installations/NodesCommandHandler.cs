@@ -1,7 +1,6 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using Concepts.Installations;
 using Dolittle.Commands.Handling;
@@ -19,7 +18,6 @@ namespace Domain.Installations
         readonly INaturalKeysOf<SiteName> _siteNameKeys;
         readonly INaturalKeysOf<NodeName> _nodeNameKeys;
         readonly INaturalKeysOf<InstallationOnSite> _installationOnSiteKeys;
-
 
         public NodesCommandHandler(
             IAggregateOf<Nodes> nodes,
@@ -59,13 +57,14 @@ namespace Domain.Installations
             }
         }
 
+#if false
         public void Handle(RenameNode rename)
         {
-            /*
             var nodes = _nodes.Get(_executionContextManager.Current.Tenant.Value);
             nodes.Rename(rename.OldName, rename.NewName);
             var nodeId = _nodeNameKeys.GetFor(rename.OldName);
             _nodeNameKeys.Associate(rename.NewName, nodeId);*/
         }
+#endif
     }
 }

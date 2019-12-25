@@ -1,7 +1,7 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,9 +12,9 @@ using TimeSeries.DataPoints;
 namespace TimeSeries.Connectors
 {
     /// <summary>
-    /// Represents a <see cref="IAmAPushConnector"/> for pushing timeseries telemetry
+    /// Represents a <see cref="IAmAPushConnector"/> for pushing timeseries telemetry.
     /// </summary>
-    public class TimeSeriesConnector : IAmAPushConnector
+    public class TimeSeriesConnector : IAmAPushConnector, IDisposable
     {
         internal const string SourceName = "EdgeTelemetry";
 
@@ -23,9 +23,9 @@ namespace TimeSeries.Connectors
         readonly AutoResetEvent _waitHandle;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="TimeSeriesConnector"/>
+        /// Initializes a new instance of the <see cref="TimeSeriesConnector"/> class.
         /// </summary>
-        /// <param name="dataPointMessenger"><see cref="IDataPointMessenger"/> to use</param>
+        /// <param name="dataPointMessenger"><see cref="IDataPointMessenger"/> to use.</param>
         public TimeSeriesConnector(IDataPointMessenger dataPointMessenger)
         {
             _waitHandle = new AutoResetEvent(false);
@@ -45,7 +45,7 @@ namespace TimeSeries.Connectors
         {
             await Task.Run(async () =>
             {
-                for (; ; )
+                while (true)
                 {
                     _waitHandle.WaitOne(1000);
                     if (_outbox.IsEmpty) continue;
@@ -60,6 +60,12 @@ namespace TimeSeries.Connectors
                     }
                 }
             }).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            _waitHandle?.Dispose();
         }
     }
 }

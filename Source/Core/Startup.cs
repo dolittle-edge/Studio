@@ -1,10 +1,8 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using Autofac;
-using Dolittle.AspNetCore.Bootstrap;
 using Dolittle.AspNetCore.Debugging.Swagger;
 using Dolittle.Booting;
 using Dolittle.Concepts.Serialization.Json;
@@ -13,11 +11,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace Core
 {
-    public partial class Startup
+    public class Startup
     {
         readonly IHostingEnvironment _hostingEnvironment;
         readonly ILoggerFactory _loggerFactory;
@@ -36,6 +33,7 @@ namespace Core
                 services.AddCors();
                 services.AddDolittleSwagger();
             }
+
             services.AddMvc().AddJsonOptions(_ => _.SerializerSettings.Converters.Add(new ConceptConverter()));
 
             _bootResult = services.AddDolittle(_loggerFactory);
@@ -55,6 +53,7 @@ namespace Core
                 app.UseDeveloperExceptionPage();
                 app.UseDolittleSwagger();
             }
+
             app.UseMvc();
 
             app.UseWebSockets(new WebSocketOptions

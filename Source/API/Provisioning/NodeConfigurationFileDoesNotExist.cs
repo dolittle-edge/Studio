@@ -15,7 +15,7 @@ namespace API.Provisioning
         /// </summary>
         /// <param name="path">The path for the file that is missing.</param>
         public NodeConfigurationFileDoesNotExist(string path)
-            : base($"Node configruation file '{path}' doesn't exists.")
+            : base($"Node configuration file '{path}' doesn't exists.")
         {
         }
     }

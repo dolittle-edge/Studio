@@ -50,6 +50,23 @@ namespace API.Provisioning
             return ReadConfigurationFileFor(information);
         }
 
+        /// <inheritdoc />
+        public ProvisioningStatus GetProvisioningStatusForNodeById(NodeId nodeId)
+        {
+            if (HasConfigurationForNodeId(nodeId))
+            {
+                return ProvisioningStatus.Configured;
+            }
+
+            return ProvisioningStatus.NotConfigured;
+        }
+
+        /// <inheritdoc />
+        public NodeConfiguration GetConfigurationForNodeById(NodeId nodeId)
+        {
+            return ReadConfigurationForNodeId(nodeId);
+        }
+
         string PathForNodeConfiguration(SystemInformation information)
         {
             var tenantId = TenantId.Development;
@@ -67,24 +84,6 @@ namespace API.Provisioning
             return _serializer.FromJson<NodeConfiguration>(json);
         }
 
-
-
-        /// <inheritdoc />
-        public ProvisioningStatus GetProvisioningStatusForNodeById(NodeId nodeId)
-        {
-            if (HasConfigurationForNodeId(nodeId))
-            {
-                return ProvisioningStatus.Configured;
-            }
-            return ProvisioningStatus.NotConfigured;
-        }
-
-        /// <inheritdoc />
-        public NodeConfiguration GetConfigurationForNodeById(NodeId nodeId)
-        {
-            return ReadConfigurationForNodeId(nodeId);
-        }
-
         bool HasConfigurationForNodeId(NodeId nodeId)
         {
             var tenantId = TenantId.Development;
@@ -98,6 +97,7 @@ namespace API.Provisioning
                     return true;
                 }
             }
+
             return false;
         }
 

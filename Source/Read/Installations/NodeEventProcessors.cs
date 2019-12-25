@@ -1,3 +1,6 @@
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using Dolittle.Events.Processing;
 using Dolittle.ReadModels;
 using Events.Installations;
@@ -26,7 +29,8 @@ namespace Read.Installations
         [EventProcessor("aa8f67f8-640a-4d6f-915e-7ed0d18a5a8d")]
         public void Process(NodeRegisteredWithInstallation @event)
         {
-            _associatedNodes.Insert(new AssociatedNode {
+            _associatedNodes.Insert(new AssociatedNode
+            {
                 Id = @event.NodeId,
                 Name = @event.Name,
                 InstallationId = @event.InstallationId

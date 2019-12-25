@@ -1,7 +1,6 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) Dolittle. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
@@ -11,20 +10,21 @@ using MongoDB.Driver;
 namespace Infrastructure.Domain
 {
     /// <summary>
-    /// Represents an implementation of <see cref="INaturalKeysOf{T}"/>
+    /// Represents an implementation of <see cref="INaturalKeysOf{T}"/>.
     /// </summary>
+    /// <typeparam name="TKey">Type of key.</typeparam>
     [SingletonPerTenant]
-    public class NaturalKeysOf<T> : INaturalKeysOf<T>
+    public class NaturalKeysOf<TKey> : INaturalKeysOf<TKey>
     {
         readonly IMongoDatabase _database;
-        readonly IMongoCollection<NaturalKeyMap<T>> _collection;
-        readonly ConcurrentDictionary<T, Guid> _keysToGuids = new ConcurrentDictionary<T, Guid>();
-        readonly ConcurrentDictionary<Guid, T> _guidsToKeys = new ConcurrentDictionary<Guid, T>();
+        readonly IMongoCollection<NaturalKeyMap<TKey>> _collection;
+        readonly ConcurrentDictionary<TKey, Guid> _keysToGuids = new ConcurrentDictionary<TKey, Guid>();
+        readonly ConcurrentDictionary<Guid, TKey> _guidsToKeys = new ConcurrentDictionary<Guid, TKey>();
 
         /// <summary>
-        /// Initializes a new instance of <see cref="NaturalKeysOf{T}"/>
+        /// Initializes a new instance of the <see cref="NaturalKeysOf{T}"/> class.
         /// </summary>
-        /// <param name="database"><see cref="IMongoDatabase"/></param>
+        /// <param name="database"><see cref="IMongoDatabase"/>.</param>
         public NaturalKeysOf(IMongoDatabase database)
         {
             _database = database;
@@ -33,14 +33,13 @@ namespace Infrastructure.Domain
         }
 
         /// <inheritdoc/>
-        public void Associate(T key, Guid guid)
+        public void Associate(TKey key, Guid guid)
         {
-            var association = new NaturalKeyMap<T> { Id = guid, Key = key };
+            var association = new NaturalKeyMap<TKey> { Id = guid, Key = key };
             _collection.ReplaceOne(
                 map => map.Id == association.Id,
                 association,
-                new UpdateOptions { IsUpsert = true }
-            );
+                new UpdateOptions { IsUpsert = true });
 
             if (_keysToGuids.Any(_ => _.Value == guid))
             {
@@ -53,14 +52,14 @@ namespace Infrastructure.Domain
         }
 
         /// <inheritdoc/>
-        public Guid GetFor(T key)
+        public Guid GetFor(TKey key)
         {
             ThrowIfMissingGuidForNaturalKey(key);
             return _keysToGuids[key];
         }
 
         /// <inheritdoc/>
-        public T GetFor(Guid guid)
+        public TKey GetFor(Guid guid)
         {
             ThrowIfMissingNaturalKeyForGuid(guid);
             return _guidsToKeys[guid];
@@ -78,16 +77,16 @@ namespace Infrastructure.Domain
 
         string GetFeatureName()
         {
-            return string.Join(".", typeof(T).Namespace.Split('.').Skip(1));
+            return string.Join(".", typeof(TKey).Namespace.Split('.').Skip(1));
         }
 
-        IMongoCollection<NaturalKeyMap<T>> GetCollection()
+        IMongoCollection<NaturalKeyMap<TKey>> GetCollection()
         {
-            var collection = $"NaturalKeysOf_{GetFeatureName()}.{typeof(T).Name}";
-            return _database.GetCollection<NaturalKeyMap<T>>(collection);
+            var collection = $"NaturalKeysOf_{GetFeatureName()}.{typeof(TKey).Name}";
+            return _database.GetCollection<NaturalKeyMap<TKey>>(collection);
         }
 
-        void ThrowIfMissingGuidForNaturalKey(T key)
+        void ThrowIfMissingGuidForNaturalKey(TKey key)
         {
             if (!_keysToGuids.ContainsKey(key)) throw new MissingGuidForNaturalKey(key);
         }
