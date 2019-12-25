@@ -1,8 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-    </PropertyGroup>
+    <Import Project="../../default.props"/>
 
     <ItemGroup>
         <ProjectReference Include="..\Concepts\Concepts.csproj" />
@@ -10,7 +7,6 @@
 
     <ItemGroup>
         <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
-        <PackageReference Include="Dolittle.Common" Version="1.*"/>
         <PackageReference Include="Dolittle.SDK" Version="4.*" />
         <PackageReference Include="Dolittle.TimeSeries.SDK" Version="7.*" />
     </ItemGroup>
